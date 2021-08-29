@@ -1,0 +1,27 @@
+:host ::ng-deep .p-toast .p-toast-message {
+  border-width: 0 6px 0 0!important;
+}
+:host ::ng-deep .p-toast .p-toast-message .p-toast-message-content .p-toast-message-text {
+  margin: 0 1rem 0 0!important;
+  text-align: right;
+}
+:host ::ng-deep .p-dialog.p-confirm-dialog .p-confirm-dialog-message {
+  margin-right: 1rem!important;
+  margin-left: none!important;
+}
+:host ::ng-deep .p-dialog .p-dialog-footer {
+  text-align: left!important;
+}
+:host ::ng-deep pdf-viewer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(5px 5px 5px #222222);
+}
+
+.pnl-content .box{
+  background-color: white;
+  padding: 15px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}

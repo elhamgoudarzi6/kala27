@@ -1,0 +1,108 @@
+.sidenav-container {
+  height: 100%;
+  width: 100%;
+}
+
+.sidenav {
+  /*bottom:100px!important;*/
+  width: 270px;
+  background: #37474f;
+  border-left: none;
+}
+.title-sidebar{
+  font-family: IRANSans_Bold;
+  font-size: 16px;
+  color: #FFFFFF;
+  padding-right: 40px;
+  text-align: center;
+}
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+
+
+mat-nav-list a{
+  font-family:IRANSans_Light;
+  font-size: 16px;
+  color: #FFFFFF;
+}
+
+:host::ng-deep.mat-list-item-content{
+  font-family:  IRANSans_Light;
+  color: white;
+}
+:host::ng-deep.p-toolbar {
+  background: #37474f!important;
+  height: 55px;
+}
+.mat-icon-button {
+  margin-top: -15px;
+  color: antiquewhite;
+}
+
+
+
+
+:host ::ng-deep .p-datatable .p-datatable-header{
+  background: #ffffff;
+}
+
+:host ::ng-deep .p-datatable .p-datatable-thead > tr > th {
+  background: #ffffff;
+  text-align: right!important;
+  font-family: IRANSans_Bold;
+}
+
+:host ::ng-deep .p-datatable .p-datatable-tbody > tr > td {
+  text-align: right!important;
+  font-family: IRANSans_Light;
+}
+:host ::ng-deep .pi-chevron-right:before {
+  content: "\e902";
+}
+:host ::ng-deep .p-input-icon-left {
+  position: relative;
+  display: inline-block;
+}
+button{
+  font-family: IRANSans_Light!important;
+  font-size: 13px;
+}
+:host ::ng-deep .p-paginator-bottom{
+  font-family: IRANSans_Light;
+  direction: ltr;
+  text-align: right;
+}
+:host ::ng-deep .p-paginator-bottom button{
+  font-family: IRANSans_Light;
+}
+:host ::ng-deep .p-dropdown-label{
+  font-family: IRANSans_Light;
+  padding-left: 10px!important;
+  padding-right: 10px!important;
+}
+:host ::ng-deep .p-button-icon-left {
+  margin-left: 0.5rem;
+  margin-right: unset;
+}
+
+.pnl-content .box{
+  background-color: white;
+  padding: 15px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+:host ::ng-deep .mat-list-item-content{
+  font-size: 13px;
+}
+.menu-button.rotated {
+  transform: rotate(180deg);
+}
+.submenu {
+  display: block;
+}
+.submenu.expanded {
+  display: none;
+}

@@ -1,0 +1,38 @@
+.c-search input {
+  width: 100%;
+  height: 100%;
+  /* color: #474747; */
+  font-weight: 300;
+  font-size: 12px;
+
+  line-height: 1.833;
+  /* z-index: 51; */
+  position: relative;
+  border-radius: 8px;
+  background-color: #F7F7F7;
+  border: none;
+  padding: 10px 10px 10px 10px;
+  /*margin-right: 150px;*/
+}
+.mat-input-element{
+  font-family: IRANSans_Light!important;
+  text-align: right!important;
+}
+mat-option{
+  font-size: 12px;
+  color: #777777;
+}
+@media (min-width: 768px)  {
+  .pi-search{
+    margin-top: -29px;
+    margin-right:-2rem;
+    position: absolute;
+  }
+}
+@media (max-width: 768px) {
+  .pi-search{
+    margin-top: -29px;
+    margin-right:15rem;
+    position: absolute;
+  }
+}

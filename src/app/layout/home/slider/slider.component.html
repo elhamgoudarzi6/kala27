@@ -1,0 +1,26 @@
+
+      <div class="container-fluid mt-4">
+        <div class="row slider" dir="rtl">
+          <div class="col-sm-12 col-md-8 col-lg-8">
+      
+            <owl-carousel-o [options]="customOptions" dir="ltr" style="border-radius: 20px">
+              <ng-template carouselSlide *ngFor="let item of sliders">
+                <a [href]="item.link">
+                  <img [src]="item.imageurl" class="slider-image">
+                </a>
+              </ng-template>
+            </owl-carousel-o>
+          </div>
+          <div class="col-sm-12 col-md-4 col-lg-4">
+            <div class="row">
+      
+              <div class="col-sm-6 col-md-12 col-lg-12" *ngFor="let item of sideBanners;let i=index"
+                   [ngClass]="i > 0 ? 'mt-2' : ''">
+                <a [href]="item.link">
+                  <img [src]="item.imageurl"  class="image-box">
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>

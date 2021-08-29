@@ -1,0 +1,168 @@
+<p-toast position="center"></p-toast>
+<p-confirmDialog
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+></p-confirmDialog>
+<div style="direction: rtl; text-align: right">
+  <form class="w-100 mt-3">
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label for="fullName">نام و نام خانوادگی</label>
+        <input
+          readonly="readonly"
+          name="fullName"
+          type="text"
+          pInputText
+          [(ngModel)]="user.fullName"
+        />
+      </div>
+      <div class="p-field p-col">
+        <label for="nationalCode">کدملی</label>
+        <input
+          readonly="readonly"
+          name="nationalCode"
+          type="text"
+          pInputText
+          [(ngModel)]="user.nationalCode"
+        />
+      </div>
+    </div>
+
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label for="email">ایمیل</label>
+        <input
+          name="email"
+          readonly="readonly"
+          type="text"
+          pInputText
+          [(ngModel)]="user.email"
+        />
+      </div>
+      <div class="p-field p-col">
+        <label for="phone">تلفن</label>
+        <input
+          readonly="readonly"
+          name="phone"
+          type="text"
+          pInputText
+          [(ngModel)]="user.phone"
+        />
+      </div>
+    </div>
+
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label class="d-block">کشور</label>
+        <input
+          readonly="readonly"
+          matInput
+          name="country"
+          type="text"
+          pInputText
+          [(ngModel)]="user.country"
+        />
+      </div>
+      <div class="p-field p-col">
+        <label class="d-block">استان</label>
+        <input
+          readonly="readonly"
+          matInput
+          name="state"
+          type="text"
+          pInputText
+          [(ngModel)]="user.state"
+        />
+      </div>
+      <div class="p-field p-col">
+        <label class="d-block">شهر</label>
+        <input
+          readonly="readonly"
+          matInput
+          name="city"
+          type="text"
+          pInputText
+          [(ngModel)]="user.city"
+        />
+      </div>
+    </div>
+
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label>تاریخ تولد</label>
+        <input
+          readonly="readonly"
+          matInput
+          name="birthDate"
+          type="text"
+          pInputText
+          [(ngModel)]="user.birthDate"
+        />
+      </div>
+      <div class="p-field p-col">
+        <label for="postalCode">کدپستی</label>
+        <input
+          readonly="readonly"
+          name="postalCode"
+          type="text"
+          pInputText
+          [(ngModel)]="user.postalCode"
+          minlength="10"
+          maxlength="10"
+        />
+      </div>
+    </div>
+
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col text-right">
+        <label class="d-block"> آدرس</label>
+        <textarea
+          readonly="readonly"
+          class="form-control"
+          [(ngModel)]="user.address"
+          name="address"
+          rows="3"
+        ></textarea>
+      </div>
+    </div>
+
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col text-right">
+        <label class="d-block">تصویر کاربر</label>
+        <img
+          [src]="user.image"
+          class="img-fluid"
+          *ngIf="user.image != ''"
+          width="200"
+        />
+        <img
+          src="../../../../assets/images/user-default.png"
+          class="img-fluid"
+          *ngIf="user.image == null"
+          width="200"
+        />
+      </div>
+    </div>
+
+    <span class="float-left p-buttonset">
+      <button
+        pButton
+        type="button"
+        label="حذف"
+        (click)="deleteUser(user._id)"
+        class="p-button-danger"
+        icon="pi pi-trash"
+        iconPos="left"
+      ></button>
+      <button
+        pButton
+        type="button"
+        (click)="return()"
+        label="انصراف"
+        class="p-button-info"
+        icon="pi pi-home"
+        iconPos="left"
+      ></button>
+    </span>
+  </form>
+</div>

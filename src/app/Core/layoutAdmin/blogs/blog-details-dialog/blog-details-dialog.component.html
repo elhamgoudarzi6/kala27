@@ -1,0 +1,139 @@
+<p-toast position="center"></p-toast>
+<p-confirmDialog
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+></p-confirmDialog>
+<div style="direction: rtl; text-align: right">
+  <div class="card">
+    <form class="w-100 mt-3">
+      <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col">
+          <label for="title">عنوان</label>
+          <input
+            readonly="readonly"
+            name="title"
+            type="text"
+            pInputText
+            [(ngModel)]="blog.title"
+          />
+        </div>
+        <div class="p-field p-col">
+          <label for="date">تاریخ</label>
+          <input
+            readonly="readonly"
+            name="date"
+            type="text"
+            pInputText
+            [(ngModel)]="blog.date"
+          />
+        </div>
+      </div>
+
+      <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col text-right">
+          <label class="d-block"> خلاصه خبر</label>
+          <textarea
+            readonly="readonly"
+            class="form-control"
+            [(ngModel)]="blog.brief"
+            name="brief"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col text-right">
+          <label class="d-block">جزئیات خبر</label>
+          <p-editor
+            appendTo="body"
+            readonly="readonly"
+            name="details"
+            [(ngModel)]="blog.details"
+            [style]="{ height: '150px' }"
+          >
+          </p-editor>
+        </div>
+      </div>
+
+      <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col">
+          <label class="d-block">کلمات کلیدی</label>
+          <p-chips
+            disabled="disabled"
+            [(ngModel)]="keywords"
+            name="keywords"
+          ></p-chips>
+        </div>
+      </div>
+
+      <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col">
+          <label class="d-block">تگ های خبری</label>
+          <p-chips
+          disabled="disabled"
+            [(ngModel)]="blog.tags"
+            name="tags"
+          ></p-chips>
+        </div>
+      </div>
+
+      <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col text-right">
+          <label class="d-block">تصویر خبر</label>
+          <img
+            [src]="blog.image"
+            class="img-fluid"
+            [alt]="blog.imageDescription"
+          />
+        </div>
+      </div>
+
+      <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col">
+          <label class="d-block">توضیحات تصویر (سئو)</label>
+          <textarea
+            readonly="readonly"
+            class="form-control"
+            [(ngModel)]="blog.imageDescription"
+            name="imageDescription"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+      <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col">
+          <label class="d-block">توضیحات متا (سئو)</label>
+          <textarea
+            readonly="readonly"
+            class="form-control"
+            [(ngModel)]="blog.metaDescription"
+            name="metaDescription"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+
+      <span class="float-left p-buttonset">
+        <button
+          pButton
+          type="button"
+          label="حذف"
+          (click)="deleteBlog(blog._id)"
+          class="p-button-danger"
+          icon="pi pi-trash"
+          iconPos="left"
+        ></button>
+        <button
+          pButton
+          type="button"
+          (click)="return()"
+          label="انصراف"
+          class="p-button-info"
+          icon="pi pi-home"
+          iconPos="left"
+        ></button>
+      </span>
+    </form>
+  </div>
+</div>

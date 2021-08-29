@@ -1,0 +1,39 @@
+<section id="recent-blog-posts" class="recent-blog-posts">
+
+  <div class="container" data-aos="fade-up">
+
+    <header class="section-header">
+      <h2>جدیدترین خبرها</h2>
+    </header>
+
+    <div class="row">
+
+      <div class="col-lg-4" *ngFor="let i of latestNews">
+        <div class="post-box">
+          <div class="post-img"><img [src]="i['image']" [alt]="i['imageDescription']" class="img-fluid"></div>
+          <div class="blogs-meta">
+            <ul>
+              <li class="d-flex align-items-center"><i class="pi pi-user"></i><a>مدیر</a></li>
+              <li class="d-flex align-items-center"><i class="far fa-clock"></i><a><time datetime="1400-2-24">{{i['date']}}</time></a></li>
+              <li class="d-flex align-items-center"><i class="pi pi-tags"></i><a>{{i['tags']}}</a></li>
+            </ul>
+          </div>
+          <h3 class="post-title">{{i['title']}}</h3>  
+          <p class="brief">{{i['brief']}}</p> 
+          <div class="text-center text-lg-start">
+            <a [routerLink]="['/news-detail',i['_id']]" class="readmore scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+              <span>جزییات خبر</span>
+              <i class="pi pi-angle-left"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+

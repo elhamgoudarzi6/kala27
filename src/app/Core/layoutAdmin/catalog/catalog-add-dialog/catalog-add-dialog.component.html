@@ -1,0 +1,34 @@
+<p-toast position="center"></p-toast>
+<div style="direction: rtl; text-align: right">
+  <form [formGroup]="form" (ngSubmit)="submitForm()" class="w-100 mt-3">
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col text-right">
+        <label>آپلود فایل کاتالوگ<label class="text-danger">*</label>:</label>
+        <p-fileUpload
+          chooseLabel="انتخاب فایل"
+          uploadLabel="آپلود فایل"
+          cancelLabel="انصراف"
+          customUpload="true"
+          (uploadHandler)="fileUploader($event)"
+          accept="application/pdf"
+        >
+        </p-fileUpload>
+      </div>
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <div class="float-left">
+          <button
+            pButton
+            type="submit"
+            label="ثبت"
+            class="ui-button-success"
+            icon="pi pi-check"
+            iconPos="left"
+            [disabled]="form.invalid"
+          ></button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

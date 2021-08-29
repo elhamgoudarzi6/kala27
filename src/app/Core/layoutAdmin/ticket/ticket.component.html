@@ -1,0 +1,177 @@
+<p-toast position="center"></p-toast>
+<p-confirmDialog
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+></p-confirmDialog>
+<div class="pnl-content p-3">
+  <div class="box text-right" dir="rtl">
+    <p-table
+      styleClass="p-datatable-responsive-demo"
+      #dt
+      [value]="tickets"
+      dataKey="id"
+      [rows]="5"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [paginator]="true"
+      currentPageReportTemplate="نمایش {first} تا {last} از {totalRecords} صفحه"
+      [filterDelay]="0"
+      [globalFilterFields]="['commentText']"
+    >
+      <ng-template pTemplate="caption">
+        <div class="table-header row">
+          <div class="col-sm-12">لیست تیکت ها</div>
+          <div class="col-sm-12">
+            <span class="p-input-icon-left w-100 mt-3">
+              <i class="pi pi-search"></i>
+              <input
+                pInputText
+                type="text"
+                class="w-100"
+                (input)="dt.filterGlobal($event.target.value, 'contains')"
+                placeholder="جستجو کلی"
+              />
+            </span>
+          </div>
+        </div>
+      </ng-template>
+
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width:45px;"></th>
+          <th style="width: 45px">ردیف</th>
+          <th pSortableColumn="tickets.ticketNumber">
+            شماره تیکت
+            <p-sortIcon field="tickets.ticketNumber"></p-sortIcon>
+          </th>
+          <th pSortableColumn="User[0].fullName">
+            عنوان تیکت
+            <p-sortIcon field="User[0].fullName"></p-sortIcon>
+          </th>
+          <th pSortableColumn="User[0].fullName">
+            تاریخ
+            <p-sortIcon field="User[0].fullName"></p-sortIcon>
+          </th>
+          <th> پاسخ تیکت</th>
+        </tr>
+      </ng-template>
+      <ng-template
+        pTemplate="body"
+        let-rowIndex="rowIndex"
+        let-ticket
+        let-expanded="expanded"
+      >
+        <tr>
+          <td>
+            <button
+              type="button"
+              pButton
+              pRipple
+              [pRowToggler]="ticket"
+              class="p-button-text p-button-rounded p-button-plain"
+              [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
+            ></button>
+          </td>
+          <td>
+            <span class="p-column-title">ردیف:</span>
+            {{ rowIndex + 1 }}
+          </td>
+          <td>
+            <span class="p-column-title">شماره تیکت:</span>
+            {{ ticket.ticketNumber }}
+          </td>
+          <td>
+            <span class="p-column-title">عنوان تیکت:</span>
+
+            {{ ticket.title }}
+          </td>
+          <td>
+            <span class="p-column-title">عنوان تیکت:</span>
+
+            {{ ticket['detail'][rowIndex].date }}
+          </td>
+
+          <td>
+
+            <button
+              pButton
+              pRipple
+              icon="pi pi-reply"
+              (click)="replyComment(ticket._id, ticket.reply)"
+              class="p-button-outlined p-button-info ml-2"
+            ></button>
+
+
+          </td>
+        </tr>
+        <!--        <tr *ngIf="ticket.reply != ''">-->
+        <!--          <td colspan="6">-->
+        <!--            پاسخ: {{ ticket.reply }}-->
+        <!--          </td>-->
+        <!--        </tr>-->
+      </ng-template>
+      <ng-template pTemplate="rowexpansion" let-tickets let-secondexpanded="expanded">
+        <tr>
+          <td colspan="6">
+            <div class="p-p-3 pr-3">
+              <p-table [value]="tickets['detail']" class="bg-light-table mr-4">
+                <ng-template pTemplate="header">
+        <tr>
+          <th>ردیف</th>
+          <th>متن تیکت</th>
+          <th>تاریخ</th>
+          <th>زمان</th>
+<!--          <th>عملیات</th>-->
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-tickets  let-rowIndex="rowIndex">
+        <tr>
+          <td>{{ rowIndex }}</td>
+          <td>{{ tickets.message }}</td>
+          <td>{{ tickets.date }}</td>
+          <td>{{ tickets.time }}</td>
+
+<!--          <td>-->
+<!--            <button-->
+<!--              *ngIf="!tickets.active"-->
+<!--              pButton-->
+<!--              pRipple-->
+<!--              icon="pi pi-check"-->
+<!--              (click)="activeComment(tickets._id)"-->
+<!--              class="p-button-outlined p-button-success ml-2"-->
+<!--            ></button>-->
+
+<!--            <button-->
+<!--              *ngIf="tickets.active"-->
+<!--              pButton-->
+<!--              pRipple-->
+<!--              icon="pi pi-times"-->
+<!--              (click)="deactiveComment(tickets._id)"-->
+<!--              class="p-button-outlined p-button-warning ml-2"-->
+<!--            ></button>-->
+
+<!--            <button-->
+<!--              pButton-->
+<!--              pRipple-->
+<!--              icon="pi pi-trash"-->
+<!--              (click)="deleteComment(tickets._id)"-->
+<!--              class="p-button-outlined p-button-danger"-->
+<!--            ></button>-->
+<!--          </td>-->
+        </tr>
+      </ng-template>
+    </p-table>
+
+  </div>
+  </td>
+
+  </ng-template>
+
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="6">هیچ رکوردی یافت نشد.</td>
+    </tr>
+  </ng-template>
+  </p-table>
+</div>
+</div>

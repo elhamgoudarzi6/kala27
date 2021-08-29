@@ -1,0 +1,24 @@
+#toTop {
+  position: fixed;
+  bottom: 30px;
+  left: 0;
+  cursor: pointer;
+  display: none;
+  z-index: 10;
+}
+.back-to-top-btn i{
+  background-color: #cc3333;
+  color: #fff;
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
+  display: inline-block;
+  text-align: center;
+  font-size: 26px;
+  transition: all .5s ease;
+  margin-left: 28px;
+  border-radius: 5px;
+
+}
+
+

@@ -1,0 +1,18 @@
+th
+{
+  vertical-align: bottom;
+  text-align: center;
+}
+
+th span
+{
+  -ms-writing-mode: tb-rl;
+  -webkit-writing-mode: vertical-rl;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  white-space: nowrap;
+  font-family: IRANSans_Bold;
+}
+span{
+  font-family: IRANSans_Bold;
+}

@@ -1,0 +1,37 @@
+
+<app-header dir="rtl"></app-header>
+<section class="breadcrumbs">
+  <div class="container">
+    <ol>
+      <li><a routerLink="/">صفحه اصلی</a></li>
+      <li><a [routerLink]="['/news']">اخبار</a></li>
+      <li>{{news['title']}}</li>
+    </ol>
+  </div>
+</section>
+
+<section id="blog" class="blog">
+  <div class="container" data-aos="fade-up">
+    <div class="row">
+       <div class="col-lg-12 entries">
+        <article class="entry entry-single">
+          <div class="entry-img">
+            <img [src]="news['image']" [alt]="news['imageDescription']" class="img-fluid">
+          </div>
+          <h2 class="entry-title"><a>{{news['title']}}</a></h2>
+          <div class="entry-meta">
+            <ul>
+              <li class="d-flex align-items-center"><i class="pi pi-user"></i><a>مدیر سایت</a></li>
+              <li class="d-flex align-items-center"><i class="far fa-clock"></i><a><time datetime="1400-2-24">{{news['date']}}</time></a></li>
+              <li class="d-flex align-items-center"><i class="pi pi-tags"></i><a>{{news['tags']}}</a></li>
+            </ul>
+          </div>
+          <div class="entry-content">
+            <p>{{news['details']}}</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section><!-- End Blog Section -->
+<app-footer dir="rtl"></app-footer>

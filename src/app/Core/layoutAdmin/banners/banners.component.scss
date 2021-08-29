@@ -1,0 +1,22 @@
+:host ::ng-deep .p-dialog .p-dialog-footer {
+  text-align: left;
+}
+:host ::ng-deep .p-dialog.p-confirm-dialog .p-confirm-dialog-message {
+  margin-right: 1rem;
+  margin-left: unset!important;
+}
+:host ::ng-deep .p-toast .p-toast-message .p-toast-message-content .p-toast-message-text{
+  margin: 0 1rem 0 0!important;
+  text-align: right;
+  font-family: IRANSans_Bold;
+}
+:host ::ng-deep .p-toast .p-toast-message.p-toast-message-error {
+  border-width: 0 6px 0 0px!important;
+}
+:host ::ng-deep .p-toast .p-toast-message.p-toast-message-success {
+  border-width: 0 6px 0 0px!important;
+}
+:host ::ng-deep .p-datatable .p-datatable-header {
+  border: none;
+  border-bottom: 1px solid #e9ecef;
+}

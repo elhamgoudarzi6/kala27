@@ -1,0 +1,61 @@
+<p-toast position="center"></p-toast>
+<div style="direction: rtl; text-align: right">
+  <form [formGroup]="form" (ngSubmit)="submitForm()" class="w-100 mt-3">
+
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label class="d-block">دسته بندی اول</label>
+        <p-dropdown appendTo="body" emptyFilterMessage="نتیجه ای یافت نشد"
+                    [options]="categories"
+                    formControlName="categoryID"
+                    (onChange)="getSubCategory($event)"
+                    optionLabel="title" [filter]="true" placeholder="-- انتخاب کنید --">
+          <ng-template pTemplate="selectedItem">
+            <div class="state-item state-item-value"
+                 *ngIf="form.controls['categoryID'].value">
+              <div>{{form.controls['categoryID'].value.title}}</div>
+            </div>
+          </ng-template>
+          <ng-template let-category pTemplate="item">
+            <div class="state-item text-right">
+              <div class="text-right">{{category.title}}</div>
+            </div>
+          </ng-template>
+        </p-dropdown>
+        <ul class="mt-1 text-right list-inline"
+            *ngFor="let error of errorMessages.categoryID">
+          <li class="font-small text-danger font-weight-bold list-inline-item"
+              *ngIf="form.get('categoryID').hasError(error.type)
+                          && (form.get('categoryID').dirty
+                          || form.get('categoryID').touched)">
+            {{ error.message }}
+          </li>
+        </ul>
+      </div>
+      <div class="p-field p-col">
+        <label for="title">عنوان</label>
+        <input id="title" type="text" pInputText
+               formControlName="title">
+        <ul class="mt-1 text-right list-inline"
+            *ngFor="let error of errorMessages.title">
+          <li class="font-small text-danger font-title-bold list-inline-item"
+              *ngIf="form.get('title').hasError(error.type)
+                            && (form.get('title').dirty
+                            || form.get('title').touched)">
+            {{ error.message }}
+          </li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <div class="float-left">
+          <button pButton label="ثبت" class="ui-button-success"
+                  icon="pi pi-check" iconPos="left" [disabled]="form.invalid"></button>
+        </div>
+      </div>
+    </div>
+
+  </form>
+</div>

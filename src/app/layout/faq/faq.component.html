@@ -1,0 +1,37 @@
+<app-header dir="rtl"></app-header>
+<section id="faq" class="faq section-bg">
+  <div class="container">
+
+    <div class="section-title">
+      <p>
+         کاربر گرامی فروشگاه کالا27 متداول ترین سوالات را در این بخش پاسخ داده است در صورت نیافتن جواب سوال خود در بخش ارتباط با ما با کالا27 در تماس باشید
+      </p>
+    </div>
+
+    <div class="faq-list">
+      <ul>
+        <li data-aos="fade-up">
+          <i class="far fa-question-circle icon-help"></i> <a data-toggle="collapse" class="collapse" href="#faq-list-1">چرا از فروشگاه کالا27  خرید کنم؟<i class="fa fa-chevron-down icon-show"></i><i class="fa fa-chevron-up icon-close"></i></a>
+          <div id="faq-list-1" class="collapse show" data-parent=".faq-list">
+            <p>
+              بسیاری از خریداران به دنبال خرید با قیمت مناسب هستند. هدف اصلی فروشگاه کالا27  حذف واسطه، تسهیل فرآیند خرید، قیمت و کیفیت مناسب می باشد. فروشگاه کالا27  جهت تامین نیاز مشتریان با ارایه محصول با کیفیت می باشد.             </p>
+          </div>
+        </li>
+
+        <li data-aos="fade-up" data-aos-delay="100"  *ngFor="let item of faq;let j = index">
+          <i class="far fa-question-circle icon-help"></i> <a data-toggle="collapse" [href]="'#faq'+j" class="collapsed">{{item['question']}}<i class="fa fa-chevron-down icon-show"></i><i class="fa fa-chevron-up icon-close"></i></a>
+          <div [id]="'faq'+j" class="collapse" data-parent=".faq-list">
+            <p>{{item['reply']}}</p>
+          </div>
+        </li>
+
+
+      </ul>
+    </div>
+
+  </div>
+</section>
+<app-footer dir="rtl"></app-footer>
+
+
+

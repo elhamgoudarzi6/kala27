@@ -1,0 +1,123 @@
+
+.recent-blog-posts .post-box .blogs-meta {
+  float: left;
+  color: #a8a7a7;
+  margin-top: 10px;
+
+}
+
+.recent-blog-posts .post-box .blogs-meta ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.recent-blog-posts .post-box .blogs-meta ul li + li {
+  padding-left: 20px;
+}
+
+.recent-blog-posts .post-box .blogs-meta i {
+  font-size: 14px;
+  margin-left: 4px;
+  line-height: 0;
+
+
+}
+
+.recent-blog-posts .post-box .blogs-meta a {
+  font-family: 'IRANSans_Light' !important;
+  font-size: 11px;
+}
+
+.recent-blog-posts{
+  margin: 20px 0;
+  text-align: justify;
+
+}
+
+.recent-blog-posts .post-box {
+  //box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
+  transition: 0.3s;
+  height: 100%;
+  overflow: hidden;
+  padding: 30px;
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
+
+.recent-blog-posts .post-box .post-img {
+  overflow: hidden;
+  margin: -30px -30px 15px -30px;
+  position: relative;
+}
+
+.recent-blog-posts .post-box .post-img img {
+  transition: 0.5s;
+}
+.recent-blog-posts .post-box .brief{
+  font-size: 13px;
+  font-family: 'IRANSans_Light' !important;
+  color: #979696;
+
+
+}
+.recent-blog-posts .post-box .post-title {
+  font-size: 14px;
+  color: #525353;
+  font-weight: 400;
+  margin-bottom: 5px;
+  position: relative;
+  transition: 0.3s;
+}
+
+.recent-blog-posts .post-box .readmore {
+  margin-top: 4px;
+  line-height: 0;
+  padding: 10px 20px;
+  border-radius: 4px;
+  transition: 0.5s;
+  color: #cc3333;
+ // background: #fff;
+  border: 1px solid #cc3333 !important;
+
+}
+
+.recent-blog-posts .post-box .readmore span {
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.recent-blog-posts .post-box .readmore i {
+  margin-right: 8px;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.recent-blog-posts .post-box .readmore:hover i {
+  transform: translateX(5px);
+}
+
+.recent-blog-posts .post-box:hover .post-img img {
+  transform: rotate(6deg) scale(1.2);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
