@@ -78,7 +78,7 @@ export class LoginRegisterComponent implements OnInit {
             Validators.required,
             Validators.minLength(11),
             Validators.maxLength(11),
-            Validators.pattern(this.mobileRegix)
+            //Validators.pattern(this.mobileRegix)
           ])
         ),
         password: new FormControl(
@@ -86,7 +86,7 @@ export class LoginRegisterComponent implements OnInit {
           Validators.compose([
             Validators.required,
             Validators.minLength(8),
-            Validators.pattern(this.passwordRegix)
+            // Validators.pattern(this.passwordRegix)
           ])
         ),
         confirmPassword: new FormControl(
@@ -108,7 +108,7 @@ export class LoginRegisterComponent implements OnInit {
             Validators.required,
             Validators.minLength(11),
             Validators.maxLength(11),
-            Validators.pattern(this.mobileRegix)
+            //Validators.pattern(this.mobileRegix)
           ])
         ),
         password: new FormControl(
