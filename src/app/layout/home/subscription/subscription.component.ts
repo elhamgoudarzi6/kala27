@@ -14,7 +14,7 @@ export class SubscriptionComponent implements OnInit {
   mobileForm: FormGroup;
   emailForm: FormGroup;
   textDialog: string;
-  mobileRegix = /^0?9[123]\d{8}$/;
+  // mobileRegix = /^0?9[123]\d{8}$/;
   mobileErrorMessages = {
     mobile: [
       {type: 'required', message: 'شماره موبایل را وارد کنید.'},
@@ -44,7 +44,7 @@ export class SubscriptionComponent implements OnInit {
           Validators.required,
           Validators.minLength(11),
           Validators.maxLength(11),
-          Validators.pattern(this.mobileRegix)
+          // Validators.pattern(this.mobileRegix)
         ])
       )
     });

@@ -62,7 +62,7 @@ export class DashboardComponent implements OnInit {
 
   logOut(): void {
     this.localStorage.removeCurrentUser();
-    // this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/');
   }
 
 }
