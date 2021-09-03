@@ -32,6 +32,9 @@ export class SearchService {
   allProductBySearch(data: any): any{
     return this.http.post('https://api.kala27.com/api/v1/user/advanceSearchProduct', data);
   }
+  getSendCost(): any{
+    return this.http.get('https://api.kala27.com/api/v1/user/getSendCost');
+  }
   filteredListOptions(): any[] {
     const posts = this.postsData;
     const filteredPostsList = [];

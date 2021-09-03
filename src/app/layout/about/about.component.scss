@@ -1,24 +1,20 @@
-
-@media (max-width: 992px) {
- 
-  .blog .entry .entry-title a {
-    font-size: 16px;
-  }
-
-}
-
 .about{
+  background-color: #fff;
+  text-align: right;
+  padding: 30px 0;
+}
+.about  p {
+  font-family: 'IRANSans_Light' !important;
+  font-size: 14px;
   text-align: justify;
- background-color: #fff;
-  padding: 4px 0;
 }
 
 .about .icon-boxes p{
   font-family: 'IRANSans_Light' !important;
-  font-style: 18px;
+  font-size: 16px;
   line-height: 28px;
 }
-.about .icon-boxes h3 {
+.about .icon-boxes h4 {
   font-size: 25px;
   font-weight: 700;
   color: #cc3333;
@@ -44,7 +40,7 @@
 
 .about .icon-box .icon i {
   color: #cc3333;
-  font-size: 32px;
+  font-size: 28px;
 }
 
 .about .icon-box:hover .icon {
@@ -60,7 +56,7 @@
   margin-right: 85px;
   font-weight: 700;
   margin-bottom: 10px;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .about .icon-box .title a {
@@ -81,115 +77,11 @@
 
 }
 
-.about .video-box {
-  background: url("../../../assets/images/about.jpg") center center no-repeat;
-  background-size: cover;
-  min-height: 500px;
-}
 
-.about .play-btn {
-  width: 94px;
-  height: 94px;
-  background: radial-gradient(#cc3333 50%, rgba(#cc3333, 0.4) 52%);
-  border-radius: 50%;
-  display: block;
-  position: absolute;
-  left: calc(50% - 47px);
-  top: calc(50% - 47px);
-  overflow: hidden;
-}
 
-.about .play-btn::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-40%) translateY(-50%);
-  width: 0;
-  height: 0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-left: 15px solid #fff;
-  z-index: 100;
-  transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
-}
 
-.about .play-btn::before {
-  content: '';
-  position: absolute;
-  width: 120px;
-  height: 120px;
-  -webkit-animation-delay: 0s;
-  animation-delay: 0s;
-  -webkit-animation: pulsate-btn 2s;
-  animation: pulsate-btn 2s;
-  -webkit-animation-direction: forwards;
-  animation-direction: forwards;
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-  -webkit-animation-timing-function: steps;
-  animation-timing-function: steps;
-  opacity: 1;
-  border-radius: 50%;
-  border: 5px solid rgba(#cc3333, 0.7);
-  top: -15%;
-  left: -15%;
-  background: rgba(198, 16, 0, 0);
-}
 
-.about .play-btn:hover::after {
-  border-left: 15px solid #cc3333;
-  transform: scale(20);
-}
 
-.about .play-btn:hover::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-40%) translateY(-50%);
-  width: 0;
-  height: 0;
-  border: none;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-left: 15px solid #fff;
-  z-index: 200;
-  -webkit-animation: none;
-  animation: none;
-  border-radius: 0;
-}
 
-@-webkit-keyframes pulsate-btn {
-  0% {
-    transform: scale(0.6, 0.6);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1, 1);
-    opacity: 0;
-  }
-}
 
-@keyframes pulsate-btn {
-  0% {
-    transform: scale(0.6, 0.6);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1, 1);
-    opacity: 0;
-  }
-}
-#about.container-fluid.row{
-  margin-left: 1px!important;
-  margin-right: 1px!important;
-}
-
-@media (max-width: 992px) {
-  .about .icon-boxes h3 {
-    font-size: 16px;
-
-  }
-}
 

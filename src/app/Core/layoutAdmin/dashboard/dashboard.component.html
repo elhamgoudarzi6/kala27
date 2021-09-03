@@ -114,7 +114,10 @@
           </mat-list-item>
         </div>
         <mat-divider *ngIf="userType == 'admin'"></mat-divider>
-
+        <mat-list-item [routerLink]="['/admin/sendCost']" *ngIf="userType == 'admin'">
+          <i class="pi pi-users pl-2 text-white" style="font-size: 1rem"></i>مدیریت هزینه ارسال
+        </mat-list-item>
+        <mat-divider *ngIf="userType == 'admin'"></mat-divider>
         <mat-list-item [routerLink]="['/admin/user']" *ngIf="userType == 'admin'">
           <i class="pi pi-users pl-2 text-white" style="font-size: 1rem"></i>مدیریت کاربران
         </mat-list-item>

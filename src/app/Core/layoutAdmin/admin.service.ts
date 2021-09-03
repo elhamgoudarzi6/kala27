@@ -436,4 +436,10 @@ export class AdminService {
       'https://api.kala27.com/api/v1/admin/registerTicket/', data
     );
   }
+  getSendCost(): any{
+    return this.http.get('https://api.kala27.com/api/v1/admin/getSendCost');
+  }
+  registerCost(data:any): any{
+    return this.http.post('https://api.kala27.com/api/v1/admin/registerSendCost',data);
+  }
 }

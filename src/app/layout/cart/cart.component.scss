@@ -1184,7 +1184,7 @@ input, select {
   }
 }
 
-@media screen and (max-width: 40rem) {
+@media screen and (max-width: 60rem) {
   :host ::ng-deep {
     .p-datatable {
       &.p-datatable-responsive-demo {
@@ -1216,4 +1216,15 @@ input, select {
       }
     }
   }
+}
+:host ::ng-deep .p-inputnumber {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  width: 100%;
+}
+
+:host ::ng-deep .p-inputnumber-buttons-horizontal .p-inputnumber-input {
+  border-radius: 0;
+  order: 2;
+  width: 6rem;
 }

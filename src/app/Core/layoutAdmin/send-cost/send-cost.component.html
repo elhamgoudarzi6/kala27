@@ -1,0 +1,25 @@
+<p-toast position="center"></p-toast>
+<div style="direction: rtl; text-align: right">
+  <form [formGroup]="form" (ngSubmit)="submitForm()" class=" mt-3">
+    <div class="p-fluid p-formgrid p-grid mr-4">
+      <div class="p-field p-col-6">
+        <label for="message">هزینه حمل و نقل:</label>
+        <input  id="message" type="number" pInputText formControlName="cost" />
+      </div>
+    </div>
+    <div class="p-fluid p-formgrid p-grid p-col-6">
+      <div class="p-field p-col">
+        <div class="float-left">
+          <button
+            pButton
+            type="submit"
+            label="ثبت"
+            class="ui-button-success"
+            icon="pi pi-check"
+            iconPos="left"
+          ></button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

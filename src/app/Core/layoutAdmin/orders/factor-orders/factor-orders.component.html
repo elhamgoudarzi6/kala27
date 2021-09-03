@@ -94,13 +94,13 @@
        {{orderFactor['Product'][0].title}}
       </td>
       <td>
-        {{orderFactor['price']}} تومان
+        {{orderFactor['price']|number}} تومان
       </td>
       <td>
         {{orderFactor['count']}}
       </td>
       <td>
-        {{orderFactor['count']*orderFactor['price']}} تومان
+        {{orderFactor['count']*orderFactor['price']|number}} تومان
       </td>
     </tr>
     <tr class="text-center">
@@ -108,7 +108,7 @@
         مبلغ کل خرید
       </td>
       <td colspan="4">
-        {{orderFactor['count']*orderFactor['price']}} تومان
+        {{orderFactor['count']*orderFactor['price']|number}} تومان
       </td>
     </tr>
     <tr class="text-center" *ngIf="orderFactor['Product'][0].discountStatus">
@@ -116,7 +116,7 @@
         مبلغ تخفیف
       </td>
       <td colspan="4" >
-        {{discount}} تومان
+        {{discount|number}} تومان
       </td>
     </tr>
     <tr class="text-center">
@@ -124,7 +124,7 @@
        حمل و نقل
       </td>
       <td colspan="4">
-        {{orderFactor['sendCost']}} تومان
+        {{sendCost|number}} تومان
       </td>
     </tr>
     <tr class="text-center">
@@ -132,7 +132,7 @@
          قیمت نهایی
       </td>
       <td colspan="4">
-        {{sum}} تومان
+        {{sum|number}} تومان
       </td>
     </tr>
     <br>

@@ -13,6 +13,7 @@ export class OrdersComponent implements OnInit {
   statuses: SelectItem[];
   statusOrder: any;
   postTrackingCode: any;
+  sendCost:number=0;
   constructor(
     private messageService: MessageService,
     private service: AdminService,
@@ -29,6 +30,7 @@ export class OrdersComponent implements OnInit {
     ];
 
     this.getOrders();
+    this.getCost();
   }
 
   getOrders(): any {
@@ -107,5 +109,13 @@ export class OrdersComponent implements OnInit {
 
   onRowEditInit(status: any) {
     this.statusOrder = status;
+  }
+  getCost() {
+    this.service.getSendCost().subscribe((res) => {
+      if (res['success'] === true) {
+        let data = res['data'];
+        this.sendCost= data[0].cost;
+      }
+    })
   }
 }

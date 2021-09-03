@@ -139,7 +139,7 @@ export class ProductAddDialogComponent implements OnInit {
       features: new FormControl(null),
       image: new FormControl(null, [Validators.required]),
       help: new FormControl(null),
-      sendCost: new FormControl(null),
+      // sendCost: new FormControl(null),
       info: new FormControl(null),
       keywords: new FormControl(null),
       imageDescription: new FormControl(null),
@@ -174,6 +174,11 @@ export class ProductAddDialogComponent implements OnInit {
     const formData = new FormData();
     formData.append('file', event.files[0], event.files[0].name);
     this.image = formData;
+    this.messageService.add({
+      severity: 'success',
+      summary: ' آپلود تصویر ',
+      detail: 'تصویر با موفقیت آپلود شد',
+    });
   }
 
   addFeature(feature, value): void {
@@ -262,6 +267,11 @@ export class ProductAddDialogComponent implements OnInit {
 
     this.service.addProduct(this.form.value).subscribe((response) => {
       if (response.success === true) {
+        this.messageService.add({
+          severity: 'success',
+          summary: ' محصول با موفقیت ثبت شد ',
+          detail: response.data,
+        });
         this.ref.close(true);
       } else {
         this.messageService.add({

@@ -7,6 +7,7 @@ import {NgxSpinnerService} from 'ngx-spinner';
 import {CartService} from "../serviceCart/cart.service";
 import {LocalStorageService} from "../../Auth/localStorageLogin/local-storage.service";
 import {LayoutService} from "../layout.service";
+import * as Console from "console";
 
 interface City {
   label: string,
@@ -24,7 +25,7 @@ export class CartComponent implements OnInit {
   secondFormGroup: FormGroup;
   isEditable = false;
   items: any[];
-  sumPrice:number = 0;
+  sumPrice: number = 0;
   pricePercent = 0;
   sumPriceAll = 0;
   userInfo = {
@@ -76,7 +77,8 @@ export class CartComponent implements OnInit {
     time: '',
     statusProduct: ''
   };
-  sendCost: any;
+  sendCostKhoramAbad: number = 0;
+  sendCost: number = 0;
 
   constructor(private _formBuilder: FormBuilder,
               private cart: CartService,
@@ -87,6 +89,12 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.service.getSendCost().subscribe((res) => {
+      if (res['success'] === true) {
+        let data = res['data']
+        this.sendCost = data[0].cost;
+      }
+    })
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['']
     });
@@ -237,24 +245,30 @@ export class CartComponent implements OnInit {
 
   refreshCart() {
     this.items = this.cart.getItems();
+    console.log(this.items)
     this.sumPrice = 0;
-    this.sendCost = 0;
+    // this.sendCost = 0;
     this.pricePercent = 0;
     this.sumPriceAll = 0;
     for (let i = 0; i < this.items.length; i++) {
       if (this.items[i].discountPercent) {
         this.pricePercent += ((this.items[i].price * this.items[i].number) * this.items[i].discountPercent) / 100;
         // this.sumPrice += (Number((this.items[i].price * this.items[i].number)) - this.pricePercent) + this.items[i].sendCost;
-        this.sendCost += this.items[i].sendCost;
+
         this.sumPriceAll += this.items[i].price * this.items[i].number;
       } else {
         // this.sumPrice += (this.items[i].price * this.items[i].number) + this.items[i].sendCost;
-        this.sendCost += this.items[i].sendCost;
+        // this.sendCost += this.items[i].sendCost;
+
         this.sumPriceAll += this.items[i].price * this.items[i].number;
       }
 
     }
-    this.sumPrice = this.sumPriceAll - this.pricePercent + this.sendCost;
+
+
+    // if( this.secondFormGroup.controls['state'].value==='لرستان')
+    this.sumPrice = this.sumPriceAll - this.pricePercent+Number(this.sendCost) ;
+
   }
 
   getInfoUser() {
@@ -262,7 +276,7 @@ export class CartComponent implements OnInit {
     this.isLogin = this.localstorage.getCurrentUser();
     console.log(this.localstorage.userJson)
     if (this.isLogin) {
-      let id=this.localstorage.userJson['_id'] || this.localstorage.userJson['id'];
+      let id = this.localstorage.userJson['_id'] || this.localstorage.userJson['id'];
       this.service.getUserInfo(id).subscribe((response) => {
         if (response['success'] === true) {
           this.spinner.hide();
@@ -282,6 +296,22 @@ export class CartComponent implements OnInit {
   }
 
   updateInfoUser() {
+    this.sendCost = 0;
+    this.sumPrice = 0;
+    if (this.secondFormGroup.controls['city'].value === 'خرم آباد') {
+      this.sumPrice = 0;
+      this.sendCost = 0;
+      this.sumPrice = this.sumPriceAll - this.pricePercent;
+    } else {
+      this.service.getSendCost().subscribe((res) => {
+        if (res['success'] === true) {
+          let data = res['data']
+          this.sendCost = data[0].cost;
+          this.sumPrice = this.sumPriceAll - this.pricePercent + Number(this.sendCost);
+        }
+      });
+
+    }
     let data = {
       city: this.userInfo.city,
       fullName: this.userInfo.fullName,
@@ -290,63 +320,73 @@ export class CartComponent implements OnInit {
       address: this.userInfo.address,
       postalCode: this.userInfo.postalCode,
     };
-    let id=this.localstorage.userJson['_id'] || this.localstorage.userJson['id'];
-    this.service.updateUser(id, this.secondFormGroup.value).subscribe((response) => {
+    console.log(data);
+    let id = this.localstorage.userJson['_id'] || this.localstorage.userJson['id'];
+    this.service.updateUser(id, data).subscribe((response) => {
       if (response['success'] === true) {
+        this.refreshCart();
         this.messageService.add({severity: 'success', summary: 'موفق ', detail: 'اطلاعات با موفقیت  ثبت شد'});
       }
     });
   }
 
-
   onPayment() {
     this.localstorage.getCurrentUser();
     if (this.isLogin) {
-      let id=this.localstorage.userJson['_id'] || this.localstorage.userJson['id'];
+      let id = this.localstorage.userJson['_id'] || this.localstorage.userJson['id'];
       // this.service.updateUser(id, this.secondFormGroup.value).subscribe((result) => {
       //   if (result['success'] === true) {
-          this.payment.userID = id;
-          this.payment.mobile = this.localstorage.userJson['mobile'];
-          this.payment.date = moment(Date.now()).locale('fa').format('YYYY/M/D');
-          this.payment.time = moment(Date.now()).locale('fa').format('HH:mm:ss');
-          this.payment.price = this.sumPrice;
+      this.payment.userID = id;
+      this.payment.mobile = this.localstorage.userJson['mobile'];
+      this.payment.date = moment(Date.now()).locale('fa').format('YYYY/M/D');
+      this.payment.time = moment(Date.now()).locale('fa').format('HH:mm:ss');
+      this.payment.price = this.sumPrice;
 
 
-          let data = {
-            product: JSON.parse(localStorage.getItem('cartList')!),
-            user: this.payment,
-          };
-          console.log(data)
-          this.service.onPayment(data).subscribe((response) => {
-            let url = response['data'];
-            document.location.href = url;
-          });
-        } else {
-        }
+      let data = {
+        product: JSON.parse(localStorage.getItem('cartList')!),
+        user: this.payment,
+      };
 
-      // });
+      this.service.onPayment(data).subscribe((response) => {
+        let url = response['data'];
+        document.location.href = url;
+      });
+    } else {
+    }
+
+    // });
     // }
 
   }
 
-  // addCart(item: any, count: any) {
-  //   let data = {
-  //     _id: item['cartList']._id
-  //   };
-  //   this.service.getProducts(data).subscribe((response) => {
-  //     if (response.success === true) {
-  //       let Inventory = response['data'][0]['Inventory'][0];
-  //       if (Number(count.value) <= Number(Inventory.count)) {
-  //         this.cart.addToCart(item, count);
-  //         // this.refreshCart();
-  //       } else {
-  //         alert('این تعداد موجود نمی باشد');
-  //       }
-  //     }
-  //   });
-  //
-  //
-  // }
+  addCart(item: any, count: any,) {
+   let dataProduct:string[]=item;
+    this.service.getProduct(item.id).subscribe((response) => {
+      if (response.success === true) {
+        let data = response['data'][0];
+        let info = data['info'];
+        // console.log(data['info']);
+
+        let Inventory = info.find(x => x._id == item.infoID);
+        // console.log(Inventory.remainsNumber)
+        if (Number(count.value) <= Number(Inventory.remainsNumber)) {
+          this.cart.addToCart1(dataProduct, count.value);
+         setTimeout(()=>{
+           this.refreshCart();
+         },1000);
+          this.messageService.add({severity: 'success', summary: 'موفق ', detail: 'کالا به سبد خرید اضافه شد'});
+
+        } else {
+          this.messageService.add({severity: 'error', summary: 'ناموفق ', detail: 'این تعداد کالا موجود نمی باشد'});
+          this.cart.addToCart1(dataProduct, item.number);
+          this.refreshCart();
+        }
+      }
+    });
+
+
+  }
 
   nextSteper(steper: MatStepper) {
 

@@ -37,6 +37,7 @@ export class HeaderComponent implements OnInit {
   pathCatalog: any;
   cartlist: any[] = [];
   sumOfPrice = 0;
+  pricePercent=0;
   countBadge = 0;
   visible = true;
   sendCost: any;
@@ -211,8 +212,13 @@ export class HeaderComponent implements OnInit {
   }
 
   getAllPrice() {
+    this.dataService.getSendCost().subscribe((res)=>{
+      if(res['success']===true){
+        let data=res['data']
+        this.sendCost=data[0].cost;
+      }
+    })
     this.cartlist = this.serviceCart.getItems();
-
     if (this.cartlist != null) {
       this.sumOfPrice = 0;
       this.sendCost = 0;
@@ -227,10 +233,14 @@ export class HeaderComponent implements OnInit {
                   this.cartlist[i].number *
                   this.cartlist[i].discountPercent) /
                 100;
+              this.pricePercent=pricePercent;
+              // this.sumOfPrice +=
+              //   Number(this.cartlist[i].price * this.cartlist[i].number) -
+              //   pricePercent +
+              //   this.cartlist[i].sendCost;
               this.sumOfPrice +=
                 Number(this.cartlist[i].price * this.cartlist[i].number) -
-                pricePercent +
-                this.cartlist[i].sendCost;
+                pricePercent ;
               this.sendCost += this.cartlist[i].sendCost;
             } else {
               this.sumOfPrice +=

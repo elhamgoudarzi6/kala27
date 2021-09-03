@@ -129,4 +129,7 @@ export class LayoutService {
   getinfoRefID(RefID: any) {
     return this.http.get('https://api.kala27.com/api/v1/user/getinfoRefID/'+ RefID);
   }
+  getSendCost(): any{
+    return this.http.get('https://api.kala27.com/api/v1/user/getSendCost');
+  }
 }

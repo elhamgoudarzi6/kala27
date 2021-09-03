@@ -212,9 +212,13 @@
                     <td>{{ order.User[0].mobile }}</td>
                     <td>{{ order.date }}</td>
                     <td>{{ order.count }}</td>
-                    <td>{{ order.price }}</td>
+                    <td>{{ order.price|number }}</td>
                     <td>{{ order.offerPercent }}</td>
-                    <td>{{ order.sendCost }}</td>
+                    <div>
+                      <td *ngIf="order.User[0].city==='خرم آباد'">0</td>
+                      <td *ngIf="order.User[0].city!=='خرم آباد'">{{sendCost|number}}</td>
+
+                    </div>
                     <td>{{ order.refID }}</td>
                   </tr>
                 </tbody>

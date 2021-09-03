@@ -21,6 +21,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import {AdminGuard} from '../../Auth/Guard/admin.guard';
 import {FactorOrdersComponent} from "./orders/factor-orders/factor-orders.component";
 import {TicketComponent} from "./ticket/ticket.component";
+import {SendCostComponent} from "./send-cost/send-cost.component";
 
 const routes: Routes = [
   {
@@ -205,6 +206,14 @@ const routes: Routes = [
     children: [{
       path: 'ticket',
       component: TicketComponent
+    }]
+  },
+  {
+    path: '',
+    component: DashboardComponent,
+    children: [{
+      path: 'sendCost',
+      component: SendCostComponent
     }]
   },
 ];

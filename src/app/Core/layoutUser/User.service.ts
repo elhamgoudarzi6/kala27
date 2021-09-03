@@ -73,4 +73,7 @@ export class UserService {
       'https://api.kala27.com/api/v1/user/registerTicket/', data
     );
   }
+  getSendCost(): any{
+    return this.http.get('https://api.kala27.com/api/v1/user/getSendCost');
+  }
 }

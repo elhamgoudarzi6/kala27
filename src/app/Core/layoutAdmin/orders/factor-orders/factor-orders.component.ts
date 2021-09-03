@@ -13,12 +13,13 @@ export class FactorOrdersComponent implements OnInit {
   orderFactor: string[];
   sum: number = 0;
   discount: number = 0;
-
+ sendCost:number=0;
   constructor(private route: ActivatedRoute,
               private service: AdminService) {
   }
 
   ngOnInit(): void {
+    this.getCost();
     this.route.paramMap.subscribe(
       (params) => (this.orderId = params.get('id'))
     );
@@ -26,9 +27,15 @@ export class FactorOrdersComponent implements OnInit {
       if (response['success'] == true) {
 
         this.orderFactor = response['data'][0];
-        console.log(this.orderFactor['Product'][0].discountStatus)
+        let state = this.orderFactor['User'][0].state;
+        if (state === 'لرستان') {
+          this.sendCost = 0;
+        } else {
+          this.getCost();
+        }
+
         this.discount = Number((this.orderFactor['count'] * this.orderFactor['price']) * this.orderFactor['offerPercent']) / 100;
-        this.sum = (Number(this.orderFactor['count'] * this.orderFactor['price']) + Number(this.orderFactor['sendCost'])) - this.discount;
+        this.sum = (Number(this.orderFactor['count'] * this.orderFactor['price']) + Number(this.sendCost)) - this.discount;
       }
     })
   }
@@ -45,4 +52,13 @@ export class FactorOrdersComponent implements OnInit {
   printPage() {
     window.print();
   }
+  getCost() {
+    this.service.getSendCost().subscribe((res) => {
+      if (res['success'] === true) {
+        let data = res['data'];
+        this.sendCost= data[0].cost;
+      }
+    })
+  }
+
 }

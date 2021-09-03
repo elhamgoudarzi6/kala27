@@ -56,6 +56,7 @@ import {NgxPrintModule} from "ngx-print";
 import {FactorOrdersComponent} from "./orders/factor-orders/factor-orders.component";
 import { TicketComponent } from './ticket/ticket.component';
 import { TicketReplyDialogComponent } from './ticket/ticket-reply-dialog/ticket-reply-dialog.component';
+import { SendCostComponent } from './send-cost/send-cost.component';
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -106,7 +107,8 @@ import { TicketReplyDialogComponent } from './ticket/ticket-reply-dialog/ticket-
     BannerEditDialogComponent,
     FactorOrdersComponent,
     TicketComponent,
-    TicketReplyDialogComponent
+    TicketReplyDialogComponent,
+    SendCostComponent
   ],
   imports: [
     CommonModule,
