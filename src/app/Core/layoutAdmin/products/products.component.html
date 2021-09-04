@@ -66,9 +66,9 @@
             دسته بندی دوم
             <p-sortIcon field="subCategoryID"></p-sortIcon>
           </th>
-          <th pSortableColumn="price">
-            قیمت
-            <p-sortIcon field="price"></p-sortIcon>
+          <th pSortableColumn="subCategoryID">
+            دسته بندی سوم
+            <p-sortIcon field="subSubCategoryID"></p-sortIcon>
           </th>
           <th>
             تعداد دیدگاه
@@ -118,8 +118,8 @@
             {{ product.SubCategory[0].title }}
           </td>
           <td>
-            <span class="p-column-title">قیمت:</span>
-            {{ product.price }}
+            <span class="p-column-title">دسته بندی دوم:</span>
+            {{ product.SubSubCategory[0].title }}
           </td>
           <td>
             <span class="p-column-title">تعداد دیدگاه:</span>

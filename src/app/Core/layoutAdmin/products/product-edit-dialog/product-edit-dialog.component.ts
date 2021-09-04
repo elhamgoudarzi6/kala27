@@ -16,6 +16,8 @@ import { AfterViewChecked, Component, OnInit } from '@angular/core';
 })
 export class ProductEditDialogComponent implements OnInit, AfterViewChecked {
   public form: FormGroup;
+  displayFeature: boolean = false;
+  displayColor: boolean = false;
   categories: any[] = [];
   subCategories: any[] = [];
   subSubCategories: any[] = [];
@@ -28,6 +30,14 @@ export class ProductEditDialogComponent implements OnInit, AfterViewChecked {
   selectedSub: any;
   selectedSubSub: any;
   selectedDiscount: any;
+  featureID:any;
+  featureValue:any;
+  featureTitle:any;
+  colorValue:any;
+  colorID:any;
+  colorPrice:any;
+  remainsNumber:any;
+  initialNumber:any;
   errorMessages = {
     categoryID: [
       { type: 'required', message: 'دسته بندی اول محصول را انتخاب کنید.' },
@@ -296,5 +306,55 @@ export class ProductEditDialogComponent implements OnInit, AfterViewChecked {
         });
       }
     });
+  }
+  showDialogFeature(id:any) {
+    this.featureID=id;
+    let result =  this.featureValues.filter(x => x._id == this.featureID);
+    this.featureTitle=result[0].feature;
+    this.featureValue=result[0].featureValues;
+    this.displayFeature = true;
+  }
+  updateFeature(item){
+    let result =  this.featureValues.filter(x => x._id == this.featureID);
+    let index = this.featureValues.indexOf(result[0]);
+
+    result[0].featureValues = this.featureValue;
+    result[0].feature = this.featureTitle;
+    this.featureValues[index] =  result[0];
+    this.messageService.add({
+      severity: 'success',
+      summary: 'ویرایش',
+      detail: 'ویژگی با موفقیت ویرایش شد.',
+      life:1000
+    });
+    this.displayFeature = false;
+  }
+  showDialogColor(id:any) {
+    this.colorID=id;
+    let result =  this.info.filter(x => x._id == this.colorID);
+    this.colorValue=result[0].color;
+    this.remainsNumber=result[0].remainsNumber;
+    this.initialNumber=result[0].initialNumber;
+    this.colorPrice=result[0].price;
+    this.image=result[0].image;
+    this.displayColor = true;
+  }
+
+  updateColor(){
+    let result =  this.info.filter(x => x._id == this.colorID);
+    let index = this.info.indexOf(result[0]);
+console.log(index)
+    result[0].color = this.colorValue;
+     result[0].remainsNumber = this.remainsNumber;
+    result[0].initialNumber = this.initialNumber;
+    result[0].price = this.colorPrice;
+    this.info[index] =  result[0];
+    this.messageService.add({
+      severity: 'success',
+      summary: 'ویرایش',
+      detail: 'رنگ با موفقیت ویرایش شد.',
+      life:1000
+    });
+    this.displayColor = false;
   }
 }

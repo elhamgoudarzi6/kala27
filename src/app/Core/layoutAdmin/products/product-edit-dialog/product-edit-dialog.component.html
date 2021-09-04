@@ -137,18 +137,7 @@
         filterBy="discountTitle"
       >
       </p-dropdown>
-
      </div>
-
-      <div class="p-field p-col">
-        <label for="sendCost">هزینه ارسال</label>
-        <input
-          id="sendCost"
-          type="text"
-          pInputText
-          formControlName="sendCost"
-        />
-      </div>
     </div>
     <div class="p-fluid p-formgrid p-grid">
       <div class="p-field p-col">
@@ -220,7 +209,7 @@
                 <i class="fas fa-trash" (click)="deleteFeature(rowIndex)"></i>
               </td>
               <td>
-                <i class="fas fa-edit"></i>
+                <i class="fas fa-edit" (click)="showDialogFeature(feature._id)"></i>
               </td>
             </tr>
           </ng-template>
@@ -293,8 +282,10 @@
               <th>رنگ</th>
               <th>کد رنگ</th>
               <th>قیمت</th>
-              <th>موجودی</th>
-              <th>حذف ویژگی</th>
+              <th>موجودی اولیه</th>
+              <th>موجودی مانده</th>
+              <th>حذف رنگ</th>
+              <th>ویرایش</th>
             </tr>
           </ng-template>
           <ng-template pTemplate="body" let-color let-rowIndex="rowIndex">
@@ -303,8 +294,12 @@
               <td>{{ color.colorCode }}</td>
               <td>{{ color.price }}</td>
               <td>{{ color.initialNumber }}</td>
+              <td>{{ color.remainsNumber }}</td>
               <td>
                 <i class="fas fa-trash" (click)="deleteInfo(rowIndex)"></i>
+              </td>
+              <td>
+                <i class="fas fa-edit" (click)="showDialogColor(color._id)"></i>
               </td>
             </tr>
           </ng-template>
@@ -334,3 +329,100 @@
     </div>
   </form>
 </div>
+<!--edit feature-->
+<p-dialog header="ویرایش ویژگی" [(visible)]="displayFeature">
+
+  <div style="direction: rtl; text-align: right">
+<!--    <form  class="w-100 mt-3">-->
+      <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col">
+          <label for="featureTitle">عنوان ویژگی:</label>
+          <input id="featureTitle" type="text" pInputText  [value]="featureTitle" [(ngModel)]="featureTitle"/>
+        </div>
+      </div>
+      <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col">
+          <label for="valueFeature">مقدار ویژگی:</label>
+          <input id="valueFeature" type="text" pInputText [value]="featureValue"  [(ngModel)]="featureValue"/>
+        </div>
+      </div>
+      <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col">
+          <div class="float-left">
+            <button
+              pButton
+              type="submit"
+              label="ثبت ویرایش"
+              class="ui-button-success"
+              icon="pi pi-edit"
+              iconPos="left"
+           (click)="updateFeature(featureID)" ></button>
+          </div>
+        </div>
+      </div>
+<!--    </form>-->
+  </div>
+
+</p-dialog>
+<!--edit color-->
+<p-dialog header="ویرایش رنگ " [(visible)]="displayColor">
+
+  <div style="direction: rtl; text-align: right">
+    <!--    <form  class="w-100 mt-3">-->
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label for="ColorTitle">عنوان رنگ:</label>
+        <input id="ColorTitle" type="text" pInputText  [value]="colorValue" [(ngModel)]="colorValue"/>
+      </div>
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label for="valueColor">قیمت:</label>
+        <input id="valueColor" type="text" pInputText [value]="colorPrice"  [(ngModel)]="colorPrice"/>
+      </div>
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label for="initialNumber">موجودی:</label>
+        <input id="initialNumber" type="text" pInputText [value]="initialNumber"  [(ngModel)]="initialNumber"/>
+      </div>
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label for="remainsNumber">موجودی باقی مانده:</label>
+        <input id="remainsNumber" type="text" pInputText [value]="remainsNumber"  [(ngModel)]="remainsNumber"/>
+      </div>
+    </div>
+    <div class="p-field p-col">
+      <label class="d-block">تصویر</label>
+      <p-fileUpload
+        chooseLabel="انتخاب تصویر"
+        uploadLabel="آپلود تصویر"
+        cancelLabel="انصراف"
+        customUpload="true"
+        (uploadHandler)="colorImageUploader($event)"
+        invalidFileSizeMessageDetail="حداکثر سایز فایل 2 مگابایت می باشد"
+        invalidFileSizeMessageSummary="اندازه فایل بیش از حد مجاز می باشد"
+        accept="image/jpeg,image/png"
+        maxFileSize="2000000"
+      >
+      </p-fileUpload>
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <div class="float-left">
+          <button
+            pButton
+            type="submit"
+            label="ثبت ویرایش"
+            class="ui-button-success"
+            icon="pi pi-edit"
+            iconPos="left"
+            (click)="updateColor()" ></button>
+        </div>
+      </div>
+    </div>
+    <!--    </form>-->
+  </div>
+
+</p-dialog>

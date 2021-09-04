@@ -37,6 +37,7 @@ export class OrdersComponent implements OnInit {
     this.service.getAllOrders().subscribe((response) => {
       if (response.success === true) {
         this.orders = response.data;
+        console.log(this.orders)
       } else {
         this.messageService.add({
           severity: 'error',

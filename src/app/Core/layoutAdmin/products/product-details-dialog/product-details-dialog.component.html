@@ -113,16 +113,7 @@
                 [(ngModel)]="product.price"
               />
             </div>
-            <div class="p-field p-col">
-              <label for="sendCost">هزینه ارسال</label>
-              <input
-                readonly="readonly"
-                name="sendCost"
-                type="text"
-                pInputText
-                [(ngModel)]="product.sendCost"
-              />
-            </div>
+     
           </div>
 
           <div class="p-fluid p-formgrid p-grid">
@@ -240,7 +231,8 @@
                     <th>رنگ</th>
                     <th>کد رنگ</th>
                     <th>قیمت</th>
-                    <th>موجودی</th>
+                    <th>موجودی اولیه</th>
+                    <th>موجودی مانده</th>
                   </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-color let-rowIndex="rowIndex">
@@ -249,6 +241,7 @@
                     <td>{{color.colorCode}}</td>
                     <td>{{color.price}}</td>
                     <td>{{color.initialNumber}}</td>
+                    <td>{{color.remainsNumber}}</td>
                   </tr>
                 </ng-template>
                 <ng-template pTemplate="emptymessage">
