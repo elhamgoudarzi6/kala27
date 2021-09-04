@@ -1,9 +1,5 @@
 <app-header></app-header>
-<meta
-  name="keywords"
-  *ngIf="product.keywords != undefined"
-  [content]="product.keywords"
-/>
+<meta name="keywords" *ngIf="product.keywords != undefined" [content]="product.keywords" />
 <meta name="description" *ngIf="product.metaDescription != undefined" />
 <p-toast position="center"></p-toast>
 <section class="breadcrumbs">
@@ -11,26 +7,16 @@
     <ol>
       <li class="breadcrumb-item"><a routerLink="/">صفحه اصلی</a></li>
       <li class="breadcrumb-item">
-        <a
-          (click)="goProduct(product.categoryID, 0, 0)"
-          class="nuxt-link-active"
-          >{{ product.Category[0].title }}</a
-        >
+        <a (click)="goProduct(product.categoryID, 0, 0)" class="nuxt-link-active">{{ product.Category[0].title }}</a>
       </li>
       <li class="breadcrumb-item">
-        <a
-          (click)="goProduct(product.categoryID, product.subCategoryID, 0)"
-          class="nuxt-link-active"
-        >
-          {{ product.SubCategory[0].title }}</a
-        >
+        <a (click)="goProduct(product.categoryID, product.subCategoryID, 0)" class="nuxt-link-active">
+          {{ product.SubCategory[0].title }}</a>
       </li>
       <li class="breadcrumb-item">
-        <a
-          (click)="goProduct(product.categoryID, product.subCategoryID, product.subSubCategoryID)"         class="nuxt-link-active"
-        >
-          {{ product.SubSubCategory[0].title }}</a
-        >
+        <a (click)="goProduct(product.categoryID, product.subCategoryID, product.subSubCategoryID)"
+          class="nuxt-link-active">
+          {{ product.SubSubCategory[0].title }}</a>
       </li>
       <li class="breadcrumb-item active">{{ product.title }}</li>
     </ol>
@@ -88,56 +74,43 @@
       <!--      </p-galleria>-->
       <img [src]="imageProductColor" style="width: 50%; display: block;
   margin-left: auto;
-  margin-right: auto;" />
+  margin-right: auto; margin-bottom: 20px;margin-top: 20px;" />
     </div>
     <div class="col-xl-6 col-lg-6">
       <p-panel dir="rtl">
         <ng-template pTemplate="header">
-          <span class="head col-4 text-right">
+          <span class="head col-6 text-right">
             {{ product.SubCategory[0].title }}
           </span>
-          <span class="head col-6">
-            {{ product.title }}
+          <span class="head col-6 text-left">
+            {{ product.SubSubCategory[0].title }}
           </span>
-          <!--          <span class="col-6 text-left" *ngIf="product.discountStatus">-->
-          <!--            {{ product.Discount[0].discountTitle }}-->
-          <!--          </span>-->
         </ng-template>
         <div class="row">
           <p style="margin: 10px; text-align: right">
-                        توضیحات :
-                        {{ product.detail }}
-                      </p>
+            توضیحات :
+            <span style="font-family:'IRANSans_Light' !important;margin-right: 5px;"> {{ product.detail }}</span>
+          </p>
         </div>
         <div class="row">
-<!--          <p style="margin: 10px; text-align: right">-->
-<!--            توضیحات :-->
-<!--            {{ product.detail }}-->
-<!--          </p>-->
           <div class="col-md-6 text-right">
-            <span style="font-family: IRANSans_Bold" class="text-right"
-              >رنگ:{{ colorName }}</span
-            >
+            <span style="font-family: IRANSans_Bold" class="text-right">رنگ:<span
+                style="font-family:'IRANSans_Light' !important;margin-right: 5px;">{{ colorName }}</span></span>
           </div>
-          <div
-            *ngFor="let i of product.info; let j = index"
-            class=" col-3 d-flex flex-row"
-          >
-            <button
-              style="border: 1px solid #777"
-              pButton
-              pRipple
-              type="button"
-              class="p-button-rounded ml-1"
-              [style.background]="i.colorCode"
-              (click)="getColorName(i, j)"
-            ></button>
+        </div>
+        <div class="row">
+          <div class="d-flex flex-row mr-3 mt-3 mb-3">
+            <div *ngFor="let i of product.info; let j = index" class="d-flex flex-row">
+              <button style="border: 2px solid rgb(231, 231, 231)" pButton pRipple type="button"
+                class="p-button-rounded ml-1" [style.background]="i.colorCode" (click)="getColorName(i, j)"></button>
+            </div>
           </div>
         </div>
 
+
         <div class="row">
           <div class="col-6">
-            <div class="text-right" *ngIf="remainsNumberColor > 0">
+            <div class="text-right mt-2 mr-3" *ngIf="remainsNumberColor > 0">
               <p style="color: green;">موجود</p>
               <!-- <p>موجودی در انبار: {{ remainsNumberColor }}</p> -->
             </div>
@@ -145,19 +118,14 @@
               <p style="color: '#cc3333';">نا موجود</p>
               <!-- <p>موجودی در انبار: {{ remainsNumberColor }}</p> -->
             </div>
-
           </div>
           <div class="col-12">
             <p class="text-right">قیمت: {{ priceColor | number }} تومان</p>
           </div>
         </div>
         <div class="mb-3">
-          <button
-            pButton
-            type="submit"
-            class="mx-auto d-block mt-2 text-white p-button-danger"
-            (click)="addCart(product)"
-          >
+          <button pButton type="submit" class="mx-auto d-block mt-2 text-white p-button-danger"
+            (click)="addCart(product)">
             افزودن به سبد خرید
           </button>
         </div>
@@ -188,12 +156,8 @@
             <form [formGroup]="formComment">
               <div class="form-group mt-3 justify-content-center">
                 <label>نظر شما (اجباری)</label>
-                <textarea
-                  class="form-control"
-                  name="commentText"
-                  id="commentText"
-                  formControlName="commentText"
-                ></textarea>
+                <textarea class="form-control" name="commentText" id="commentText"
+                  formControlName="commentText"></textarea>
                 <!--                <ul-->
                 <!--                  class="mt-1 text-right list-inline"-->
                 <!--                  *ngFor="let error of commentErrorMessages.commentText"-->
@@ -215,20 +179,14 @@
                 <!--                  </li>-->
                 <!--                </ul>-->
 
-                <button
-                  type="submit"
-                  class="btn mx-auto d-block mt-2 text-white add-to-cart"
-                  (click)="registerComment()"
-                >
+                <button type="submit" class="btn mx-auto d-block mt-2 text-white add-to-cart"
+                  (click)="registerComment()">
                   ثبت دیدگاه
                 </button>
               </div>
             </form>
           </div>
-          <div
-            class="row justify-content-center comment"
-            *ngIf="product.Comment.length > 0"
-          >
+          <div class="row justify-content-center comment" *ngIf="product.Comment.length > 0">
             <div class="col-12 align-items-center text-center">
               <div class="title-box-d">
                 <h3 class="title-d">دیدگاه ها ({{ commentsCount }})</h3>
@@ -251,10 +209,7 @@
                   </li>
                   <li class="comment-children" *ngIf="item.reply != null">
                     <div class="comment-avatar">
-                      <img
-                        src="../../../assets/images/admin-default.png"
-                        alt=""
-                      />
+                      <img src="../../../assets/images/admin-default.png" alt="" />
                     </div>
                     <div class="comment-details">
                       <h4 class="comment-author">ادمین</h4>
@@ -274,22 +229,18 @@
   <p-header>
     <p class="mr-3">انجام شد</p>
   </p-header>
-  <hr style="width: 100%;"/>
+  <hr style="width: 100%;" />
   <p class="text-right text-success mt-2">محصول با موفقیت به سبد خرید اضافه شد</p>
   <p class="text-right textDialog">برای ثبت نهایی سفارش بر روی دکمه ی مشاهده سبد خرید کلیک کنید و برای افزودن دیگر
     محصولات به سبد خرید، بر روی دکمه ی ادامه کلیک کنید.</p>
-  <hr style="margin-bottom: -15px"/>
+  <hr style="margin-bottom: -15px" />
   <ng-template pTemplate="footer">
     <button pButton pRipple type="button" (click)="displayBasic=false" label="ادامه"
-            class="p-button-danger float-left"></button>
+      class="p-button-danger float-left"></button>
     <button pButton pRipple type="button" (click)="goCart()" label="مشاهده سبد خرید"
-            class="p-button-danger float-left"></button>
+      class="p-button-danger float-left"></button>
   </ng-template>
 </p-dialog>
 <app-footer></app-footer>
-<ng-image-fullscreen-view
-  [images]="images"
-  [imageIndex]="currentIndex"
-  [show]="showFlag"
-  (close)="closeEventHandler()"
-></ng-image-fullscreen-view>
+<ng-image-fullscreen-view [images]="images" [imageIndex]="currentIndex" [show]="showFlag" (close)="closeEventHandler()">
+</ng-image-fullscreen-view>

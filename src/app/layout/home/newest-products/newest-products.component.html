@@ -3,13 +3,13 @@
 
       <div class="row justify-content-center ml-2 mr-2">
         <div class="col col-6 align-items-center">
-          <div class="section-title text-right">
-            <h2>جدیدترین محصولات</h2>
+          <div class="text-right">
+            <h2 class="section-title">جدیدترین محصولات</h2>
           </div>
         </div>
         <div class="col col-6 align-items-center">
-          <div class="section-title text-left">
-            <a style="color: #053f4a;font-size: 16px" routerLink="/products/0/0/0">مشاهده همه</a>
+          <div class="text-left">
+            <a class="section-title" routerLink="/products/0/0/0">مشاهده همه</a>
           </div>
         </div>
       </div>
@@ -35,10 +35,13 @@
               {{i['price']-(i['price']*i['Discount'][0].discountPercent)/100|number}} تومان </div>
             <div class="mr-2 ml-2" *ngIf="i['discountStatus']===false"> {{i['price'] | number }} تومان </div>
           </div>
-          <a [routerLink]="['product-detail',i['_id']]" class="btn-buy">
-            <span>مشاهده</span>
-            <i class="pi pi-angle-left"></i>
-          </a>
+          <div class="detail">
+            <a [routerLink]="['product-detail',i['_id']]" class="btn-buy">
+              <span>مشاهده</span>
+              <i class="pi pi-angle-left"></i>
+            </a>
+          </div>
+        
         </div>
       </ng-template>
     </owl-carousel-o>

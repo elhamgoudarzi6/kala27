@@ -3,7 +3,14 @@
   text-align:center;
   color: #034251;
 }
-
+.pricing .section-title {
+  color: #444;
+  font-size: 18px;
+}
+.detail{
+  margin-top: 10px;
+  margin-bottom: -10px;
+}
 .pricing .box {
   padding: 40px 20px;
   background: #fff;
@@ -102,18 +109,18 @@
   margin: 15px 0 5px;
 }
 .pricing .box .title h5 {
-  font-weight: 400;
   font-size: 14px;
-  color: #053f4a;
+  color: #000;
   text-align: center;
-  font-family: IRANSans_Bold;
+  font-family: 'IRANSans_Light' !important;
 }
 .pricing .box .title h5:hover {
    color: #cc3333;
 }
 .pricing .prices {
-  color: #444444;
-  font-size: 13px;
+  color: #222;
+  font-size: 12px;
+text-align: center;
 line-height: 3;
 margin-top: -20px;
 }
@@ -124,6 +131,18 @@ margin-left: 5px;
 .pricing .prices .na {
   color: #ccc;
   text-decoration: line-through;
+}
+
+@media (min-width: 1024px) {
+  .pricing .section-title {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pricing .section-title {
+    font-size: 14px;
+  }
 }
 
 
