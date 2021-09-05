@@ -18,7 +18,7 @@
         <h5 class="footer-sec">دسته بندی محصولات</h5>
         <ul class="footer-sec-detail">
           <li *ngFor="let i of category">
-            <a (click)="goProduct(i._id, 0)">
+            <a (click)="goProduct(i._id, 0,0)">
               <i class="fas fa-chevron-left ml-3"></i> {{i['title']}}
             </a>
 

@@ -23,7 +23,7 @@ export class FeaturesComponent implements OnInit {
         items: 1
       },
       400: {
-        items: 1
+        items: 2
       },
       600: {
         items: 3

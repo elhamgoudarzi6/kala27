@@ -35,12 +35,8 @@ export class FooterComponent implements OnInit {
         this.category = response['data'];
       }
     });
-
   }
-
-  goProduct(categoryId: any, subCategoryId: any): any {
-    this.router.navigateByUrl(
-      '/products/' + categoryId + '/' + subCategoryId
-    );
+  goProduct(categoryId: any, subCategoryId: any, subSubCategoryId: any): any {
+    this.router.navigateByUrl('/products/' + categoryId + '/' + subCategoryId + '/' + subSubCategoryId);
   }
 }
