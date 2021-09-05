@@ -1125,7 +1125,7 @@ img {
   color: #0cb1c0;
 }
 .box .category {
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1;
   color: #999;
   font-family: IRANSans_Bold;
@@ -1137,11 +1137,10 @@ img {
   margin: 15px 0 5px;
 }
 .box .title h5 {
-  font-weight: 200;
-  font-size: 12px;
-  color: #053f4a;
-  //text-align: center;
-  font-family: IRANSans_Bold;
+  font-size: 14px;
+  color: #000;
+  text-align: center;
+  font-family: 'IRANSans_Light' !important;
 }
 .box .title h5:hover {
    color: #4d4d4d;

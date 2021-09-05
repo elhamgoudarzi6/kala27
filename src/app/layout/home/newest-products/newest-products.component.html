@@ -21,8 +21,8 @@
           <div class="badges" *ngIf="i['discountStatus']===false">جدید</div>
           <img [src]="i['image']" class="img-fluid" [alt]="i['imageDescription']">
           <div class="category d-flex flex-row">
-            <div class="ml-auto">{{i['Category'][0].title}}</div>
-            <div>{{i['SubCategory'][0].title}}</div>
+            <div class="ml-auto">{{i['SubCategory'][0].title}}</div>
+            <div>{{i['SubSubCategory'][0].title}}</div>
           </div>
           <div class="title d-flex flex-row"><a [routerLink]="['product-detail',i['_id']]">
               <h5>{{i['title']}}</h5>

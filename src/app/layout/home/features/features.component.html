@@ -1,60 +1,56 @@
-    <section id="counts" class="counts">
-        <div class="container">
-  
-          <div class="row">
-  
-         
-            <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6 mt-5 mt-md-0">
-              <div class="count-box">
-                <i class="fa fa-percent"></i>
-                <span data-toggle="counter-up">تخفیف ویژه</span>
-                <p>تخفیف ویژه فصلی</p>
-              </div>
-            </div>
-  
-            <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6 mt-5 mt-lg-0">
-              <div class="count-box">
-                <i class="fa fa-check"></i>
-                <span data-toggle="counter-up">کیفیت</span>
-                <p>محصول با کیفیت</p>
-              </div>
-            </div>
 
-            <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6 mt-5 mt-lg-0">
-              <div class="count-box">
-                <i class="fas fa-shield-alt"></i>
-                <span data-toggle="counter-up">امنیت پرداخت</span>
-                <p>پرداخت کاملا امن</p>
-              </div>
-            </div>
-  
-            <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6 mt-5 mt-lg-0">
-              <div class="count-box">
-                <i class="fas fa-shipping-fast"></i>
-                <span data-toggle="counter-up">تحویل سریع</span>
-                <p>تحویل 24 ساعته</p>
-              </div>
-            </div>
+  <div class="counts">
+    <div class="container-fluid">
+    <owl-carousel-o [options]="customOptions">
 
-            <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6 mt-5 mt-lg-0">
-              <div class="count-box">
-                <i class="fa fa-headset"></i>
-                <span data-toggle="counter-up">پشتیبانی</span>
-                <p>پشتیبانی 24 ساعته</p>
-              </div>
-            </div>
-
-            <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6 mt-5 mt-lg-0">
-              <div class="count-box">
-                <!-- <i class="fas fa-coins"></i> -->
-                <i class="fas fa-dollar-sign"></i>
-                <span data-toggle="counter-up">قیمت مناسب</span>
-                <p>قیمت مناسب</p>
-              </div>
-            </div>
-
-  
-          </div>
-  
+      <ng-template carouselSlide>
+        <div class="count-box">
+          <i class="fas fa-dollar-sign"></i>
+          <span>قیمت مناسب</span>
+          <p>تضمین قیمت </p>
         </div>
-      </section>
+      </ng-template>
+
+      <ng-template carouselSlide>
+        <div class="count-box">
+          <i class="fa fa-headset"></i>
+          <span>پشتیبانی</span>
+          <p>پشتیبانی 24 ساعته</p>
+        </div>
+      </ng-template>
+
+      <ng-template carouselSlide>
+        <div class="count-box">
+          <i class="fas fa-shipping-fast"></i>
+          <span>تحویل سریع</span>
+          <p>تحویل 24 ساعته</p>
+        </div>
+      </ng-template>
+
+      <ng-template carouselSlide>
+        <div class="count-box">
+          <i class="fas fa-shield-alt"></i>
+          <span>امنیت پرداخت</span>
+          <p>پرداخت کاملا امن</p>
+        </div>
+      </ng-template>
+
+      <ng-template carouselSlide>
+        <div class="count-box">
+          <i class="fa fa-check"></i>
+          <span>کیفیت</span>
+          <p>محصول با کیفیت</p>
+        </div>
+      </ng-template>
+
+      <ng-template carouselSlide>
+        <div class="count-box">
+          <i class="fa fa-percent"></i>
+          <span>تخفیف ویژه</span>
+          <p>تخفیف ویژه فصلی</p>
+        </div>
+      </ng-template>
+      
+    </owl-carousel-o>
+  </div>
+</div>
