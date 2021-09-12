@@ -94,6 +94,7 @@ export class ProductDetailsComponent implements OnInit {
   remainsNumberColor: any;
   colorCode: any;
   infID: any;
+  priceWithDiscount:any;
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -121,6 +122,9 @@ export class ProductDetailsComponent implements OnInit {
         this.remainsNumberColor = this.product.info[0].remainsNumber;
         this.colorCode = this.product.info[0].colorCode;
         this.infID = this.product.info[0]._id;
+        if(this.product.discountStatus){
+          this.priceWithDiscount=Number(this.priceColor)-Number(this.product.Discount[0].discountPercent* this.priceColor)/100;
+        }
         this.product.Comment.forEach((element) => {
           if (element.active) {
             this.commentsCount++;
@@ -243,6 +247,10 @@ export class ProductDetailsComponent implements OnInit {
     this.priceColor = i.price;
     this.colorCode = i.colorCode;
     this.remainsNumberColor = i.remainsNumber;
+    if(this.product.discountStatus){
+      this.priceWithDiscount=Number(this.priceColor)-Number(this.product.Discount[0].discountPercent* this.priceColor)/100;
+    }
+
   }
 
   addCart(product: any): void {

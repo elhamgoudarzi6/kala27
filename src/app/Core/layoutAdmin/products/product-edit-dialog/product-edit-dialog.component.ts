@@ -343,18 +343,26 @@ export class ProductEditDialogComponent implements OnInit, AfterViewChecked {
   updateColor(){
     let result =  this.info.filter(x => x._id == this.colorID);
     let index = this.info.indexOf(result[0]);
-console.log(index)
-    result[0].color = this.colorValue;
-     result[0].remainsNumber = this.remainsNumber;
-    result[0].initialNumber = this.initialNumber;
-    result[0].price = this.colorPrice;
-    this.info[index] =  result[0];
-    this.messageService.add({
-      severity: 'success',
-      summary: 'ویرایش',
-      detail: 'رنگ با موفقیت ویرایش شد.',
-      life:1000
-    });
-    this.displayColor = false;
+    let imageUrl:any;
+    this.service.uploadFile(this.image).subscribe((response) => {
+      if (response.success === true) {
+        imageUrl = response.imagePath;
+        result[0].color = this.colorValue;
+        result[0].remainsNumber = this.remainsNumber;
+        result[0].initialNumber = this.initialNumber;
+        result[0].price = this.colorPrice;
+        result[0].image=imageUrl;
+        this.info[index] =  result[0];
+        this.messageService.add({
+          severity: 'success',
+          summary: 'ویرایش',
+          detail: 'رنگ با موفقیت ویرایش شد.',
+          life:1000
+        });
+        this.displayColor = false;
+      }
+    })
+
   }
+
 }

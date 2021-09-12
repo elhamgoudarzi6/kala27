@@ -121,6 +121,8 @@
           </div>
           <div class="col-12">
             <p class="text-right">قیمت: {{ priceColor | number }} تومان</p>
+            <p class="text-right text-danger" *ngIf="product.discountStatus">قیمت با تخفیف: {{ priceWithDiscount | number }} تومان</p>
+
           </div>
         </div>
         <div class="mb-3">
