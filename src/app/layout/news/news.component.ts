@@ -19,24 +19,26 @@ export class NewsComponent implements OnInit {
     public localStorage: LocalStorageService) {}
     ngOnInit(): void {
     this.isLogged = this.localStorage.getCurrentUser();
-    this.service.getLatestNews().subscribe((response) => {
-      if (response['success'] === true) {
-        this.latestNews = response['data'];
-      }
-    });
+      setInterval(()=> {
+        this.service.getLatestNews().subscribe((response) => {
+          if (response['success'] === true) {
+            this.latestNews = response['data'];
+          }
+        });
 
-    this.service.getAllNews().subscribe((response) => {
-      if (response['success'] === true) {
-        this.AllNews = response['data'];
+        this.service.getAllNews().subscribe((response) => {
+          if (response['success'] === true) {
+            this.AllNews = response['data'];
 
-      }
-    });
+          }
+        });
 
-    this.service.getAllTagNews().subscribe((response) => {
-      if (response['success'] === true) {
-        this.Alltags = response['data'];
-      }
-    });
+        this.service.getAllTagNews().subscribe((response) => {
+          if (response['success'] === true) {
+            this.Alltags = response['data'];
+          }
+        });
+      },1000);
 }
 
 }

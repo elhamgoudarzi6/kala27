@@ -1,6 +1,7 @@
 import {Injectable, ViewChild} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {ItemCart} from './itemCart';
+import {LayoutService} from "../layout.service";
 
 let itemsInCart = [];
 let cart = [];
@@ -13,7 +14,7 @@ export class CartService {
 
   items: ItemCart;
 
-  constructor() {
+  constructor(private service:LayoutService) {
     // localStorage.removeItem('cartList');
   }
 
@@ -32,7 +33,6 @@ export class CartService {
       number:1,
       sendCost:Product.sendCost
     };
-
     if (localStorage.getItem('cartList') === null) {
       itemsInCart.push(this.items);
       localStorage.setItem('cartList', JSON.stringify(itemsInCart));

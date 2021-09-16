@@ -219,7 +219,19 @@ export class ProductEditDialogComponent implements OnInit, AfterViewChecked {
   colorImageUploader(event): void {
     const formData = new FormData();
     formData.append('file', event.files[0], event.files[0].name);
-    this.image = formData;
+    this.service.uploadFile(formData).subscribe((response) => {
+
+      if (response.success === true) {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'آپلود',
+          detail: 'تصویر با موفقیت آپلود شد.',
+          life:1000
+        });
+        this.image=response.imagePath;
+      }
+    })
+
   }
 
   addFeature(feature, value): void {
@@ -344,19 +356,18 @@ export class ProductEditDialogComponent implements OnInit, AfterViewChecked {
     let result =  this.info.filter(x => x._id == this.colorID);
     let index = this.info.indexOf(result[0]);
     let imageUrl=this.image;
-    this.service.uploadFile(this.image).subscribe((response) => {
-      console.log(this.image)
-      if (response.success === true) {
-        imageUrl = response.imagePath;
-
-
-      }
-    })
+    // this.service.uploadFile(this.image).subscribe((response) => {
+    //
+    //   if (response.success === true) {
+    //     imageUrl = response.imagePath;
+    //   }
+    // })
     result[0].color = this.colorValue;
     result[0].remainsNumber = this.remainsNumber;
     result[0].initialNumber = this.initialNumber;
     result[0].price = this.colorPrice;
-    result[0].image=imageUrl;
+    result[0].image=this.image;
+    console.log(result)
     this.info[index] =  result[0];
     this.messageService.add({
       severity: 'success',

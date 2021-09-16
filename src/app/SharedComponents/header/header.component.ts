@@ -226,7 +226,19 @@ export class HeaderComponent implements OnInit {
       if (this.cartlist != null) {
         if (this.cartlist.length > 0) {
           this.showCartList = true;
-          for (var i = 0; i < this.cartlist.length; i++) {
+          // console.log(this.cartlist)
+          for (let i = 0; i < this.cartlist.length; i++) {
+            this.service.getProduct(this.cartlist[i].id).subscribe((response)=>{
+              if(response['success']===true){
+                let data=response['data'][0];
+                let info=data.info;
+                let result = info.filter(x => x._id == this.cartlist[i].infoID);
+                if(this.cartlist[i].number>result[0].remainsNumber){
+                  this.serviceCart.deleteItem(this.cartlist[i])
+                }
+              }
+
+            })
             if (this.cartlist[i].discountPercent) {
               let pricePercent: number =
                 (this.cartlist[i].price *

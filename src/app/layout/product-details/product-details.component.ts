@@ -111,52 +111,53 @@ export class ProductDetailsComponent implements OnInit {
     this.route.paramMap.subscribe(
       (params) => (this.productID = params.get('id'))
     );
-
-    this.service.getProduct(this.productID).subscribe((response) => {
-      if (response.success === true) {
-        this.product = response.data[0];
-        console.log(response);
-        this.colorName = this.product.info[0].color;
-        this.imageProductColor = this.product.info[0].image;
-        this.priceColor = this.product.info[0].price;
-        this.remainsNumberColor = this.product.info[0].remainsNumber;
-        this.colorCode = this.product.info[0].colorCode;
-        this.infID = this.product.info[0]._id;
-        if(this.product.discountStatus){
-          this.priceWithDiscount=Number(this.priceColor)-Number(this.product.Discount[0].discountPercent* this.priceColor)/100;
-        }
-        this.product.Comment.forEach((element) => {
-          if (element.active) {
-            this.commentsCount++;
+    setInterval(()=> {
+      this.service.getProduct(this.productID).subscribe((response) => {
+        if (response.success === true) {
+          this.product = response.data[0];
+          console.log(response);
+          this.colorName = this.product.info[0].color;
+          this.imageProductColor = this.product.info[0].image;
+          this.priceColor = this.product.info[0].price;
+          this.remainsNumberColor = this.product.info[0].remainsNumber;
+          this.colorCode = this.product.info[0].colorCode;
+          this.infID = this.product.info[0]._id;
+          if (this.product.discountStatus) {
+            this.priceWithDiscount = Number(this.priceColor) - Number(this.product.Discount[0].discountPercent * this.priceColor) / 100;
           }
-        });
-        if (this.product.features.length > 0) {
-          for (let index = 0; index < this.product.features.length; index++) {
-            this.featuresValues.push({
-              feature: this.product.features[index].feature,
-              value: this.product.features[index].featureValues,
-            });
-          }
-          if (this.product.image != null) {
-            this.images.push({
-              image: this.product.image,
-              thumbnailImageSrc: this.product.image,
-              previewImageSrc: this.product.image,
-            });
-          }
-          if (this.product.gallery.length > 0) {
-            this.product.gallery.forEach((item) => {
-              this.images.push({
-                image: item,
-                thumbnailImageSrc: item,
-                previewImageSrc: item,
+          this.product.Comment.forEach((element) => {
+            if (element.active) {
+              this.commentsCount++;
+            }
+          });
+          if (this.product.features.length > 0) {
+            for (let index = 0; index < this.product.features.length; index++) {
+              this.featuresValues.push({
+                feature: this.product.features[index].feature,
+                value: this.product.features[index].featureValues,
               });
-            });
+            }
+            if (this.product.image != null) {
+              this.images.push({
+                image: this.product.image,
+                thumbnailImageSrc: this.product.image,
+                previewImageSrc: this.product.image,
+              });
+            }
+            if (this.product.gallery.length > 0) {
+              this.product.gallery.forEach((item) => {
+                this.images.push({
+                  image: item,
+                  thumbnailImageSrc: item,
+                  previewImageSrc: item,
+                });
+              });
+            }
           }
         }
-      }
-    });
-    this.createform();
+      });
+      this.createform();
+    },1000);
   }
 
   createform(): void {

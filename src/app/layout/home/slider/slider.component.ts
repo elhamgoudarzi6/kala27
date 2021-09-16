@@ -43,17 +43,19 @@ export class SliderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.getSliders().subscribe((response) => {
-      if (response.success === true) {
-        this.sliders = response.data;
-      }
-    });
+    setInterval(()=> {
+      this.service.getSliders().subscribe((response) => {
+        if (response.success === true) {
+          this.sliders = response.data;
+        }
+      });
 
-    this.service.getBanners().subscribe((response) => {
-      if (response.success === true) {
-        this.sideBanners = response.data;
-      }
-    });
+      this.service.getBanners().subscribe((response) => {
+        if (response.success === true) {
+          this.sideBanners = response.data;
+        }
+      });
+    },1000);
   }
 
 }

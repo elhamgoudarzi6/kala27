@@ -89,6 +89,9 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    setInterval(() => {
+      this.refreshCart();
+    }, 1000);
     this.service.getSendCost().subscribe((res) => {
       if (res['success'] === true) {
         let data = res['data']
@@ -245,7 +248,7 @@ export class CartComponent implements OnInit {
 
   refreshCart() {
     this.items = this.cart.getItems();
-    console.log(this.items)
+    console.log(this.items);
     this.sumPrice = 0;
     // this.sendCost = 0;
     this.pricePercent = 0;
