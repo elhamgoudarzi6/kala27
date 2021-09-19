@@ -43,7 +43,7 @@ export class SliderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    setInterval(()=> {
+    // setInterval(()=> {
       this.service.getSliders().subscribe((response) => {
         if (response.success === true) {
           this.sliders = response.data;
@@ -55,7 +55,7 @@ export class SliderComponent implements OnInit {
           this.sideBanners = response.data;
         }
       });
-    },1000);
+    // },1000);
   }
 
 }

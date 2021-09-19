@@ -1,14 +1,33 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-
+import {Injectable, OnDestroy} from '@angular/core';
+import { switchMap, tap, share, retry, takeUntil } from 'rxjs/operators';
+import { Observable, timer, Subscription, Subject } from 'rxjs';
+import {ProductModel} from "./product.model";
 @Injectable({
   providedIn: 'root'
 })
-export class LayoutService {
-
+export class LayoutService implements  OnDestroy{
+  private allProduct$: Observable<ProductModel[]>;
+  private stopPolling = new Subject();
   constructor(private http: HttpClient) {
-  }
 
+
+  }
+  getAllCurrencies(): Observable<ProductModel[]> {
+    this.allProduct$ = timer(1, 3000).pipe(
+      switchMap(() => this.http.get('https://api.kala27.com/api/v1/user/newestProduct')),
+      retry(),
+      tap(console.log),
+      share(),
+      takeUntil(this.stopPolling)
+    );
+    return this.allProduct$.pipe(
+      tap(() => console.log('data sent to subscriber'))
+    );
+  }
+  ngOnDestroy() {
+    this.stopPolling.next();
+  }
   getSliders(): any {
     return this.http.get('https://api.kala27.com/api/v1/user/getAllSlider');
   }

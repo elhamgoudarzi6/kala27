@@ -51,13 +51,13 @@ export class NewestProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLogged = this.localStorage.getCurrentUser();
-    setInterval(()=>{
+    // setInterval(()=>{
       this.service.getNewestProduct().subscribe((response) =>{
         if (response['success'] === true) {
           this.newestProduct = response['data'];
         }
       });
-    },1000)
+    // },)
 
   }
 

@@ -111,7 +111,7 @@ export class ProductDetailsComponent implements OnInit {
     this.route.paramMap.subscribe(
       (params) => (this.productID = params.get('id'))
     );
-    setInterval(()=> {
+    // setInterval(()=> {
       this.service.getProduct(this.productID).subscribe((response) => {
         if (response.success === true) {
           this.product = response.data[0];
@@ -157,7 +157,7 @@ export class ProductDetailsComponent implements OnInit {
         }
       });
       this.createform();
-    },1000);
+    // },1000);
   }
 
   createform(): void {

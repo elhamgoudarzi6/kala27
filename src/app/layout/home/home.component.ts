@@ -1,5 +1,8 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import {Component, OnInit, HostListener} from '@angular/core';
 import {ViewportScroller} from '@angular/common';
+import {LayoutService} from "../layout.service";
+import {ProductModel} from "../product.model";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-home',
@@ -10,11 +13,18 @@ export class HomeComponent implements OnInit {
 
   isShow: boolean;
   topPosToStartShowing = 100;
+  currencyInfo$: Observable<ProductModel[]>;
+  constructor(private service:LayoutService) {
 
-constructor() {
-}
-  ngOnInit(): void {
   }
+
+  ngOnInit(): void {
+   this.service.getAllCurrencies().subscribe((response)=>{
+      console.log(response)
+    });
+
+  }
+
   @HostListener('window:scroll')
   checkScroll(): void {
     const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;

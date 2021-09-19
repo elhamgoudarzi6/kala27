@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.isLogged = this.localStorage.getCurrentUser();
 
-    if (this.isLogged && this.localStorage.userToken=='admin') {
+    if (this.isLogged && this.localStorage.userType=='admin') {
         this.router.navigate(['/admin/panel']);
     }
 
