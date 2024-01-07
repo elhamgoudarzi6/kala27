@@ -1,0 +1,50 @@
+<section class="container-fluid">
+  <div class="pricing" data-aos="fade-up">
+
+      <div class="row justify-content-center ml-2 mr-2">
+        <div class="col col-6 align-items-center">
+          <div class="text-right">
+            <h2 class="section-title">جدیدترین محصولات</h2>
+          </div>
+        </div>
+        <div class="col col-6 align-items-center">
+          <div class="text-left">
+            <a class="section-title" routerLink="/products/0/0/0">مشاهده همه</a>
+          </div>
+        </div>
+      </div>
+
+    <owl-carousel-o [options]="customOptions">
+      <ng-template carouselSlide *ngFor="let i of newestProduct">
+        <div class="box">
+          <div class="badges" *ngIf="i['discountStatus']===true">%{{i['Discount'][0].discountPercent}}</div>
+          <div class="badges" *ngIf="i['discountStatus']===false">جدید</div>
+          <img [src]="i['image']" class="img-fluid" [alt]="i['imageDescription']">
+          <div class="category d-flex flex-row">
+            <div class="ml-auto">{{i['SubCategory'][0].title}}</div>
+            <div>{{i['SubSubCategory'][0].title}}</div>
+          </div>
+          <div class="title d-flex flex-row"><a [routerLink]="['product-detail',i['_id']]">
+              <h5>{{i['title']}}</h5>
+            </a>
+          </div>
+          <div class="prices d-flex flex-row ">
+            <span class="tag">قیمت:</span>
+            <div class="na ml-2" *ngIf="i['discountStatus']===true"> {{i['price'] | number }} </div>
+            <div *ngIf="i['discountStatus']===true" class="ml-2">
+              {{i['price']-(i['price']*i['Discount'][0].discountPercent)/100|number}} تومان </div>
+            <div class="mr-2 ml-2" *ngIf="i['discountStatus']===false"> {{i['price'] | number }} تومان </div>
+          </div>
+          <div class="detail">
+            <a [routerLink]="['product-detail',i['_id']]" class="btn-buy">
+              <span>مشاهده</span>
+              <i class="pi pi-angle-left"></i>
+            </a>
+          </div>
+        
+        </div>
+      </ng-template>
+    </owl-carousel-o>
+
+  </div>
+</section>

@@ -1,0 +1,240 @@
+<div class="container-fluid">
+  <div class="pnl-content p-3">
+    <div class="box text-right" dir="rtl">
+      <p-table
+        [value]="orderList"
+        dataKey="id"
+        editMode="row"
+        [rows]="5"
+        [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        [paginator]="true"
+        currentPageReportTemplate="نمایش {first} تا {last} از {totalRecords} صفحه"
+        [filterDelay]="0"
+        [globalFilterFields]="['count']"
+
+        responsiveLayout="scroll"
+        styleClass="p-datatable-responsive-demo"
+
+      >
+        <ng-template pTemplate="caption">
+          <div class="table-header row">
+            <div class="col-sm-12">لیست سفارش ها</div>
+            <div class="col-sm-12">
+            <span class="p-input-icon-left w-100 mt-3">
+              <i class="pi pi-search"></i>
+              <input
+                pInputText
+                type="text"
+                class="w-100"
+                placeholder="جستجو کلی"
+              />
+            </span>
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width: 45px" >ردیف</th>
+            <th pSortableColumn="userID">
+              تصویر
+              <p-sortIcon field="userID"></p-sortIcon>
+            </th>
+            <th pSortableColumn="productID">
+              محصول
+              <p-sortIcon field="productID"></p-sortIcon>
+            </th>
+            <th >وضعیت</th>
+            <th pSortableColumn="count">
+              تعداد
+              <p-sortIcon field="count"></p-sortIcon>
+            </th>
+            <th pSortableColumn="orderTrackingCode">
+              کد سفارش
+              <p-sortIcon field="orderTrackingCode"></p-sortIcon>
+            </th>
+            <th pSortableColumn="postTrackingCode">
+              کد رهگیری پست
+              <p-sortIcon field="postTrackingCode"></p-sortIcon>
+            </th>
+            <th pSortableColumn="success">
+               تراکنش
+              <p-sortIcon field="success"></p-sortIcon>
+            </th>
+            <th pSortableColumn="date">
+              تاریخ
+              <p-sortIcon field="date"></p-sortIcon>
+            </th>
+            <th pSortableColumn="price">قیمت
+              <p-sortIcon field="price"></p-sortIcon>
+            </th>
+            <th pSortableColumn="factorOrder">مشاهده فاکتور
+              <p-sortIcon field="factorOrder"></p-sortIcon>
+            </th>
+          </tr>
+        </ng-template>
+
+        <ng-template
+          pTemplate="body"
+          let-order
+          let-editing="editing"
+          let-rowIndex="rowIndex"
+        >
+          <tr [pEditableRow]="order">
+            <td>
+              <span class="p-column-title">ردیف:</span>
+              {{ rowIndex + 1 }}
+            </td>
+            <td>
+              <span class="p-column-title">تصویر محصول:</span>
+       <img [src]="order['Product'][0]['image']" [alt]="order['Product'][0]['title']" width="100"/>
+
+            </td>
+            <td>
+              <span class="p-column-title">عنوان محصول:</span>
+              {{ order.Product[0].title }}
+            </td>
+
+            <td>
+              <span class="p-column-title">وضعیت سفارش :</span>
+              {{ order.statusOrder }}
+            </td>
+            <td>
+              <span class="p-column-title">تعداد  :</span>
+
+              {{ order.count }}
+            </td>
+            <td>
+              <span class="p-column-title">کد سفارش :</span>
+
+              {{ order.orderTrackingCode }}
+             </td>
+             <td>
+               <span class="p-column-title">کد رهگیری پستی  :</span>
+
+               {{ order.postTrackingCode }}
+             </td>
+            <td>
+              <span class="p-column-title">تراکنش  :</span>
+
+              {{ order.success }}
+            </td>
+            <td>
+              <span class="p-column-title">تاریخ  :</span>
+
+              {{ order.date }}
+            </td>
+            <td>
+              <span class="p-column-title">قیمت  :</span>
+
+              {{ order.price }} تومان
+            </td>
+            <td>
+              <span class="p-column-title">مشاهده فاکتور  :</span>
+
+              <button
+                pButton
+                pRipple
+                icon="pi pi-eye"
+                [routerLink]="['../factorOrder',order.id]"
+                class="p-button-outlined p-button-danger "
+              ></button>
+            </td>
+            <!-- <td style="text-align: center">
+
+              <button
+                *ngIf="!editing"
+                pButton
+                pRipple
+                type="button"
+                pInitEditableRow
+                icon="pi pi-pencil"
+                class="p-button-outlined p-button-warning ml-2"
+              ></button>
+              <button
+                *ngIf="!editing"
+                pButton
+                pRipple
+                icon="pi pi-trash"
+                (click)="showDialogDelOrder(order._id)"
+                class="p-button-outlined p-button-danger"
+              ></button>
+              <button
+                *ngIf="editing"
+                pButton
+                pRipple
+                type="button"
+                pSaveEditableRow
+                icon="pi pi-check"
+                (click)="updateOrder(order._id)"
+                class="p-button-rounded p-button-text p-button-success p-mr-2"
+              ></button>
+              <button
+                *ngIf="editing"
+                pButton
+                pRipple
+                type="button"
+                pCancelEditableRow
+                icon="pi pi-times"
+                class="p-button-rounded p-button-text p-button-danger"
+              ></button>
+            </td> -->
+          </tr>
+        </ng-template>
+
+
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="6">هیچ رکوردی یافت نشد.</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+
+</div>
+
+<p-dialog [(visible)]="productDialog" [style]="{width: '450px'}"
+          header="مشخصات محصول"  styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <div class="p-field text-right">
+      <label for="name">نام محصول:</label>
+      <input type="text" pInputText id="name" disabled [placeholder]="detailOrder[0]['Product'][0]['title']"/>
+    </div>
+    <div class="p-field text-right">
+      <label for="price">قیمت محصول: </label>
+      <input type="text" pInputText id="price" disabled [placeholder]="detailOrder[0]['Product'][0]['price']"/>
+    </div>
+    <div class="p-field text-right">
+      <label for="count">تعداد سفارش : </label>
+      <input type="text" pInputText id="count"  [(ngModel)]="count"/>
+    </div>
+    <div class="p-field text-right">
+      <label for="description">جزئیات:</label>
+      <textarea id="description" pInputTextarea  required rows="3" cols="20" disabled [placeholder]="detailOrder[0]['Product'][0]['detail']"></textarea>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="انصراف" icon="pi pi-times" class="p-button-text" (click)="disableDialogEditOrder()"></button>
+    <button pButton pRipple label="ویرایش سفارش" icon="pi pi-check" class="p-button-text" (click)="updateOrder(detailOrder[0]['_id'])"></button>
+  </ng-template>
+
+</p-dialog>
+
+<!--dialogDelete-->
+<p-dialog [(visible)]="displayDialogDelete" [transitionOptions]="'3ms'">
+  <p-header>
+    حذف سفارش
+  </p-header>
+  <p id="text-delete-dialog">کاربر محترم از حذف سفارش مطمئین هستید؟
+  </p>
+  <br>
+
+  <p-footer>
+    <button class="p-button-success ml-auto" pButton type="button" label="بله" (click)="deleteOrderUser()"></button>
+    <button class="p-button-danger" pButton type="button" label="خیر" style="float: left" (click)="closeDialogDelete()"></button>
+  </p-footer>
+</p-dialog>
+<p-toast position="top-center" class="text-center"></p-toast>

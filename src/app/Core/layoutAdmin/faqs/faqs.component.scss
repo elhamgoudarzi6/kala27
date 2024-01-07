@@ -1,0 +1,14 @@
+:host ::ng-deep .p-toast .p-toast-message {
+  border-width: 0 6px 0 0!important;
+}
+:host ::ng-deep .p-toast .p-toast-message .p-toast-message-content .p-toast-message-text {
+  margin: 0 1rem 0 0!important;
+  text-align: right;
+}
+:host ::ng-deep .p-dialog.p-confirm-dialog .p-confirm-dialog-message {
+  margin-right: 1rem!important;
+  margin-left: none!important;
+}
+:host ::ng-deep .p-dialog .p-dialog-footer {
+  text-align: left!important;
+}

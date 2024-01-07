@@ -1,0 +1,104 @@
+<p-toast position="center"></p-toast>
+<div style="direction: rtl; text-align: right">
+  <form [formGroup]="form" (ngSubmit)="submitForm()" class="w-100 mt-3">
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label for="adminName">نام و نام خانوادگی</label>
+        <input
+          id="adminName"
+          type="text"
+          pInputText
+          formControlName="adminName"
+        />
+        <ul
+          class="mt-1 text-right list-inline"
+          *ngFor="let error of errorMessages.adminName"
+        >
+          <li
+            class="font-small text-danger font-title-bold list-inline-item"
+            *ngIf="
+              form.get('adminName').hasError(error.type) &&
+              (form.get('adminName').dirty || form.get('adminName').touched)
+            "
+          >
+            {{ error.message }}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col text-right">
+        <label class="d-block">نوع</label>
+        <div class="p-field-radiobutton">
+          <p-radioButton
+            name="type"
+            value="support"
+            formControlName="type"
+            inputId="support"
+          ></p-radioButton>
+          <label for="support">پشتیبان</label>
+        </div>
+        <div class="p-field-radiobutton">
+          <p-radioButton
+            name="type"
+            value="admin"
+            formControlName="type"
+            inputId="admin"
+          ></p-radioButton>
+          <label for="admin">ادمین</label>
+        </div>
+        <ul
+        class="mt-1 text-right list-inline"
+        *ngFor="let error of errorMessages.type"
+      >
+        <li
+          class="font-small text-danger font-title-bold list-inline-item"
+          *ngIf="
+            form.get('type').hasError(error.type) &&
+            (form.get('type').dirty || form.get('type').touched)
+          "
+        >
+          {{ error.message }}
+        </li>
+      </ul>
+      </div>
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col text-right">
+        <label class="d-block">تصویر ادمین</label>
+        <img [src]="admin.image" class="img-fluid" *ngIf="admin.image != ''" />
+        <img src="../../../../assets/images/admin-default.png" class="img-fluid" *ngIf="admin.image == null" />
+      </div>
+      <div class="p-field p-col text-right">
+        <label class="d-block">آپلود تصویر ادمین</label>
+        <p-fileUpload
+          chooseLabel="انتخاب تصویر"
+          uploadLabel="آپلود تصویر"
+          cancelLabel="انصراف"
+          customUpload="true"
+          (uploadHandler)="imageUploader($event)"
+          invalidFileSizeMessageDetail="حداکثر سایز فایل 2 مگابایت می باشد"
+          invalidFileSizeMessageSummary="اندازه فایل بیش از حد مجاز می باشد"
+          accept="image/jpeg,image/png"
+          maxFileSize="2000000"
+        >
+        </p-fileUpload>
+      </div>
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <div class="float-left">
+          <button
+            pButton
+            type="submit"
+            label="ثبت"
+            class="ui-button-success"
+            icon="pi pi-check"
+            iconPos="left"
+            [disabled]="form.invalid"
+          ></button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

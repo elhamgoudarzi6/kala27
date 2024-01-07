@@ -1,0 +1,155 @@
+<p-toast position="center"></p-toast>
+<p-confirmDialog
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+></p-confirmDialog>
+<div class="pnl-content p-3">
+  <div class="box text-right" dir="rtl">
+    <p-table
+      styleClass="p-datatable-responsive-demo"
+      #dt
+      [value]="administrators"
+      dataKey="id"
+      [rows]="5"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [paginator]="true"
+      currentPageReportTemplate="نمایش {first} تا {last} از {totalRecords} صفحه"
+      [filterDelay]="0"
+      [globalFilterFields]="['title']"
+    >
+      <ng-template pTemplate="caption">
+        <div class="table-header row">
+          <div class="col-sm-6">لیست ادمین ها</div>
+          <div class="col-sm-6 text-left">
+            <button
+              pButton
+              pRipple
+              label="جدید"
+              icon="pi pi-plus"
+              class="p-button-success p-mr-2 p-button-icon-right"
+              (click)="showAddAdminDialog()"
+            ></button>
+          </div>
+          <div class="col-sm-12">
+            <span class="p-input-icon-left w-100 mt-3">
+              <i class="pi pi-search"></i>
+              <input
+                pInputText
+                type="text"
+                class="w-100"
+                (input)="dt.filterGlobal($event.target.value, 'contains')"
+                placeholder="جستجو کلی"
+              />
+            </span>
+          </div>
+        </div>
+      </ng-template>
+
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 45px">ردیف</th>
+          <th pSortableColumn="image">
+            تصویر
+            <p-sortIcon field="image"></p-sortIcon>
+          </th>
+          <th pSortableColumn="username">
+            نام کاربری
+            <p-sortIcon field="username"></p-sortIcon>
+          </th>
+          <th pSortableColumn="adminName">
+            نام ادمین
+            <p-sortIcon field="adminName"></p-sortIcon>
+          </th>
+          <th pSortableColumn="type">
+            نوع
+            <p-sortIcon field="type"></p-sortIcon>
+          </th>
+          <th>عملیات</th>
+          <th>امنیت</th>
+        </tr>
+      </ng-template>
+      <ng-template
+        pTemplate="body"
+        let-rowIndex="rowIndex"
+        let-admin
+        let-expanded="expanded"
+      >
+        <tr>
+          <td>
+            <span class="p-column-title">ردیف:</span>
+            {{ rowIndex + 1 }}
+          </td>
+          <td>
+            <span class="p-column-title">تصویر:</span>
+            <img
+              width="70"
+              [src]="admin.image"
+              class="img-fluid"
+              *ngIf="admin.image != ''"
+            />
+            <img
+              width="70"
+              src="../../../../assets/images/admin-default.png"
+              class="img-fluid"
+              *ngIf="admin.image == null"
+            />
+          </td>
+          <td>
+            <span class="p-column-title">نام کاربری:</span>
+            {{ admin.username }}
+          </td>
+          <td>
+            <span class="p-column-title">نام ادمین:</span>
+            {{ admin.adminName }}
+          </td>
+          <td>
+            <span class="p-column-title">نوع:</span>
+            {{ admin.type }}
+          </td>
+          <td>
+            <span class="p-column-title">عملیات:</span>
+            <button
+              pButton
+              pRipple
+              icon="pi pi-pencil"
+              (click)="showEditAdminDialog(admin._id)"
+              class="p-button-outlined p-button-warning ml-2"
+            ></button>
+            <button
+              pButton
+              pRipple
+              icon="pi pi-trash"
+              (click)="deleteAdmin(admin._id)"
+              class="p-button-outlined p-button-danger"
+            ></button>
+          </td>
+          <td>
+            <span class="p-column-title">امنیت:</span>
+            <button
+              pButton
+              pRipple
+              class="p-button-outlined p-button-help ml-2"
+              icon="pi pi-key"
+              (click)="showChangeAdminPasswordDialog(admin._id)"
+            ></button>
+            <button
+              pButton
+              pRipple
+              class="p-button-outlined p-button-help"
+              icon="pi pi-user"
+              (click)="showChangeAdminUsernameDialog(admin._id)"
+            ></button>
+
+          </td>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="7">هیچ رکوردی یافت نشد.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

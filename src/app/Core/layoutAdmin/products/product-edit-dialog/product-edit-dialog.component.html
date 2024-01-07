@@ -1,0 +1,428 @@
+<p-toast position="center"></p-toast>
+<div style="direction: rtl; text-align: right">
+  <form [formGroup]="form" (ngSubmit)="submitForm()" class="w-100 mt-3">
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label for="title">عنوان</label>
+        <input id="title" type="text" pInputText formControlName="title" />
+        <ul
+          class="mt-1 text-right list-inline"
+          *ngFor="let error of errorMessages.title"
+        >
+          <li
+            class="font-small text-danger font-title-bold list-inline-item"
+            *ngIf="
+              form.get('title').hasError(error.type) &&
+              (form.get('title').dirty || form.get('title').touched)
+            "
+          >
+            {{ error.message }}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label class="d-block">دسته بندی اول</label>
+        <p-dropdown
+        appendTo="body"
+        emptyFilterMessage="نتیجه ای یافت نشد"
+        [options]="categories"
+        optionLabel="title"
+        (onChange)="onCategory($event)"
+        [filter]="true"
+        filterBy="title"
+      >
+      </p-dropdown>
+      </div>
+      <div class="p-field p-col">
+        <label class="d-block">دسته بندی دوم</label>
+        <p-dropdown
+          appendTo="body"
+          emptyFilterMessage="نتیجه ای یافت نشد"
+          [options]="subCategories"
+          optionLabel="title"
+          (onChange)="onSubCategory($event)"
+          [filter]="true"
+          filterBy="title"
+        >
+        </p-dropdown>
+      </div>
+      <div class="p-field p-col">
+        <label class="d-block">دسته بندی سوم</label>
+        <p-dropdown
+          appendTo="body"
+          emptyFilterMessage="نتیجه ای یافت نشد"
+          [options]="subSubCategories"
+          optionLabel="title"
+          (onChange)="onSubSubCategory($event)"
+          [filter]="true"
+          filterBy="title"
+        >
+        </p-dropdown>
+      </div>
+    </div>
+
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col text-right">
+        <label class="d-block">جزئیات محصول</label>
+        <textarea
+          class="form-control"
+          formControlName="detail"
+          id="detail"
+          rows="3"
+        ></textarea>
+      </div>
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col text-right">
+        <label class="d-block"> راهنما محصول</label>
+        <textarea
+          class="form-control"
+          formControlName="help"
+          id="help"
+          rows="3"
+        ></textarea>
+      </div>
+    </div>
+
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col text-right">
+        <label>تصویر کالا:</label>
+        <img [src]="product.image" class="img-responsive" width="180" />
+      </div>
+      <div class="p-field p-col text-right">
+        <label>آپلود تصویر کالا<label class="text-danger">*</label>:</label>
+        <p-fileUpload
+          chooseLabel="انتخاب تصویر"
+          uploadLabel="آپلود تصویر"
+          cancelLabel="انصراف"
+          customUpload="true"
+          (uploadHandler)="imageUploader($event)"
+          invalidFileSizeMessageDetail="حداکثر سایز فایل 2 مگابایت می باشد"
+          invalidFileSizeMessageSummary="اندازه فایل بیش از حد مجاز می باشد"
+          accept="image/jpeg,image/png"
+          maxFileSize="2000000"
+        >
+        </p-fileUpload>
+        <ul
+          class="mt-1 text-right list-inline"
+          *ngFor="let error of errorMessages.image"
+        >
+          <li
+            class="font-small text-danger font-weight-bold list-inline-item"
+            *ngIf="
+              form.get('image').hasError(error.type) &&
+              (form.get('image').dirty || form.get('image').touched)
+            "
+          >
+            {{ error.message }}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label class="d-block">تخفیف</label>
+
+        <p-dropdown
+        appendTo="body"
+        emptyFilterMessage="نتیجه ای یافت نشد"
+        [options]="discounts"
+        (onChange)="onDiscount($event)"
+        name="selectedDiscount"
+        optionLabel="discountTitle"
+        [filter]="true"
+        filterBy="discountTitle"
+      >
+      </p-dropdown>
+     </div>
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label class="d-block">کلمات کلیدی</label>
+        <p-chips formControlName="keywords"></p-chips>
+      </div>
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label class="d-block">توضیحات تصویر (سئو)</label>
+        <textarea
+          class="form-control"
+          formControlName="imageDescription"
+          id="imageDescription"
+          rows="3"
+        ></textarea>
+      </div>
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label class="d-block">توضیحات متا (سئو)</label>
+        <textarea
+          class="form-control"
+          formControlName="metaDescription"
+          id="metaDescription"
+          rows="3"
+        ></textarea>
+      </div>
+    </div>
+
+    <h3 class="pt-3">مدیریت ویژگی های محصول</h3>
+    <hr class="pb-2" />
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label class="d-block">ویژگی</label>
+        <input type="text" pInputText name="feature" id="feature" #feature />
+      </div>
+      <div class="p-field p-col">
+        <label class="d-block">مقدار</label>
+        <input type="text" pInputText name="value" id="value" #value />
+      </div>
+      <div class="p-field p-col">
+        <button
+          pButton
+          type="button"
+          (click)="addFeature(feature.value, value.value)"
+          label="ثبت ویژگی"
+          class="ui-button-info mt-4"
+        ></button>
+      </div>
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <p class="pt-3">لیست ویژگی انتخابی شما</p>
+        <p-table [value]="featureValues">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>ویژگی</th>
+              <th>مقدار</th>
+              <th>حذف ویژگی</th>
+              <th>ویرایش ویژگی</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-feature let-rowIndex="rowIndex">
+            <tr>
+              <td>{{ feature.feature }}</td>
+              <td>{{ feature.featureValues }}</td>
+              <td>
+                <i class="fas fa-trash" (click)="deleteFeature(rowIndex)"></i>
+              </td>
+              <td>
+                <i class="fas fa-edit" (click)="showDialogFeature(feature._id)"></i>
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage">
+            <tr>
+              <td colspan="3" class="text-right">هیچ ویژگی انتخاب نشده است.</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+
+    <h3 class="pt-3">مدیریت رنگ های محصول</h3>
+    <hr class="pb-2" />
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label class="d-block">رنگ</label>
+        <p-dropdown
+          appendTo="body"
+          emptyFilterMessage="نتیجه ای یافت نشد"
+          [options]="colors"
+          optionLabel="color"
+          placeholder="-- انتخاب کنید --"
+          (onChange)="onColor($event)"
+        >
+        </p-dropdown>
+      </div>
+      <div class="p-field p-col">
+        <label class="d-block">تصویر</label>
+        <p-fileUpload
+          chooseLabel="انتخاب تصویر"
+          uploadLabel="آپلود تصویر"
+          cancelLabel="انصراف"
+          customUpload="true"
+          (uploadHandler)="colorImageUploader($event)"
+          invalidFileSizeMessageDetail="حداکثر سایز فایل 2 مگابایت می باشد"
+          invalidFileSizeMessageSummary="اندازه فایل بیش از حد مجاز می باشد"
+          accept="image/jpeg,image/png"
+          maxFileSize="2000000"
+        >
+        </p-fileUpload>
+      </div>
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label class="d-block">قیمت</label>
+        <input type="text" pInputText name="price" id="price" #price />
+      </div>
+      <div class="p-field p-col">
+        <label class="d-block">موجودی</label>
+        <input type="text" pInputText name="number" id="number" #number />
+      </div>
+      <div class="p-field p-col">
+        <button
+          pButton
+          type="button"
+          (click)="addInfo(price.value, number.value)"
+          label="ثبت اطلاعات رنگ"
+          class="ui-button-info mt-4"
+        ></button>
+      </div>
+    </div>
+
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <p class="pt-3">لیست رنگ های انتخابی شما</p>
+        <p-table [value]="info">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>رنگ</th>
+              <th>کد رنگ</th>
+              <th>قیمت</th>
+              <th>موجودی اولیه</th>
+              <th>موجودی مانده</th>
+              <th>حذف رنگ</th>
+              <th>ویرایش</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-color let-rowIndex="rowIndex">
+            <tr>
+              <td>{{ color.color }}</td>
+              <td>{{ color.colorCode }}</td>
+              <td>{{ color.price }}</td>
+              <td>{{ color.initialNumber }}</td>
+              <td>{{ color.remainsNumber }}</td>
+              <td>
+                <i class="fas fa-trash" (click)="deleteInfo(rowIndex)"></i>
+              </td>
+              <td>
+                <i class="fas fa-edit" (click)="showDialogColor(color._id)"></i>
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage">
+            <tr>
+              <td colspan="5" class="text-right">هیچ رنگی ثبت نشده است.</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <div class="float-left">
+          <button
+            pButton
+            type="submit"
+            label="ثبت"
+            class="ui-button-success"
+            icon="pi pi-check"
+            iconPos="left"
+
+          ></button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<!--edit feature-->
+<p-dialog header="ویرایش ویژگی" [(visible)]="displayFeature">
+
+  <div style="direction: rtl; text-align: right">
+<!--    <form  class="w-100 mt-3">-->
+      <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col">
+          <label for="featureTitle">عنوان ویژگی:</label>
+          <input id="featureTitle" type="text" pInputText  [value]="featureTitle" [(ngModel)]="featureTitle"/>
+        </div>
+      </div>
+      <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col">
+          <label for="valueFeature">مقدار ویژگی:</label>
+          <input id="valueFeature" type="text" pInputText [value]="featureValue"  [(ngModel)]="featureValue"/>
+        </div>
+      </div>
+      <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col">
+          <div class="float-left">
+            <button
+              pButton
+              type="submit"
+              label="ثبت ویرایش"
+              class="ui-button-success"
+              icon="pi pi-edit"
+              iconPos="left"
+           (click)="updateFeature(featureID)" ></button>
+          </div>
+        </div>
+      </div>
+<!--    </form>-->
+  </div>
+
+</p-dialog>
+<!--edit color-->
+<p-dialog header="ویرایش رنگ " [(visible)]="displayColor">
+
+  <div style="direction: rtl; text-align: right">
+    <!--    <form  class="w-100 mt-3">-->
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label for="ColorTitle">عنوان رنگ:</label>
+        <input id="ColorTitle" type="text" pInputText  [value]="colorValue" [(ngModel)]="colorValue"/>
+      </div>
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label for="valueColor">قیمت:</label>
+        <input id="valueColor" type="text" pInputText [value]="colorPrice"  [(ngModel)]="colorPrice"/>
+      </div>
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label for="initialNumber">موجودی:</label>
+        <input id="initialNumber" type="text" pInputText [value]="initialNumber"  [(ngModel)]="initialNumber"/>
+      </div>
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label for="remainsNumber">موجودی باقی مانده:</label>
+        <input id="remainsNumber" type="text" pInputText [value]="remainsNumber"  [(ngModel)]="remainsNumber"/>
+      </div>
+    </div>
+    <div class="p-field p-col">
+      <label class="d-block">تصویر</label>
+      <p-fileUpload
+        chooseLabel="انتخاب تصویر"
+        uploadLabel="آپلود تصویر"
+        cancelLabel="انصراف"
+        customUpload="true"
+        (uploadHandler)="colorImageUploader($event)"
+        invalidFileSizeMessageDetail="حداکثر سایز فایل 2 مگابایت می باشد"
+        invalidFileSizeMessageSummary="اندازه فایل بیش از حد مجاز می باشد"
+        accept="image/jpeg,image/png"
+        maxFileSize="2000000"
+      >
+      </p-fileUpload>
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <div class="float-left">
+          <button
+            pButton
+            type="submit"
+            label="ثبت ویرایش"
+            class="ui-button-success"
+            icon="pi pi-edit"
+            iconPos="left"
+            (click)="updateColor()" ></button>
+        </div>
+      </div>
+    </div>
+    <!--    </form>-->
+  </div>
+
+</p-dialog>

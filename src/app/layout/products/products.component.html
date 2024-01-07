@@ -1,0 +1,285 @@
+<p-toast position="center"></p-toast>
+<app-header dir="rtl"></app-header>
+
+<section class="breadcrumbs">
+  <div class="container">
+    <ol class="pb-0">
+      <li><a routerLink="/">صفحه اصلی</a></li>
+
+      <li class="breadcrumb-item"
+      *ngIf="currentCategory === undefined && currentSubCategory === undefined && currentSubSubCategory === undefined">
+        همه ی محصولات
+      </li>
+      <li class="breadcrumb-item active"
+      *ngIf="currentCategory !== undefined && currentSubCategory === undefined && currentSubSubCategory === undefined">
+        {{ currentCategory.title }}
+      </li>
+      <li class="breadcrumb-item"
+      *ngIf="currentCategory !== undefined && currentSubCategory !== undefined && currentSubSubCategory === undefined">
+        <a (click)="goProduct(currentCategory._id, 0, 0)" class="nuxt-link-active">
+          {{ currentCategory.title }}
+        </a>
+      </li>
+      <li class="breadcrumb-item active"
+      *ngIf="currentCategory !== undefined && currentSubCategory !== undefined && currentSubSubCategory === undefined">
+        {{ currentSubCategory.title }}
+      </li>
+
+      <li class="breadcrumb-item"
+      *ngIf="currentCategory !== undefined && currentSubCategory !== undefined && currentSubSubCategory !== undefined">
+        <a (click)="goProduct(currentCategory._id,  currentSubCategory._id, 0)" class="nuxt-link-active">
+          {{ currentCategory.title }}
+        </a>
+      </li>
+      <li class="breadcrumb-item"
+      *ngIf="currentCategory !== undefined && currentSubCategory !== undefined && currentSubSubCategory !== undefined">
+        <a (click)="goProduct(currentCategory._id, currentSubCategory._id, 0)" class="nuxt-link-active">
+          {{ currentSubCategory.title }}
+        </a>
+      </li>
+      <li class="breadcrumb-item active"
+      *ngIf="currentCategory !== undefined && currentSubCategory !== undefined && currentSubSubCategory !== undefined">
+        {{ currentSubSubCategory.title }}
+      </li>
+
+    </ol>
+  </div>
+</section>
+<div class="container-fluid py-5" dir="rtl">
+  <div class="row justify-content-center">
+    <div class="col-lg-3 filter-pc-wrapper">
+      <div class="filter-box text-right">
+        <p-accordion [multiple]="true">
+          <p-accordionTab header="دسته بندی " [selected]="true">
+            <div class="ac">
+              <label (click)="goProduct(0, 0, 0)" class="ac-2-label">همه دسته بندی ها</label>
+            </div>
+            <div class="ac" *ngFor="let cat of categories; let catIndex = index">
+              <input *ngIf="cat.SubCategory.length > 0" class="ac-input"
+              id="cat-{{ cat._id }}" name="cat-{{ cat._id }}" type="checkbox" />
+              <label *ngIf="cat.SubCategory.length > 0"
+                class="ac-label" for="cat-{{ cat._id }}">{{ cat.title }}</label>
+
+              <article *ngIf="cat.SubCategory.length > 0" class="ac-text">
+                <div class="ac-sub">
+                  <label (click)="goProduct(cat._id, 0, 0)" class="ac-2-label">همه</label>
+                </div>
+                <div class="ac-sub" *ngFor="let sub of cat.SubCategory; let subIndex = index">
+
+                  <input *ngIf="sub.SubSubCategory.length > 0" class="ac-input"
+              id="sub-{{ sub._id }}" name="sub-{{ sub._id }}" type="checkbox" />
+
+                  <label *ngIf="sub.SubSubCategory.length > 0" class="ac-label"
+                  for="sub-{{ sub._id }}">
+                    {{ sub.title }}
+                  </label>
+
+                  <article *ngIf="sub.SubSubCategory.length > 0" class="ac-text">
+                    <div class="ac-sub-sub">
+                      <label (click)="goProduct(cat._id, sub._id, 0)" class="ac-3-label">همه</label>
+                    </div>
+                    <div class="ac-sub-sub" *ngFor="let subSub of sub.SubSubCategory;">
+                      <label (click)="goProduct(cat._id, sub._id, subSub._id)" class="ac-3-label">
+                        {{ subSub.title }}
+                      </label>
+                    </div>
+                  </article>
+
+                  <label *ngIf="sub.SubSubCategory.length === 0" class="ac-2-label"
+                    (click)="goProduct(cat._id, sub._id, 0)">
+                      {{ sub.title }}
+                    </label>
+
+                </div>
+              </article>
+
+              <label *ngIf="cat.SubCategory.length === 0" (click)="goProduct(cat._id, 0, 0)" class="ac-2-label">{{
+                cat.title }}</label>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="تخفیف" [selected]="true">
+            <label>فقط کالاهای تخفیف دار</label>
+            <p-inputSwitch [(ngModel)]="offer" name="offer" (onChange)="hasOffer()"></p-inputSwitch>
+          </p-accordionTab>
+        </p-accordion>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-9" *ngIf="products.length === 0">
+      <div class="bg-pagination w-100">
+        <p class="text-center font-weight-bold py-3 mb-0">
+          نتیجه جستجو یافت نشد.
+        </p>
+      </div>
+    </div>
+    <div class="col-sm-12 col-lg-9" *ngIf="products.length > 0">
+      <div class="row">
+        <div class="col-12 order-wrapper mb-4">
+          <div class="listing-header">
+            <ul class="listing-sort js-sort-options" data-label="مرتب‌سازی بر اساس :">
+              <li class="">
+                <a (click)="sort(1)" [ngClass]="sortId === 1 ? 'is-active' : ''">جدیدترین</a>
+              </li>
+              <li>
+                <a (click)="sort(2)" [ngClass]="sortId === 2 ? 'is-active' : ''">ارزان‌ترین</a>
+              </li>
+              <li>
+                <a (click)="sort(3)" [ngClass]="sortId === 3 ? 'is-active' : ''">گران‌ترین</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-3 mt-2 mb-3" *ngFor="let item of pageOfItems">
+          <div class="box">
+            <div class="badges" *ngIf="products[item.id]['discountStatus']">
+              %{{ products[item.id]["Discount"][0].discountPercent }}
+            </div>
+            <div class="badges" *ngIf="products[item.id]['discountStatus'] === false">
+              جدید
+            </div>
+            <img [src]="products[item.id]['image']" class="img-fluid" [alt]="products[item.id]['imageDescription']" />
+            <div class="category d-flex flex-row">
+              <div class="ml-auto">{{ products[item.id]["SubCategory"][0].title }}</div>
+              <div>{{ products[item.id]["SubSubCategory"][0].title }}</div>
+            </div>
+
+            <div class="title d-flex flex-row">
+              <a [routerLink]="['product-detail', products[item.id]['_id']]">
+                <h5>{{ products[item.id]["title"] }}</h5>
+              </a>
+            </div>
+            <div class="prices d-flex flex-row mb-4">
+              <span style="margin-left: 5px;">قیمت:</span>
+              <div class="old-price ml-2" *ngIf="products[item.id]['discountStatus'] === true">
+                {{ products[item.id]["info"][0].price | number }}
+              </div>
+              <div class="new-price ml-2" *ngIf="products[item.id]['discountStatus'] === true">
+                {{
+                products[item.id]["info"][0].price -
+                (products[item.id]["info"][0].price *
+                products[item.id]["Discount"][0].discountPercent) /
+                100 | number
+                }} تومان
+              </div>
+              <div class="new-price ml-2" *ngIf="products[item.id]['discountStatus'] === false">
+                {{ products[item.id]["info"][0].price | number }} تومان
+              </div>
+            </div>
+            <!-- <button pButton label="button" icon="pi pi-angle-left" iconPos="left" label="مشاهده" class="btn-buy" (click)="goDetail(products[item.id]['_id'])"></button> -->
+            <a (click)="goDetail(products[item.id]['_id'])" class="btn-buy">
+              <span>مشاهده</span>
+              <i class="pi pi-angle-left" style="vertical-align: middle;font-size: 14px;"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center bg-pagination mt-3" *ngIf="products.length > 0">
+        <jw-pagination [pageSize]="9" class="text-center" [items]="items" (changePage)="onChangePage($event)">
+        </jw-pagination>
+      </div>
+    </div>
+  </div>
+
+  <div class="filter-actions-wrapper">
+    <div class="filter-actions">
+      <a class="side-toggle" (click)="openFilter()">
+        <i class="mtr-filter"></i>
+        نمایش فیلترها
+      </a>
+      <a class="product-exposed-form_open" (click)="openSort()">
+        <i class="mtr-sort"></i>
+        <span>مرتب سازی</span>
+      </a>
+    </div>
+  </div>
+</div>
+<app-footer dir="rtl"></app-footer>
+
+<!-- Filter -->
+<p-sidebar Scroll [(visible)]="displayFilter" [modal]="true" position="left">
+  <div class="text-center searchText">فیلترها</div>
+
+  <div class="row justify-content-center mt-3 text-right" dir="rtl">
+
+    <div class="col-12">
+      <div class="filter-box">
+        <p-accordion [multiple]="true">
+          <p-accordionTab header="دسته بندی " [selected]="true">
+
+            <div class="ac">
+              <label (click)="goProduct(0, 0, 0)" class="ac-2-label">همه دسته بندی ها</label>
+            </div>
+            <div class="ac" *ngFor="let cat of categories; let catIndex = index">
+              <input *ngIf="cat.SubCategory.length > 0" class="ac-input"
+              id="mcat-{{ cat._id }}" name="mcat-{{ cat._id }}" type="checkbox" />
+              <label *ngIf="cat.SubCategory.length > 0"
+                class="ac-label" for="mcat-{{ cat._id }}">{{ cat.title }}</label>
+
+              <article *ngIf="cat.SubCategory.length > 0" class="ac-text">
+                <div class="ac-sub">
+                  <label (click)="goProduct(cat._id, 0, 0)" class="ac-2-label">همه</label>
+                </div>
+                <div class="ac-sub" *ngFor="let sub of cat.SubCategory; let subIndex = index">
+
+                  <input *ngIf="sub.SubSubCategory.length > 0" class="ac-input"
+              id="msub-{{ sub._id }}" name="msub-{{ sub._id }}" type="checkbox" />
+
+                  <label *ngIf="sub.SubSubCategory.length > 0" class="ac-label"
+                  for="msub-{{ sub._id }}">
+                    {{ sub.title }}
+                  </label>
+
+                  <article *ngIf="sub.SubSubCategory.length > 0" class="ac-text">
+                    <div class="ac-sub-sub">
+                      <label (click)="goProduct(cat._id, sub._id, 0)" class="ac-3-label">همه</label>
+                    </div>
+                    <div class="ac-sub-sub" *ngFor="let subSub of sub.SubSubCategory;">
+                      <label (click)="goProduct(cat._id, sub._id, subSub._id)" class="ac-3-label">
+                        {{ subSub.title }}
+                      </label>
+                    </div>
+                  </article>
+
+                  <label *ngIf="sub.SubSubCategory.length === 0" class="ac-2-label"
+                    (click)="goProduct(cat._id, sub._id, 0)">
+                      {{ sub.title }}
+                    </label>
+
+                </div>
+              </article>
+
+              <label *ngIf="cat.SubCategory.length === 0" (click)="goProduct(cat._id, 0, 0)" class="ac-2-label">{{
+                cat.title }}</label>
+            </div>
+
+          </p-accordionTab>
+          <p-accordionTab header="تخفیف">
+            <label>فقط کالاهای تخفیف دار</label>
+            <p-inputSwitch name="offer" [(ngModel)]="offer" (onChange)="hasOffer()"></p-inputSwitch>
+          </p-accordionTab>
+        </p-accordion>
+      </div>
+    </div>
+
+  </div>
+</p-sidebar>
+<!-- Sort -->
+<p-dialog [(visible)]="displaySort" [baseZIndex]="190000" [draggable]="false" [modal]="false" [resizable]="false"
+  [style]="{width:'30em',borderRadius:'20px'}" dir="rtl" header="" position="center">
+  <div class="row justify-content-center" dir="rtl">
+    <div class="col-12 align-items-center text-right">
+      <h3>مرتب‌سازی بر اساس</h3>
+      <ul class="vertical-sort">
+        <li (click)="sort(1)" [ngClass]="sortId === 1 ? 'is-active' : ''">
+          جدیدترین
+        </li>
+        <li (click)="sort(2)" [ngClass]="sortId === 2 ? 'is-active' : ''">
+          ارزان‌ترین
+        </li>
+        <li (click)="sort(3)" [ngClass]="sortId === 3 ? 'is-active' : ''">
+          گران‌ترین
+        </li>
+      </ul>
+    </div>
+  </div>
+</p-dialog>

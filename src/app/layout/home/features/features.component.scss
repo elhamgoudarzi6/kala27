@@ -1,0 +1,43 @@
+.counts {
+    padding: 15px 0;
+  }
+  
+  .counts .count-box {
+    padding: 30px 20px;
+    margin: 20px;
+    text-align: center;
+    background: #fff;
+    border-radius: 5px;
+  }
+
+  .counts .count-box i {
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    background: #cc3333;
+    padding: 12px;
+    color: #fff;
+    border-radius: 50px;
+    margin-top: 5px;
+  }
+  
+  .counts .count-box span {
+    font-size: 14px;
+    display: block;
+    font-weight: 400;
+    color: #222121;
+    margin: 5px 0;
+    font-family: IRANSans_Bold;
+  }
+  
+  .counts .count-box p {
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    font-family: 'IRANSans_Light' !important;
+  }
+  
+
+

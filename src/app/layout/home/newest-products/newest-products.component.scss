@@ -1,0 +1,171 @@
+.pricing{
+  padding: 40px 0;
+  text-align:center;
+  color: #034251;
+}
+.pricing .section-title {
+  color: #444;
+  font-size: 18px;
+}
+.detail{
+  margin-top: 10px;
+  margin-bottom: -10px;
+}
+.pricing .box {
+  padding: 40px 20px;
+  background: #fff;
+  text-align: center;
+  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s;
+  margin-left: 15px;
+}
+
+.pricing .box:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+  z-index: 9999999!important;
+}
+
+.pricing img {
+  padding: 30px 40px;
+}
+.pricing .btn-buy {
+  margin-top: 50px;
+  line-height: 0;
+  padding: 6px 30px;
+  border-radius: 4px;
+  transition: 0.5s;
+  color: #fff;
+  background: #cc3333;
+  // box-shadow: 0px 2px 15px rgba(110, 123, 238, 0.4);
+}
+
+.pricing .btn-buy span {
+  font-weight: 400;
+  font-size: 14px;
+  //letter-spacing: 1px;
+  margin-top: -40px;
+}
+.pricing .btn-buy i {
+  margin-right: 8px;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.pricing .btn-buy:hover i {
+  transform: translateX(5px);
+}
+
+.pricing .box .badges{
+  position: absolute;
+  font-size: 13px;
+  line-height: 15px;
+  top: 18px;
+  right:25px;
+  padding: 4px 12px;
+  background-color: #cc3333;
+  color: white;
+  border-radius: 5px;
+}
+.pricing .box .actions-list {
+  position: absolute;
+  overflow: hidden;
+  z-index: 1;
+  left: 0;
+  top: 15px;
+}
+.pricing .box .actions-list .action {
+  position: relative;
+  display: block;
+  padding-top: 10px;
+  padding-left: 20px;
+  margin: 0;
+  border: none;
+  transition: color .08s,background .08s;
+  background-color: transparent;
+  color: #ccc;
+}
+.pricing .box .actions-list .action:last-child {
+  border-bottom-left-radius: 2px;
+}
+
+.pricing .box .actions-list .action i{
+  color: #cc3333;
+}
+.pricing .box .actions-list .action:hover i{
+  color: #cc3333;
+}
+.pricing .box .category {
+  font-size: 11px;
+  line-height: 1;
+  color: #999;
+}
+.pricing .box .title {
+  line-height: 1.1875;
+  direction: rtl;
+  margin: 15px 0 5px;
+}
+.pricing .box .title h5 {
+  font-size: 14px;
+  color: #111;
+  text-align: center;
+  font-family: 'IRANSans_Light' !important;
+}
+.pricing .box .title h5:hover {
+   color: #000;
+}
+.pricing .prices {
+  color: #222;
+  font-size: 12px;
+text-align: center;
+line-height: 3;
+margin-top: -20px;
+}
+.pricing .prices .tag {
+margin-left: 5px;
+}
+
+.pricing .prices .na {
+  color: #ccc;
+  text-decoration: line-through;
+}
+
+@media (min-width: 1024px) {
+  .pricing .section-title {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pricing .section-title {
+    font-size: 14px;
+  }
+}
+
+
+  /*slider style*/
+   .owl-carousel .owl-item img {
+    display: block;
+    width: 100%;
+  }
+  :host::ng-deep .owl-prev,
+  :host::ng-deep .owl-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  :host::ng-deep .owl-prev {
+    left: 0;
+
+  }
+  :host::ng-deep .owl-next {
+    right: 0;
+  }
+
+:host::ng-deep.owl-stage{
+  margin: 25px;
+}

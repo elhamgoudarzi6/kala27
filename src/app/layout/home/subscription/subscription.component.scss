@@ -1,0 +1,59 @@
+.gift-container {
+  background-color: #707070;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+}
+
+.gift-bg {
+  background-image: url(../../../../assets/images/subscription.svg);
+  background-position: top center;
+  background-repeat: repeat;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+}
+.gift-container h4{
+margin-bottom: 15px;
+}
+
+input{
+  border-radius: 5px;
+  background-color: #fdfdfd;
+  font-family: IRANSans_Light !important;
+  text-align: center;
+}
+
+
+
+.title h4{
+  font-family: IRANSans_Bold;
+  font-size: 18px;
+}
+@media screen and (max-width:768px){
+  .title h4{
+    font-family: IRANSans_Bold;
+    font-weight: 200;
+    font-size: 12px;
+  }
+}
+.button {
+  color:#fff;
+  background-color:#cc3333;
+  border-radius: 5px;
+  border: 1px solid #cc3333 !important;
+
+}
+
+
+:host ::ng-deep .p-inputgroup {
+  flex-direction: row-reverse;
+}
+
+
+
+  
+   

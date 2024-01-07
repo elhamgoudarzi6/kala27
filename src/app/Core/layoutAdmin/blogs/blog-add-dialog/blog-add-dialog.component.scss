@@ -1,0 +1,15 @@
+:host ::ng-deep .p-editor-container .p-editor-content .ql-editor {
+  text-align: right;
+}
+
+:host ::ng-deep .p-button .p-button-icon-left {
+  margin-right: 0!important;
+  margin-left: 0.5rem;
+}
+:host ::ng-deep .p-toast .p-toast-message {
+  border-width: 0 6px 0 0!important;
+}
+:host ::ng-deep .p-toast .p-toast-message .p-toast-message-content .p-toast-message-text {
+  margin: 0 1rem 0 0!important;
+  text-align: right;
+}

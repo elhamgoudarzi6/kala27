@@ -1,0 +1,102 @@
+<p-toast position="center"></p-toast>
+<p-confirmDialog
+  [baseZIndex]="10000"
+  showEffect="fade"
+  closeOnEscape="true"
+></p-confirmDialog>
+
+<div class="pnl-content p-3">
+  <div class="box text-right" dir="rtl">
+    <p-table
+      [value]="sliders"
+      selectionMode="single"
+      #dt
+      [paginator]="true"
+      [rows]="4"
+      styleClass="p-datatable-responsive-demo"
+    >
+      <ng-template pTemplate="caption">
+        <div class="table-header row">
+          <div class="col-sm-6 text-right">لیست اسلایدر ها</div>
+          <div class="col-sm-6 text-left">
+            <button
+              pButton
+              (click)="showAddSliderDialog()"
+              pRipple
+              label="جدید"
+              icon="pi pi-plus"
+              class="p-button-success p-mr-2 p-button-icon-right"
+            ></button>
+          </div>
+          <div class="col-sm-12">
+                    <span class="p-input-icon-left w-100 mt-3">
+                      <i class="pi pi-search"></i>
+                      <input
+                        pInputText
+                        type="text"
+                        class="w-100"
+                        (input)="
+                          dt.filterGlobal($event.target.value, 'contains')
+                        "
+                        placeholder="جستجو کلی"
+                      />
+                    </span>
+          </div>
+        </div>
+      </ng-template>
+
+      <ng-template pTemplate="header">
+        <tr class="title-table">
+          <th class="text-center">ردیف</th>
+          <th class="text-center">تصویر</th>
+          <th class="text-center">لینک</th>
+          <th class="text-center">تگ</th>
+          <th class="text-center">عملیات</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-slider let-rowIndex="rowIndex">
+        <tr>
+          <td class="text-center">
+            <span class="p-column-title">ردیف:</span>
+            {{ rowIndex + 1 }}
+          </td>
+          <td class="text-center">
+            <span class="p-column-title">تصویر:</span>
+            <img class="img-fluid" [src]="slider.imageurl"/>
+          </td>
+          <td class="text-center" style="word-wrap: break-word">
+            <span class="p-column-title">لینک:</span>
+            {{ slider.link }}
+          </td>
+          <td class="text-center">
+            <span class="p-column-title">تگ:</span>
+            {{ slider.tag }}</td>
+          <td class="text-center">
+            <span class="p-column-title">عملیات:</span>
+            <button
+              pButton
+              pRipple
+              (click)="
+                        showEditSliderDialog(
+                          slider._id,
+                          slider.link,
+                          slider.tag,
+                          slider.imageurl
+                        )
+                      "
+              icon="pi pi-pencil"
+              class="p-button-outlined p-button-warning ml-2"
+            ></button>
+            <button
+              pButton
+              pRipple
+              (click)="deleteSlider(slider._id)"
+              icon="pi pi-trash"
+              class="p-button-outlined p-button-danger"
+            ></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

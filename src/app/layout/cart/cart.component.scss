@@ -1,0 +1,1230 @@
+//::ng-deep .stepar{
+//  font-family: IRANSans_Bold;
+//}
+//::ng-deep .stepar button {
+//  font-family: IRANSans_Light;
+//}
+//::ng-deep .stepar .table-step1 thead {
+//  background-color: #6880e8;
+//  color: #fff;
+//}
+//::ng-deep .stepar .table-step1 thead th{
+//  padding: 25px 0px !important;
+//}
+//::ng-deep .stepar .table-step1 thead th:first-child {
+//  border-radius: 0 10px 0 0;
+//}
+//::ng-deep .stepar .table-step1 thead th:last-child {
+//  border-radius:  10px 0 0 0;
+//}
+//::ng-deep .stepar .table-step1 tbody {
+//  border: 1px solid #5a6aa038;
+//}
+//::ng-deep .stepar .p-card.p-component {
+//  width: 500px;
+//  border: 1px solid #5767c359;
+//  border-radius: 3px;
+//}
+//
+//@media (max-width: 960px) {
+//  ::ng-deep .stepar .p-card.p-component {
+//    width: auto;
+//    border: 1px solid #5767c359;
+//    border-radius: 3px;
+//  }
+//}
+//::ng-deep .table-many td {
+//  text-align: left;
+//  font-family: IRANSans_Light;
+//}
+//::ng-deep .stepar .table-many th {
+//  font-family: IRANSans_Bold;
+//}
+//::ng-deep .stepar .table-many .footer span{
+//  font-family: IRANSans_Light;
+//  line-height: 3;
+//  font-size: 14px;
+//}
+//::ng-deep .stepar .table-many .footer{
+//  text-align: center;
+//}
+//::ng-deep .stepar .p-inputnumber {
+//  direction: ltr;
+//}
+//::ng-deep .stepar .p-field {
+//  margin-bottom: 0px;
+//}
+//::ng-deep .stepar span.p-inputgroup-addon {
+//  background: none;
+//  border: none;
+//}
+//::ng-deep .stepar input.p-inputtext.p-component::placeholder {
+//  font-family: IRANSans_Light;
+//  font-size: 14px;
+//}
+//::ng-deep input.p-inputtext.p-component {
+//  //border-radius: 10px;
+//  box-shadow: 0px 0px 10px 0px #e8e6e6b5;
+//}
+//::ng-deep .stepar select.form-select {
+//  font-family: IRANSans_Light;
+//  font-size: 14px;
+//}
+//::ng-deep .stepar textarea#exampleFormControlTextarea1 {
+//  font-family: IRANSans_Light;
+//  font-size: 14px;
+//}
+//::ng-deep .stepar .mat-horizontal-stepper-content {
+//  text-align: center;
+//}
+//::ng-deep .stepar button.mat-focus-indicator.mat-stepper-next.mat-button.mat-button-base {
+//  background-color: #7688d6c9;
+//  padding: 5px 70px;
+//  border-radius: 25px;
+//  color: #fff;
+//  margin-top: 10px;
+//}
+//::ng-deep .stepar button.mat-focus-indicator.mat-stepper-previous.mat-button.mat-button-base {
+//  background-color: #7688d6c9;
+//  padding: 5px 70px;
+//  border-radius: 25px;
+//  color: #fff;
+//  margin-top: 10px;
+//}
+//::ng-deep .stepar button.mat-focus-indicator.mat-button.mat-button-base {
+//  background-color: #7688d6c9;
+//  padding: 5px 70px;
+//  border-radius: 25px;
+//  color: #fff;
+//  margin-top: 10px;
+//}
+//::ng-deep .stepar p-card {
+//  float: left;
+//}
+:host::ng-deep.mat-step-icon-content {
+  font-family: IRANSans_Bold !important;
+}
+
+:host::ng-deep.mat-horizontal-stepper-header-container {
+  font-family: IRANSans_Bold;
+}
+
+:host::ng-deep.mat-stepper-horizontal {
+  font-family: IRANSans_Bold;
+  border-radius: 25px;
+}
+
+:host::ng-deep.mat-step-header .mat-step-icon-selected {
+  background: #CC3333;
+  height: 50px;
+  width: 50px;
+}
+
+:host::ng-deep.mat-step-header .mat-step-label {
+  color: white;
+}
+
+:host::ng-deep.mat-step-header .mat-step-label.mat-step-label-active {
+  color: white;
+}
+
+#headerstepmobile {
+  color: #CC3333;
+  text-align: center;
+  margin-top: -30px;
+  margin-bottom: 30px;
+}
+
+.alert-danger {
+  font-family: IRANSansWeb;
+  font-size: 12px;
+  margin-right: 1px !important;
+  margin-left: 1px !important;
+}
+
+/*::ng-deep.ng-star-inserted{*/
+/*font-family: Iransans-Bold;*/
+
+/*}*/
+.material-icons {
+  font-family: "Material Icons" !important;
+}
+
+.btn-primary {
+  font-family: IRANSansWeb_Bold;
+  font-size: 14px;
+}
+
+.fa {
+  font-family: "Material Icons" !important;
+}
+
+.panel {
+  font-family: IRANSans_Bold;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.alert-danger {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+p {
+  font-family: IRANSans_Bold;
+  font-size: 12px;
+  color: #333;
+  text-align: center;
+  margin-right: -15px !important;
+  margin-left: -15px !important;
+}
+
+.step2-panel-right {
+  font-family: IRANSans_Bold;
+  font-size: 17px;
+  color: black !important;
+}
+
+.btn {
+  font-family: IRANSans_Bold;
+  font-size: 14px;
+}
+
+span {
+  font-family: IRANSans_Bold;
+}
+
+:host::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header:hover {
+  /*background: #00b8d4;*/
+  border-color: #0d47a1;
+}
+
+:host::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header {
+  box-sizing: border-box;
+  flex-direction: column;
+  height: auto;
+  padding: 10px !important;
+}
+
+:host::ng-deep.matStepLabel {
+  color: #060705 !important;
+  font-size: 13px;
+}
+
+:host::ng-deep.mat-stepper-vertical {
+  //margin-top: -15px !important;
+  //margin-right: -15px !important;
+  //margin-left: -15px !important;
+
+}
+
+:host::ng-deep.mat-step-icon-content.ng-star-inserted {
+  font-family: IRANSans_Bold;
+}
+
+:host::ng-deep.mat-icon.notranslate.material-icons.mat-icon-no-color.ng-star-inserted {
+  font-family: "Material Icons" !important;
+}
+
+:host::ng-deep.mat-step-header .mat-step-label {
+  color: black !important;
+  font-size: 13px !important;
+}
+
+:host::ng-deep.mat-stepper-vertical-line::before {
+  color: #CC3333 !important;
+  border-width: medium !important;
+  border-style: solid !important;
+  margin-right: 10px !important;
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
+  margin-right: -10px !important;
+}
+
+:host::ng-deep.mat-vertical-stepper-header .mat-step-icon {
+  /*margin-right: -20px!important;*/
+}
+
+:host::ng-deep.mat-step-header .mat-step-icon {
+  height: 50px !important;
+  width: 50px !important;
+  /*margin-right: -20px!important;*/
+  border-style: solid !important;
+  border-width: thin !important;
+  border-color: #d39e00 !important;
+}
+
+:host::ng-deep.mat-step-header .mat-step-icon:hover {
+  background: #CC3333;
+}
+
+:host::ng-deep.ck.ck-editor__editable_inline > :first-child {
+  height: 100px !important;
+}
+
+:host::ng-deep.mat-form-field-appearance-outline .mat-form-field-infix {
+  margin-top: -5px;
+}
+
+textarea#tozihat {
+  color: black;
+  border-width: thin;
+  border-style: solid;
+  border-color: #29b6f6;
+  height: 150%;
+  width: 100%;
+  margin-right: -3%;
+}
+
+
+/*@media (min-width: 768px)  and (max-width: 991px){*/
+/*#mobile{*/
+/*display: block;*/
+/*margin-left:3%;*/
+/*}*/
+/*::ng-deep ng-template{*/
+/*font-size: 13px!important;*/
+/*}*/
+/*#headerstepmobile{*/
+/*font-size: 14px;*/
+/*color: #CC0000;*/
+/*text-align: center;*/
+/*margin-top: -30px;*/
+/*margin-bottom: 30px;*/
+/*}*/
+/*#mobile-title{*/
+/*font-size: 14px;*/
+/*}*/
+/*#pc{*/
+/*display: none;*/
+/*}*/
+/*}*/
+@media (max-width: 768px) {
+  ::ng-deep ng-template {
+    font-size: 13px !important;
+  }
+
+  #headerstepmobile {
+    font-size: 14px;
+    color: #CC0000;
+    text-align: center;
+    margin-top: -30px;
+    margin-bottom: 30px;
+  }
+
+  label {
+    font-size: 12px;
+
+  }
+
+  #title {
+    font-size: 14px;
+  }
+}
+
+.input-group-prepend input {
+  font-family: IRANSans_Bold;
+  border-width: thin;
+  border-style: solid;
+  border-bottom-color: #29b6f6 !important;
+  border-right-color: #29b6f6 !important;
+  border-top-color: #29b6f6 !important;
+
+  font-size: 15px;
+}
+
+select {
+  font-size: 15px;
+  border-width: thin;
+  border-style: solid;
+  border-color: #a94442;
+}
+
+input::-webkit-input-placeholder {
+  font-size: 12px;
+
+}
+
+.input-group-text {
+  /*border-color: #29b6f6!important;*/
+  border-bottom-color: #29b6f6 !important;
+  border-left-color: #29b6f6 !important;
+  border-top-color: #29b6f6 !important;
+
+
+}
+
+:host::ng-deep.modal-dialog.modal-notify .modal-body {
+  text-align: center !important;
+}
+
+.modal-footer {
+  justify-content: center !important;
+}
+
+.modal-dialog.modal-notify.modal-danger .modal-header {
+  /*background-color: #FF8800;*/
+  border-radius: 10px;
+}
+
+.modal-content {
+  border-radius: 10px !important;
+}
+
+.modal-dialog.modal-notify.modal-warning .modal-header {
+  background-color: #FF8800;
+  border-radius: 10px;
+}
+
+.modal-content {
+  border-radius: 10px !important;
+}
+
+/*Phones*/
+@media (max-width: 359px) and (min-width: 300px) {
+  /*.mat-stepper-horizontal {*/
+  /*margin-left: -4%!important;*/
+  /*margin-right: -4%!important;*/
+  /*}*/
+  .input-group-prepend {
+    margin-left: -40%;
+    margin-right: -20%;
+  }
+
+  input::-webkit-input-placeholder {
+    font-size: 10px;
+  }
+
+  .input-group label {
+    margin-right: -240%;
+    font-size: 11px;
+  }
+
+  .tozihat {
+    margin-right: -90%;
+    float: left;
+  }
+
+  #tozihat {
+    margin-left: -120%;
+  }
+
+  ::ng-deep .mat-step-label {
+
+    font-size: 11px !important;
+  }
+}
+
+/*Phones*/
+@media (max-width: 399px) and (min-width: 360px) {
+ :host ::ng-deep.mat-stepper-horizontal {
+    margin-left: -6%;
+    margin-right: -3%;
+  }
+
+  .input-group-prepend {
+    margin-left: -30%;
+    margin-right: -20%;
+  }
+
+  input::-webkit-input-placeholder {
+    font-size: 10px;
+  }
+
+  .input-group label {
+    margin-right: -165% !important;
+    font-size: 11px;
+  }
+
+  .tozihat {
+    margin-left: 20%;
+
+    float: left;
+  }
+
+  #tozihat {
+    margin-left: -120%;
+  }
+
+  :host::ng-deep .mat-step-label {
+
+    font-size: 12px !important;
+  }
+}
+
+@media (max-width: 449px) and (min-width: 400px) {
+
+  .input-group-prepend {
+    margin-left: -25%;
+    margin-right: -20%;
+  }
+
+  input::-webkit-input-placeholder {
+    font-size: 10px;
+  }
+
+  .input-group label {
+    margin-right: -120%;
+    font-size: 11px;
+  }
+
+  .tozihat {
+    margin-left: 30%;
+    float: left;
+
+
+  }
+
+  #tozihat {
+    margin-left: -120%;
+  }
+
+  :host::ng-deep .mat-step-label {
+
+    font-size: 12px !important;
+  }
+}
+
+/*Phones*/
+@media (max-width: 549px) and (min-width: 450px) {
+  .input-group-prepend {
+    margin-left: -20%;
+    margin-right: -10%;
+  }
+
+  input::-webkit-input-placeholder {
+    font-size: 10px;
+  }
+
+  .input-group label {
+    margin-right: -60%;
+    font-size: 12px;
+  }
+
+  .tozihat {
+    margin-left: 20%;
+    float: left;
+  }
+
+  #tozihat {
+    margin-left: -120%;
+  }
+
+ :host ::ng-deep .mat-step-label {
+
+    font-size: 11px !important;
+  }
+}
+
+@media (max-width: 767px) and (min-width: 550px) {
+  table thead th {
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  table tr th {
+    font-size: 13px !important;
+    cursor: pointer;
+  }
+
+  #titleUploadFile {
+    font-family: IRANSans_Bold !important;
+    font-size: 13px;
+  }
+
+  .input-group-prepend {
+    margin-left: -10%;
+    margin-right: -10%;
+  }
+
+  input::-webkit-input-placeholder {
+    font-size: 10px;
+  }
+
+  .input-group label {
+    margin-right: -60%;
+    font-size: 12px;
+  }
+
+  .tozihat {
+    margin-left: 50%;
+    float: left;
+  }
+
+  #tozihat {
+    margin-left: -120%;
+  }
+
+  :host::ng-deep .mat-step-label {
+
+    font-size: 13px !important;
+  }
+}
+
+
+/*Tables*/
+@media (max-width: 991px) and (min-width: 768px) {
+  .input-group-prepend {
+    margin-left: -10%;
+    margin-right: -10%;
+  }
+
+  input::-webkit-input-placeholder {
+    font-size: 10px;
+  }
+
+  .input-group label {
+    margin-right: -110%;
+    font-size: 12px;
+  }
+
+  .tozihat {
+    margin-left: 10%;
+    float: left;
+  }
+
+  #tozihat {
+    margin-left: -120%;
+  }
+
+  :host::ng-deep .mat-step-label {
+
+    font-size: 14px !important;
+  }
+
+}
+
+/*Small Laptop*/
+@media (max-width: 1199px) and (min-width: 992px) {
+
+  .input-group-prepend {
+    margin-left: -10%;
+    margin-right: -10%;
+  }
+
+  input::-webkit-input-placeholder {
+    font-size: 10px;
+  }
+
+  .input-group label {
+    margin-right: -50%;
+    font-size: 12px;
+  }
+
+  .tozihat {
+    margin-left: 10%;
+    float: left;
+  }
+
+  #tozihat {
+    margin-left: -120%;
+  }
+
+}
+
+:host::ng-deep.form-control.is-invalid {
+  background-position: center left calc(.375em + .1875rem);
+}
+
+.validationForm {
+  font-size: 11px !important;
+}
+
+table thead th {
+  font-size: 14px;
+  cursor: pointer;
+}
+
+table tr th {
+  font-size: 14px !important;
+  cursor: pointer;
+}
+
+table tbody tr:hover {
+  background: #FF8800;
+  color: white;
+}
+
+#titleUploadFile {
+  font-family: IRANSans_Bold !important;
+  font-size: 15px;
+}
+
+.progress-bar {
+  font-size: 14px;
+}
+
+.modal-title {
+  margin-left: 40%;
+}
+
+.modal {
+  padding-right: 15px !important;
+  padding-left: 15px !important;
+}
+
+.imgUploadFile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imgUploadFilePDF {
+  display: flex;
+  justify-content: center;
+}
+
+.view.view-cascade {
+  margin-left: 70% !important;
+  /*margin-right: 10%!important;*/
+  margin-top: -20px;
+  background: #a5becf;
+  /*color: white;*/
+  color: #333;
+  font-size: 12px;
+  border-radius: 10px !important;
+  border-style: solid;
+  border-width: thin;
+  border-color: #a5becf;
+
+}
+
+.card {
+  border-radius: 10px !important;
+  border-style: solid;
+  border-width: thin;
+  border-color: white;
+}
+
+.card.card-cascade {
+  width: 100rem;
+}
+
+.input-group {
+  font-family: IRANSans_Bold;
+}
+
+/*.form-control{*/
+
+/*  border-style: solid;*/
+/*  border-width: thin;*/
+/*  border-color:#e0e0e0;*/
+/*  font-family: IRANSansWeb;*/
+/*  font-size: 15px;*/
+/*  background:#fff3e0 ;*/
+
+/*}*/
+.fas {
+  color: #e65100;
+}
+
+.btn-primary {
+  font-family: IRANSans_Bold;
+  font-size: 15px;
+  line-height: 1;
+  border-radius: 10px !important;
+  border-style: solid;
+  border-width: thin;
+  border-color: white;
+}
+
+mat-radio-button {
+  font-family: IRANSans_Bold;
+
+}
+
+.list-group-item {
+  display: list-item !important;
+  padding-top: -15px !important;
+}
+
+hr {
+  margin-bottom: -16px !important;
+}
+
+.card.card-cascade.narrower .view.view-cascade {
+  margin-top: -1.85rem !important;
+}
+
+@media (max-width: 768px) {
+  .view.view-cascade {
+    margin-left: 65% !important;
+  }
+}
+
+.border-stepper {
+  border-radius: 10px !important;
+}
+
+.classic-tabs .nav li a {
+  color: #fff;
+  font-size: 14px;
+}
+
+:host::ng-deep.mat-step-header .mat-step-icon-state-edit {
+  background-color: #4d4d4d !important;
+  color: white;
+}
+
+.mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile {
+    display: block;
+
+  }
+
+  :host::ng-deep.mat-vertical-content-container {
+    margin-left: 0;
+    margin-right: 55px !important;
+
+  }
+
+  .pc {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile {
+    display: none;
+
+  }
+
+  :host::ng-deep.mat-vertical-content-container {
+    margin-left: 0;
+    margin-right: 55px !important;
+  }
+
+  .pc {
+    display: block;
+    margin: 5px;
+  }
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin-right: 60px !important;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
+.example-container .mat-form-field + .mat-form-field {
+  margin-left: 1px;
+}
+
+.example-right-align {
+  text-align: left;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: block;
+}
+
+input.example-right-align {
+  -moz-appearance: textfield;
+}
+
+:host::ng-deep.mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: transparent !important;
+}
+
+:host::ng-deep.mat-form-field-label-wrapper {
+  font-family: IRANSans_Bold;
+  text-align: right;
+}
+
+#IranMap .map {
+
+  width: 100% !important;
+
+}
+
+.fa-info-circle {
+  color: #90caf9 !important;
+  border-color: #bbdefb;
+  background: white !important;
+  text-align: left;
+  font-size: 100px;
+}
+
+:host:host::ng-deep.ui-fileupload-row > div {
+  display: table-cell;
+  padding: .5em 1em;
+  vertical-align: middle;
+  width: 200px;
+  /* margin-right: 200px; */
+}
+
+:host::ng-deep legend {
+  display: block;
+  width: 20% !important;
+  /*max-width: 100%;*/
+  padding: 0;
+
+}
+
+:host::ng-deep.ui-inputtext.ng-valid {
+  border: 1.3px solid #00C851 !important;
+}
+
+:host::ng-deep .ui-inputtext.ng-dirty.ng-invalid {
+  border: 1.3px solid #ff0808 !important;
+}
+
+label {
+  font-family: IRANSans_Bold;
+}
+
+input {
+  //font-family: IRANSansWeb_Bold;
+}
+
+/*:host::ng-deep.ui-fieldset {*/
+/*  border: 1px solid #c8c8c8;*/
+/*  background-color: #d5e3ec!important;*/
+/*  color: #333333;*/
+/*}*/
+:host::ng-deep.ui-fieldset {
+  border-radius: 10px !important;
+  border: 2px solid #a5becf;
+}
+
+:host::ng-deep.ui-fieldset .ui-fieldset-legend a {
+  padding: 0.571em 1em;
+  border: 2px solid #a5becf;
+  background-color: #0099CC;
+  border-radius: 7px;
+  color: #fff;
+  font-size: 14px;
+}
+
+@media (max-width: 768px ) {
+  :host::ng-deep.ui-fieldset .ui-fieldset-legend a {
+    padding-left: 2em;
+    border: 2px solid #a5becf;
+    background-color: #0099CC;
+    border-radius: 7px;
+    color: #fff;
+  }
+}
+
+:host::ng-deep.ui-button {
+  font-family: IRANSans_Bold !important;
+
+}
+
+:host::ng-deep.ui-toast-message-text-content {
+  font-family: IRANSans_Bold;
+}
+
+:host::ng-deep.ui-chkbox-label {
+  color: #0d5bdd !important;
+  font-family: IRANSans_Bold;
+}
+
+:host::ng-deep.ui-fileupload-files img {
+  /* border: 0; */
+  border-style: solid;
+  border-color: black;
+  border-width: thin;
+  height: 100px;
+  width: 100px;
+}
+
+textarea {
+  font-family: IRANSans_Bold;
+}
+
+:host::ng-deep.x.p-panel .p-panel-header {
+  color: #4d4d4d !important;
+  font-family: IRANSans_Light !important;
+
+}
+
+:host::ng-deep.p-datatable .p-datatable-tbody > tr > td {
+  font-family: IRANSans_Light !important;
+  text-align: center;
+}
+
+:host::ng-deep.p-datatable .p-datatable-thead > tr > th {
+  background: #e0e0e0 !important;
+  color: #4d4d4d !important;
+  font-family: IRANSans_Light !important;
+  text-align: center;
+}
+
+/*.pi {*/
+/*  font-family: 'primeicons'!important;*/
+/*}*/
+.TitlePanel {
+  font-family: IRANSans_Light !important;
+  color: black !important;
+  font-size: 15px;
+}
+
+:host::ng-deep.p-card {
+  border: 1px solid #bdbdbd !important;
+}
+
+.titleCard {
+  font-family: IRANSans_Bold;
+  font-size: 16px;
+}
+
+.subTitleCard {
+  font-family: IRANSans_Light;
+  font-size: 15px;
+}
+
+.breadcrumb-item {
+  font-family: IRANSans_Light;
+  font-size: 15px;
+
+}
+
+:host::ng-deep.mat-step-text-label {
+  font-family: IRANSans_Bold;
+}
+
+:host::ng-deep.ng-star-inserted {
+  /*font-family: IRANSans_Bold;*/
+
+}
+
+label {
+  font-family: IRANSans_Light;
+
+}
+
+:host::ng-deep.p-dropdown.p-dropdown-clearable .p-dropdown-label {
+  text-align: right !important;
+  margin-right: 20px !important;
+}
+
+:host::ng-deep.p-dropdown .p-dropdown-clear-icon {
+  right: 1rem !important;
+}
+
+:host::ng-deep.p-dropdown-panel .p-dropdown-items {
+  font-family: IRANSans_Light !important;
+  text-align: right !important;
+}
+
+.postText {
+  font-family: IRANSans_Light;
+  font-size: 16px;
+  color: #2e6da4;
+}
+
+.login-link {
+  font-size: 12px;
+}
+
+.nav-tabs .nav-item {
+  width: 50%;
+  text-align: center;
+}
+
+.nav-tabs .nav-item .nav-link {
+  background-color: #f2f2f2 !important;
+  border: none !important;
+  border-top: 2px #f2f2f2 solid !important;
+  color: darkgrey;
+  font-weight: normal;
+  border-radius: unset !important;
+  line-height: 35px;
+}
+
+.nav-tabs .nav-item .nav-link.active {
+  background-color: #ffffff !important;
+  border: none !important;
+  border-top: 2px #CC3333 solid !important;
+  color: #CC3333;
+  font-weight: bold;
+  line-height: 35px;
+}
+
+.nav-tabs {
+  margin-bottom: 25px;
+  border-bottom: none !important;
+}
+
+.nav-tabs .nav-item.show .nav-link, .login-nav .nav-link.active {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+
+:host ::ng-deep .p-datatable-responsive-demo .p-datatable-tbody > tr > td .p-column-title {
+  display: none;
+}
+
+@media screen and (max-width: 40rem) {
+  :host ::ng-deep .p-datatable.p-datatable-responsive-demo .p-datatable-thead > tr > th, :host ::ng-deep .p-datatable.p-datatable-responsive-demo .p-datatable-tfoot > tr > td {
+    display: none !important;
+    text-align: right !important;
+  }
+
+  :host ::ng-deep .p-datatable.p-datatable-responsive-demo .p-datatable-tbody > tr > td {
+    text-align: right;
+    display: block;
+    width: 100%;
+    float: left;
+    clear: left;
+    border: 0 none;
+  }
+
+  :host ::ng-deep .p-datatable.p-datatable-responsive-demo .p-datatable-tbody > tr > td .p-column-title {
+    padding: 0.4rem;
+    min-width: 30%;
+    display: inline-block;
+    margin: -0.4em -0.4em -0.4em 1rem;
+    font-weight: bold;
+  }
+
+  :host ::ng-deep .p-datatable.p-datatable-responsive-demo .p-datatable-tbody > tr > td:last-child {
+    border-bottom: 1px solid var(--surface-d);
+  }
+}
+
+/*df*/
+.product-item {
+  display: flex;
+  align-items: center;
+  padding: .5rem;
+  width: 100%;
+}
+
+.product-image {
+  width: 75px;
+
+}
+
+.product-list-detail {
+  flex: 1 1 0;
+}
+
+.product-list-action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.product-category-icon {
+  vertical-align: middle;
+  margin-right: .5rem;
+}
+
+.product-category {
+  vertical-align: middle;
+  line-height: 1;
+}
+
+
+@media screen and (max-width: 576px) {
+  .product-item {
+    flex-wrap: wrap;
+  }
+
+  .image-container {
+    width: 100%;
+    text-align: center;
+  }
+
+  img {
+    margin: 0 0 1rem 0;
+    width: 100px;
+  }
+}
+
+.pi-trash {
+  z-index: 999999;
+  position: absolute;
+  left: 8px;
+  top: 5px;
+}
+
+input, select {
+  font-family: IRANSans_Bold;
+}
+
+:host::ng-deep.mat-radio-label-content {
+
+  font-family: IRANSans_Bold !important;
+}
+
+@media screen and (max-width: 769px) {
+  :host::ng-deep .p-orderlist .p-orderlist-controls .p-button:first-child {
+    margin-right: 0 !important;
+  }
+
+  :host::ng-deep .p-orderlist .p-orderlist-controls .p-button:last-child {
+    margin-right: 0.5rem !important;
+    margin-bottom: 0 !important;
+  }
+
+  :host::ng-deep .p-orderlist .p-button{
+    background: #cc3333!important;
+    border: 1px solid #cc3333!important;
+  }
+}
+.list-group-item{
+  font-family: IRANSans_Light;
+}
+:host ::ng-deep {
+  .p-datatable-responsive-demo .p-datatable-tbody > tr > td .p-column-title {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 60rem) {
+  :host ::ng-deep {
+    .p-datatable {
+      &.p-datatable-responsive-demo {
+        .p-datatable-thead > tr > th,
+        .p-datatable-tfoot > tr > td {
+          display: none !important;
+        }
+
+        .p-datatable-tbody > tr > td {
+          text-align: left;
+          display: block;
+          width: 100%;
+          float: left;
+          clear: left;
+          border: 0 none;
+
+          .p-column-title {
+            padding: .4rem;
+            min-width: 30%;
+            display: inline-block;
+            margin: -.4em 1em -.4em -.4rem;
+            font-weight: bold;
+          }
+
+          &:last-child {
+            border-bottom: 1px solid var(--surface-d);
+          }
+        }
+      }
+    }
+  }
+}
+:host ::ng-deep .p-inputnumber {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  width: 100%;
+}
+
+:host ::ng-deep .p-inputnumber-buttons-horizontal .p-inputnumber-input {
+  border-radius: 0;
+  order: 2;
+  width: 6rem;
+}

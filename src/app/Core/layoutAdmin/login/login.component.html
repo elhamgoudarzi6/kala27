@@ -1,0 +1,77 @@
+<p-toast position="center"></p-toast>
+<div class="container" dir="rtl">
+
+  <div class="row justify-content-center align-content-around" style="height: 100vh">
+
+    <div class="col-sm-12 col-md-8 align-items-center">
+
+      <div class="box">
+
+        <div class="row justify-content-center no-gutters">
+          <div class="col-12 text-center mx-auto align-self-center mt-4">
+            <a routerLink="/">
+              <img width="180px" src="../../../assets/images/logo.png" class="img-fluid" alt="">
+            </a>
+          </div>
+        </div>
+        <form (ngSubmit)="login()" [formGroup]="loginForm" class="w-100">
+          <div class="row justify-content-center p-4">
+            <div class="col-12 text-center">
+              <div class="form-group">
+                  <span class="p-input-icon-right w-100">
+                    <i class="pi pi-user text-dark"></i>
+                  <input class="form-control" formControlName="username"
+                         name="username" pInputText
+                         placeholder="نام کاربری" required>
+
+                  </span>
+                <ul class="mt-1 text-right list-inline" *ngFor="let error of loginErrorMessages.username">
+                  <li class="font-small text-danger font-weight-bold list-inline-item"
+                      *ngIf="loginForm.get('username').hasError(error.type)
+                            && (loginForm.get('username').dirty
+                            || loginForm.get('username').touched)">
+                    {{ error.message }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-12 text-center">
+              <div class="form-group mb-3">
+                  <span class=" p-input-icon-right w-100">
+                  <i class="pi pi-eye text-dark"
+                     (click)="passwordInput.type == 'password' ? passwordInput.type = 'text' : passwordInput.type = 'password' "></i>
+                  <input class="form-control" #passwordInput formControlName="password"
+                         minlength="5"
+                         name="password" pInputText
+                         placeholder="کلمه عبور" required type="password">
+                  </span>
+                <ul class="mt-1 text-right list-inline" *ngFor="let error of loginErrorMessages.password">
+                  <li class="font-small text-danger font-weight-bold list-inline-item"
+                      *ngIf="loginForm.get('password').hasError(error.type)
+                            && (loginForm.get('password').dirty
+                            || loginForm.get('password').touched)">
+                    {{ error.message }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-12 text-right">
+                <span class="float-right text-right login-link pointer" routerLink="/admin/reset">
+                  <i class="pi pi-key text-dark ml-3"></i> کلمه عبور خود را فراموش کرده ام
+                </span>
+            </div>
+            <div class="col-md-6 pt-4">
+              <div class="text-center">
+                <button [disabled]="loginForm.invalid" class="btn btn-block btn-primary" mat-raised-button
+                        type="submit">ورود
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,431 @@
+.breadcrumbs {
+  padding: 15px 0;
+  background: #fff !important;
+  min-height: 40px;
+  color: #4d4d4d;
+  margin-top: 15px;
+}
+
+@media (max-width: 992px) {
+  .breadcrumbs {
+    margin-top: 57px;
+  }
+  .blog .entry .entry-title a {
+    font-size: 16px;
+  }
+}
+
+.breadcrumbs h2 {
+  font-size: 14px;
+  font-weight: 500;
+  text-align: right;
+}
+
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0 0 10px 0;
+  margin: 0;
+  font-size: 14px;
+}
+
+.breadcrumbs ol a {
+  color: #4d4d4d;
+  transition: 0.3s;
+}
+
+.breadcrumbs ol li + li {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.breadcrumbs ol li + li::before {
+  display: inline-block;
+  padding-left: 10px !important;
+  padding-right: 0px !important;
+  color: #4d4d4d;
+  content: "/";
+}
+.breadcrumb-item+.breadcrumb-item::before {
+  float: right !important;
+  padding-right: .5rem;
+  color: #6c757d;
+  content: "/";
+}
+.breadcrumb-item.active {
+  color: #4d4d4d;
+  opacity: .8;
+}
+.nuxt-link-active{
+  cursor: pointer;
+}
+.box{
+    border-radius: 0 0 8px 8px;
+    margin-bottom: 30px;
+    transition: all .5s ease;
+    background-color: white;
+    border-radius: 20px;
+    padding: 15px;
+  }
+  .btn{
+      background-color: #00c7a0;
+  }
+.img-fluid{
+  border-radius: 15px;
+}
+.head{
+  font-family: 'IRANSans_Bold';
+  font-size: 13px;
+}
+.tabview{
+text-decoration: none;
+}
+
+
+:host ::ng-deep .tabview .p-tabview-nav{
+  padding: 0;
+  font-size: 14px;
+}
+.tabview p{
+  text-align:justify;
+  padding:20px;
+  font-family: IRANSans_Light;
+  line-height: 30px;
+  color: #999;
+  }
+
+  table {
+    color: #4D4D4D;
+    font-family: IRANSans_Light;
+    width: 100%;
+    margin: 0;
+    border-collapse: separate;
+    border-spacing: 5px;
+  }
+  table tr td:first-child {
+    width: 150px;
+    background-color: #f3f3f3;
+  }
+  table tr td:last-child {
+    background-color: #fbfbfb;
+    font-family: serif;
+  }
+  table tr td {
+    padding: 5px 10px;
+    font-family: IRANSans_Light !important;
+
+  }
+
+  .comment{
+    color: #4D4D4D;
+    border-bottom: 1px #f2f2f2 solid;
+    font-family: IRANSans_Bold;
+  }
+  .comment p {
+    font-size: 12px;
+    font-family: IRANSans_Bold;
+  }
+  label{
+    font-family: IRANSans_Bold;
+    font-size: 16px;
+float: right;
+color: #999;
+
+ }
+  :host::ng-deep.p-galleria-thumbnail-item {
+    overflow: hidden!important;
+  }
+
+
+:host ::ng-deep .ngxImageZoomContainer{
+  width: 100%!important;
+  display: block;
+  height: unset!important;
+}
+:host ::ng-deep .ngxImageZoomThumbnail{
+  width: 100%!important;
+  display: block;
+}
+
+:host ::ng-deep .p-tooltip{
+  direction: rtl;
+}
+:host ::ng-deep .p-tooltip-text{
+  text-align: right;
+}
+:host ::ng-deep .ngxImageZoomThumbnail{
+  padding: 20px;
+}
+.full-screen{
+  position: absolute;
+  top: -25px;
+  left: 10px;
+  color: #cdc9c9;
+}
+
+
+  .owl-carousel .owl-item img {
+    display: block;
+    width: 100%;
+  }
+
+
+
+
+
+
+  :host ::ng-deep .ngxImageZoomContainer{
+    width: 100%!important;
+    display: block;
+    height: unset!important;
+  }
+  :host ::ng-deep .ngxImageZoomThumbnail{
+    width: 100%!important;
+    display: block;
+  }
+
+  :host ::ng-deep .p-tooltip{
+    direction: rtl;
+  }
+  :host ::ng-deep .p-tooltip-text{
+    text-align: right;
+  }
+  :host ::ng-deep .ngxImageZoomThumbnail{
+    padding: 20px;
+  }
+  .full-screen{
+    position: absolute;
+    top: -25px;
+    left: 10px;
+    color: #cdc9c9;
+  }
+  .container-fluid{
+    background-color: #fff;
+  }
+:host::ng-deep.p-panel .p-panel-header {
+ background: #fff!important;
+}
+.summary {
+  float: left;
+  //width: 60%;
+  clear: none;
+  padding-right: 15px;
+  border-right: 1px solid #f2f2f2;
+}
+.ptitle-con {
+  clear: none;
+  margin: 0 0 10px;
+  //line-height: 1.5;
+  display: block;
+  float: right;
+  width: 100%;
+}
+.product_title {
+  clear: none;
+  margin: 0 0 10px;
+  font-size: 19px;
+  line-height: 1.5;
+  float: right;
+  padding-bottom: 7px;
+  width: 100%;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+
+
+.command-form{
+  margin: 0 8%;
+}
+//comment
+
+.title-box-d {
+  padding-bottom:20px;
+  margin-bottom: 15px;
+  position: relative;
+  text-align: right;
+}
+.title-box-d .title-d {
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.title-box-d .title-d:after {
+  content: '';
+  position: absolute;
+  width: 70px;
+  height: 3px;
+  background-color: #cc3333;
+  bottom: 20px;
+  right:0;
+}
+.box-comments {
+  text-align: right;
+  padding: 10px 30px;
+}
+.box-comments .list-comments{
+  background-color: f8f8f8;
+}
+.box-comments .list-comments{
+  background-color: f8f8f8;
+}
+.box-comments .list-comments li {
+  padding-bottom:5px;
+  list-style: none;
+
+}
+
+.box-comments .list-comments .comment-avatar {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.box-comments .list-comments .comment-avatar img {
+  width: 70px;
+  height: 70px;
+  border-radius: 40px;
+}
+
+.box-comments .list-comments .comment-author {
+  font-size:12px;
+
+}
+
+@media (min-width: 768px) {
+  .box-comments .list-comments .comment-author {
+    font-size:16px;
+  }
+
+}
+
+.box-comments .list-comments .comment-details {
+  display: table-cell;
+  vertical-align: top;
+  padding-right: 25px;
+  font-family: 'IRANSans_Light' !important;
+
+}
+
+.box-comments .list-comments .comment-date {
+  color: #b9b7b7;
+  font-family: 'IRANSans_Light' !important;
+  font-size:10px;
+
+}
+.box-comments .list-comments .comment-description {
+  padding:10px 0 10px 0;
+  font-family: 'IRANSans_Light' !important;
+  font-size:16px;
+
+}
+
+.box-comments .list-comments a {
+  color: #000000;
+}
+
+.box-comments .list-comments span {
+  display: block;
+  color: #2B2A2A;
+  font-style: italic;
+
+}
+
+.box-comments .comment-children {
+  margin-right: 50px;
+  background-color: #f9f9f9;
+  padding:15px 30px;
+  border-radius: 20px;
+}
+
+.detail-box{
+  margin-top: 25px;
+    padding: 40px 20px;
+    background: #fff;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin-left: 15px;
+}
+.add-to-cart {
+  background: #cc3333;
+  padding: 10px 20px;
+  border: none;
+  font-weight: bold;
+  color: #fff;
+        }
+  .add-to-cart:hover{
+    background: #cc3333;
+    color: #fff;
+  }
+  :host ::ng-deep .p-inputnumber {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    width: 100%;
+}
+:host ::ng-deep .p-tabview-title {
+  padding-right: 5px;
+  line-height: 1;
+  font-size: 12px;
+
+}
+:host ::ng-deep ng-image-fullscreen-view .ng-image-fullscreen-view .lightbox-wrapper .lightbox-div .prev {
+  display: none;
+}
+:host ::ng-deep ng-image-fullscreen-view .ng-image-fullscreen-view .lightbox-wrapper .lightbox-div .next {
+  display: none;
+}
+:host ::ng-deep .p-button.p-button-info, .p-buttonset.p-button-info > .p-button, .p-splitbutton.p-button-info > .p-button {
+  background: #cc3333;
+  border: 1px solid #cc3333;
+}
+:host ::ng-deep .p-toast .p-toast-message {
+  border-width: 0 6px 0 0!important;
+}
+:host ::ng-deep .p-toast .p-toast-message .p-toast-message-content .p-toast-message-text {
+  margin: 0 1rem 0 0!important;
+  text-align: right;
+}
+:host ::ng-deep .p-dialog.p-confirm-dialog .p-confirm-dialog-message {
+  margin-right: 1rem!important;
+  margin-left: none!important;
+}
+.c-circle-variant__item {
+  margin: 4px 0 4px 8px;
+  width: 32px;
+  height: 32px;
+}
+
+
+.p-tabview .p-tabview-left-icon {
+    margin-right: 0.5rem;
+}
+.pi {
+    font-family: 'primeicons';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-feature-settings: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.p-component, .p-component * {
+    box-sizing: border-box;
+}
+.pi {
+    font-size: 1rem;
+}
+* {
+    box-sizing: border-box;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+:host ::ng-deep  .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+    background: #ffffff;
+    border-color: #cc3333;
+    color: #cc3333;
+}
+

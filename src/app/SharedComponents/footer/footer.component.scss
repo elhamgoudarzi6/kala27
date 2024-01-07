@@ -1,0 +1,86 @@
+.footer-bg{
+  padding: 40px 0;
+  direction: rtl;
+  text-align: right;
+  color: #393b3b;
+  width: 100%;
+  // background: url("../../../assets/images/footer-bg.png") top center no-repeat;
+  // background-size: cover;
+  background-color: #fff;
+    box-shadow: 0px 5px 10px rgba(192, 197, 250, 0.4);
+  border-top: 1px solid #e9e8e8 !important;
+}
+.footer-sec{
+  font-size: 14px;
+  margin-bottom: 20px;
+ }
+.footer-sec-detail{
+  list-style: none;
+  margin: unset;
+  padding: unset;
+}
+.footer-sec-about {
+  font-size: 13px;
+  font-family: 'IRANSans_Light' !important;
+  text-align: justify;
+}
+
+.footer-sec-detail li i{
+  color: #858585;
+}
+
+ .social-links a {
+  font-size: 13px;
+  display: inline-block;
+  background: #858585;
+  color: #fff;
+  line-height: 1;
+  padding: 8px 0;
+  margin-right: 4px;
+  margin-top: 10px;
+  border-radius: 5px;
+  text-align: center;
+  width: 34px;
+  height: 34px;
+  transition: 0.3s;
+}
+
+.social-links a i{
+  padding: 4px;
+}
+
+ .social-links a:hover {
+  background: #b3b2b2;
+  text-decoration: none;
+}
+.footer-sec-detail li, a{
+  font-size: 13px;
+  font-family: 'IRANSans_Light' !important;
+  margin-bottom: 3px;
+  cursor: pointer;
+  color: #08404f;
+}
+.footer-sec-detail li, a:hover{
+  text-decoration: none;
+}
+.copy-bg{
+  background-color: #707070;
+  color: #fff;
+  font-family: 'IRANSans_Light' !important;
+}
+.copyright {
+  text-align: center;
+  padding-top: 15px;
+  font-size: 13px;
+}
+
+ .credits {
+  padding-top: 3px;
+  padding-bottom: 10px;
+  text-align: center;
+  font-size: 13px;
+}
+.credits a{
+  color:#fff;
+}
+

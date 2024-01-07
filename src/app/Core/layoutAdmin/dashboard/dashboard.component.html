@@ -1,0 +1,167 @@
+<mat-sidenav-container class="sidenav-container" dir="rtl">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+    <mat-toolbar class="title-sidebar text-center">
+      <div class="row w-100">
+        <div class="col-12">
+          <img *ngIf="adminImage == ''" [src]="adminImage" class="d-block img-fluid mb-2 mx-a mx-auto rounded-circle"
+            width="50px" />
+          <img *ngIf="adminImage != ''" src="../../../../assets/images/admin-default.png"
+            class="d-block img-fluid mb-2 mx-a mx-auto rounded-circle" width="50px" />
+        </div>
+      </div>
+    </mat-toolbar>
+    <hr style="margin-top: -10px" />
+    <mat-nav-list>
+      <mat-list>
+        <mat-list-item [routerLink]="['/admin/ticket']">
+          <i class="pi pi-home pl-2 text-white" style="font-size: 1rem"></i>
+          پیشخوان
+        </mat-list-item>
+        <mat-divider></mat-divider>
+
+        <mat-list-item (click)="showSubmenu1 = !showSubmenu1" class="parent" *ngIf="userType == 'admin'">
+          <span class="full-width" *ngIf="isExpanded1 || isShowing1">
+            <i class="pi pi-folder-open pl-2 text-white" style="font-size: 1rem"></i>
+            مدیریت محصولات
+          </span>
+          <i class="menu-button" [ngClass]="{ rotated: showSubmenu1 }" style="position: absolute; left: 15px"
+            *ngIf="isExpanded1 || isShowing1" class="fa fa-angle-down">
+          </i>
+        </mat-list-item>
+        <div class="submenu mr-3" [ngClass]="{ expanded: showSubmenu1 }">
+          <mat-list-item [routerLink]="['/admin/product']">
+            <i class="pi pi-file-o pl-2 text-white" style="font-size: 1rem"></i>
+            لیست محصولات
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item [routerLink]="['/admin/category']">
+            <i class="pi pi-list pl-2 text-white" style="font-size: 1rem"></i>
+            مدیریت دسته بندی ها
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item [routerLink]="['/admin/discount']">
+            <i class="pi pi-percentage pl-2 text-white" style="font-size: 1rem"></i>مدیریت تخفیف
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item [routerLink]="['/admin/comment']">
+            <i class="pi pi-comments pl-2 text-white" style="font-size: 1rem"></i>مدیریت دیدگاه ها
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </div>
+        <mat-divider *ngIf="userType == 'admin'"></mat-divider>
+
+        <mat-list-item (click)="showSubmenu2 = !showSubmenu2" class="parent" *ngIf="userType == 'admin'">
+          <span class="full-width" *ngIf="isExpanded2 || isShowing2">
+            <i class="pi pi-exclamation-circle pl-2 text-white" style="font-size: 1rem"></i>
+            مدیریت اخبار
+          </span>
+          <i class="menu-button" [ngClass]="{ rotated: showSubmenu1 }" style="position: absolute; left: 15px"
+            *ngIf="isExpanded2 || isShowing2" class="fa fa-angle-down">
+          </i>
+        </mat-list-item>
+        <div class="submenu mr-3" [ngClass]="{ expanded: showSubmenu2 }" *ngIf="isShowing2 || isExpanded2">
+          <mat-divider></mat-divider>
+          <mat-list-item [routerLink]="['/admin/blog']">
+            <i class="pi pi-file pl-2 text-white" style="font-size: 1rem"></i>مدیریت خبر ها
+          </mat-list-item>
+        </div>
+        <mat-divider *ngIf="userType == 'admin'"></mat-divider>
+
+        <mat-list-item (click)="showSubmenu4 = !showSubmenu4" class="parent">
+          <span class="full-width" *ngIf="isExpanded4 || isShowing4">
+            <i class="pi pi-id-card pl-2 text-white" style="font-size: 1rem"></i>مدیریت مشتری</span>
+          <i class="menu-button" [ngClass]="{ rotated: showSubmenu1 }" style="position: absolute; left: 15px"
+            *ngIf="isExpanded4 || isShowing4" class="fa fa-angle-down">
+          </i>
+        </mat-list-item>
+        <div class="submenu mr-3" [ngClass]="{ expanded: showSubmenu4 }" *ngIf="isShowing4 || isExpanded4">
+          <mat-list-item [routerLink]="['/admin/order']">
+            <i class="pi pi-shopping-cart pl-2 text-white" style="font-size: 1rem"></i>مدیریت سفارشات
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item [routerLink]="['/admin/subscription']">
+            <i class="pi pi-users pl-2 text-white" style="font-size: 1rem"></i>مدیریت اعضا خبرنامه
+          </mat-list-item>
+          <mat-list-item [routerLink]="['/admin/contact']">
+            <i class="pi pi-comments pl-2 text-white" style="font-size: 1rem"></i>
+            مدیریت پیام های فرم تماس با ما
+          </mat-list-item>
+        </div>
+        <mat-divider></mat-divider>
+
+        <mat-list-item (click)="showSubmenu3 = !showSubmenu3" class="parent" *ngIf="userType == 'admin'">
+          <span class="full-width" *ngIf="isExpanded3 || isShowing3">
+            <i class="pi pi-desktop pl-2 text-white" style="font-size: 1rem"></i>مدیریت صفحه اصلی</span>
+          <i class="menu-button" [ngClass]="{ rotated: showSubmenu1 }" style="position: absolute; left: 15px"
+            *ngIf="isExpanded3 || isShowing3" class="fa fa-angle-down">
+          </i>
+        </mat-list-item>
+        <div class="submenu mr-3" [ngClass]="{ expanded: showSubmenu3 }" *ngIf="isShowing3 || isExpanded3">
+          <mat-list-item [routerLink]="['/admin/slider']">
+            <i class="pi pi-file pl-2 text-white" style="font-size: 1rem"></i>
+            مدیریت اسلایدر
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item [routerLink]="['/admin/banner']">
+            <i class="pi pi-image p-pl-4 text-white" style="font-size: 1rem"></i>مدیریت ساید بنر
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item [routerLink]="['/admin/faq']">
+            <i class="pi pi-question-circle pl-2 text-white" style="font-size: 1rem"></i>
+            سوالات متداول
+          </mat-list-item>
+        </div>
+        <mat-divider *ngIf="userType == 'admin'"></mat-divider>
+        <mat-list-item [routerLink]="['/admin/sendCost']" *ngIf="userType == 'admin'">
+          <i class="pi pi-users pl-2 text-white" style="font-size: 1rem"></i>مدیریت هزینه ارسال
+        </mat-list-item>
+        <mat-divider *ngIf="userType == 'admin'"></mat-divider>
+        <mat-list-item [routerLink]="['/admin/user']" *ngIf="userType == 'admin'">
+          <i class="pi pi-users pl-2 text-white" style="font-size: 1rem"></i>مدیریت کاربران
+        </mat-list-item>
+        <mat-divider *ngIf="userType == 'admin'"></mat-divider>
+
+        <mat-list-item [routerLink]="['/admin/admin']" *ngIf="userType == 'admin'">
+          <i class="pi pi-users pl-2 text-white" style="font-size: 1rem"></i>مدیریت ادمین ها
+        </mat-list-item>
+        <mat-divider *ngIf="userType == 'admin'"></mat-divider>
+
+        <mat-list-item [routerLink]="['/admin/profile']">
+          <i class="pi pi-user-edit pl-2 text-white" style="font-size: 1rem"></i>پروفایل کاربری
+        </mat-list-item>
+        <mat-divider></mat-divider>
+
+        <mat-list-item (click)="logOut()">
+          <i class="pi pi-sign-out pl-2 text-white" style="font-size: 1rem"></i>
+          خروج
+        </mat-list-item>
+      </mat-list>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <p-toolbar>
+      <div class="row col">
+        <div class="col-1">
+          <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+            <div class="pi pi-bars"></div>
+          </button>
+        </div>
+        <div class="col">
+          <span class="mx-3 text-white text-center">{{ date }}</span>
+          <span class="mx-3 text-white text-center">{{ time }}</span>
+        </div>
+        <div class="col">
+          <span class="mx-3 text-white text-center">{{ adminName }}</span>
+          <span class="mx-3 text-white text-center">
+            <a class="text-white" (click)="logOut()"><i class="pi pi-power-off text-white pl-2"></i>خروج</a>
+          </span>
+        </div>
+      </div>
+    </p-toolbar>
+
+    <ng-content> </ng-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,56 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js install
+
+PATH: 
+  E:\website_application\BackendEducation\node_modules\.bin;C:\Program Files\JetBrains\PhpStorm 2019.2\jbr\\bin;C:\Program Files\JetBrains\PhpStorm 2019.2\jbr\\bin\server;C:\Python27\;C:\Python27\Scripts;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Yarn\bin\;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Users\user\AppData\Local\Yarn\bin;C:\Users\user\AppData\Local\Android\Sdk\platform-tools;C:\Users\user\AppData\Roaming\npm;C:\Users\user\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\MongoDB\Server\4.2\bin
+
+Yarn version: 
+  1.19.1
+
+Node version: 
+  12.14.1
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: getaddrinfo ENOTFOUND registry.yarnpkg.com
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:60:26)
+
+npm manifest: 
+  {
+    "name": "nodejs-api",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "start": "nodemon server.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "bcrypt": "^3.0.7",
+      "body-parser": "^1.18.2",
+      "electron-window-state": "^4.1.1",
+      "express": "^4.16.2",
+      "express-rate-limit": "^5.0.0",
+      "express-recaptcha": "^5.0.1",
+      "express-validator": "^4.3.0",
+      "helmet": "^3.21.2",
+      "jsonwebtoken": "^8.1.0",
+      "mkdirp": "^0.5.1",
+      "mongoose": "^4.13.6",
+      "mongoose-paginate": "^5.0.3",
+      "mongoose-timestamp": "^0.6.0",
+      "multer": "^1.3.0",
+      "nodemon": "^2.0.2",
+      "randomstring": "^1.1.5",
+      "request-promise": "^4.2.5"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

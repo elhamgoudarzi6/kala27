@@ -1,0 +1,46 @@
+.box{
+  background-color: white;
+  padding: 15px;
+}
+
+ul{
+  margin: 0;
+  padding: 0;
+}
+.nav-tabs .nav-item{
+  width: 50%;
+  text-align: center;
+}
+.nav-tabs .nav-item .nav-link {
+  background-color: #f2f2f2!important;
+  border: none!important;
+  border-top: 2px #f2f2f2 solid!important;
+  color: darkgrey;
+  font-weight: normal;
+  border-radius: unset!important;
+  line-height: 35px;
+}
+.nav-tabs .nav-item .nav-link.active {
+  background-color: #ffffff!important;
+  border: none!important;
+  border-top: 2px #cc3333 solid!important;
+  color: #cc3333;
+  font-weight: bold;
+  line-height: 35px;
+}
+.nav-tabs{
+  margin-bottom: 25px;
+  border-bottom: none!important;
+}
+.nav-tabs .nav-item.show .nav-link, .login-nav .nav-link.active {
+  color: #ffffff;
+  font-weight: bold;
+}
+.headerPanel{
+  text-align: right;
+}
+
+.btn{
+  background-color: #cc3333;
+  border-color: #cc3333;
+}

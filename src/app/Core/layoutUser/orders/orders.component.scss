@@ -1,0 +1,62 @@
+.container-fluid{
+  margin-top: 10px;
+}
+:host::ng-deep.ui-panel-titlebar{
+  background: #FF8800!important;
+  color: #fff!important;
+  font-size: 12px;
+  font-family: IRANSans_Bold;
+}
+:host::ng-deep .container-fluid th.ng-star-inserted {
+  font-family: IRANSans_Bold;
+  text-align: center;
+}
+tr th{
+  font-size: 14px;
+}
+tr td{
+  font-size: 12px;
+}
+#text-delete-dialog{
+  font-family: IRANSans_Light!important;
+}
+:host ::ng-deep {
+  .p-datatable-responsive-demo .p-datatable-tbody > tr > td .p-column-title {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 40rem) {
+  :host ::ng-deep {
+    .p-datatable {
+      &.p-datatable-responsive-demo {
+        .p-datatable-thead > tr > th,
+        .p-datatable-tfoot > tr > td {
+          display: none !important;
+        }
+
+        .p-datatable-tbody > tr > td {
+          text-align: left;
+          display: block;
+          width: 100%;
+          float: left;
+          clear: left;
+          border: 0 none;
+
+          .p-column-title {
+            padding: .4rem;
+            min-width: 30%;
+            display: inline-block;
+            margin: -.4em 1em -.4em -.4rem;
+            font-weight: bold;
+            
+          }
+
+          &:last-child {
+            border-bottom: 1px solid var(--surface-d);
+          }
+        }
+      }
+    }
+  }
+}

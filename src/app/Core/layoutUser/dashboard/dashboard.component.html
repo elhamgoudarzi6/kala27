@@ -1,0 +1,64 @@
+<mat-sidenav-container class="sidenav-container" dir="rtl">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+    <mat-toolbar class="title-sidebar text-center">
+      <div class="row w-100">
+        <div class="col-12">
+          <img [src]="profile" class="d-block img-fluid mb-2 mx-a mx-auto rounded-circle" width="50px">
+        </div>
+      </div>
+    </mat-toolbar>
+    <hr style="margin-top: -10px" />
+    <mat-nav-list>
+      <mat-list>
+        <mat-list-item [routerLink]="['/user/panel']">
+          <i class="pi pi-home p-pl-4 text-white" style="font-size: 1rem"></i> پیشخوان
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item [routerLink]="['orders']">
+          <i class="pi pi-list p-pl-4 text-white" style="font-size: 1rem"></i> لیست سفارش ها
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item [routerLink]="['profile']"><i class="pi pi-user-edit p-pl-4 text-white"
+            style="font-size: 1rem"></i>پروفایل کاربری
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item [routerLink]="['/']"><i class="pi pi-shopping-cart p-pl-4 text-white"
+          style="font-size: 1rem"></i>فروشگاه کالا 27 
+      </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item (click)="logOut()"><i class="pi pi-sign-out p-pl-4 text-white" style="font-size: 1rem"></i>
+          خروج
+        </mat-list-item>
+     </mat-list>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <p-toolbar>
+      <div class="ui-toolbar-group-right">
+        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+          <div class="pi pi-bars"></div>
+        </button>
+      </div>
+      <div class="p-d-flex p-jc-between">
+        <div class="mx-5">
+          <p style="font-size: 15px; margin: unset" class="text-white">
+            <!-- {{localStorage.userJson.adminName}} ({{localStorage.userJson.type}}) -->
+            {{fullName}}
+          </p>
+        </div>
+        <div class="col">
+          <span class="mx-3 text-white text-center">{{date}}</span>
+          <span class="mx-3 text-white text-center">{{time}}</span>
+        </div>
+        <div>
+          <a class="text-white" (click)="logOut()"><i class="pi pi-power-off text-white pl-2"></i>خروج</a>
+        </div>
+      </div>
+    </p-toolbar>
+    <ng-content>
+    </ng-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

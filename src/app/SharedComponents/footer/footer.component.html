@@ -1,0 +1,96 @@
+<section class="footer-bg">
+  <div class="container">
+    <div class="row justify-content-center">
+
+      <div class="col-sm-4">
+        <h5 class="footer-sec">فروشگاه اینترنتی کالا27</h5>
+        <p class="footer-sec-about">
+          فروشگاه اینترنتی کالا27 فعالیت خود را از سال 1400 در حوزه فروش آنلاین انواع گوشی موبایل، لوازم جانبی گوشی و
+          تبلت و... آغاز نموده است. کالا27 فعال در حوزه بازاریابی و فروش انواع گوشی موبایل می باشد. ارسال رایگان در شهر
+          خرم آباد و ارسال سریع و آسان به تمام نقاط ایران، تامین کالاهای با کیفیت از برند های معتبر اپل، نوکیا، شیائومی،
+          سامسونگ و.. می باشد. کالا27 فروش را آغاز تعاملی با مشتریان خود می داند تا با آسودگی خاطر تمامی نیازهای مشتریان
+          را فراهم نماید. کالا27 بعنوان یک فروشگاه اینترنتی رعایت جانب انصاف و صداقت بعنوان اصلی ترین پایه این اعتماد را
+          سرلوحه کار خود می داند </p>
+      </div>
+
+
+      <div class="col-sm">
+        <h5 class="footer-sec">دسته بندی محصولات</h5>
+        <ul class="footer-sec-detail">
+          <li *ngFor="let i of category">
+            <a (click)="goProduct(i._id, 0,0)">
+              <i class="fas fa-chevron-left ml-3"></i> {{i['title']}}
+            </a>
+
+            <!-- <i class="fa fa-angle-left ml-2"></i>
+            {{i['title']}} -->
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-4">
+        <h5 class="footer-sec">راه های ارتباطی</h5>
+        <ul class="footer-sec-detail">
+          <li>
+            <i class="fas fa-map-marker-alt fa-lg ml-2"></i>
+            خرم آباد، خیابان مطهری پاساژ آرش طبقه همکف
+          </li>
+          <li>
+            <i class="fa fa-phone fa-lg ml-2"></i>
+            <a href="tel:06633411975">09358146130</a>
+          </li>
+          <li>
+            <i class="fas fa-fax fa-lg ml-2"></i>
+            <a href="">09358146130</a>
+          </li>
+          <li>
+            <i class="fa fa-mobile fa-lg ml-2"></i>
+            <a href="">09358146130</a>
+          </li>
+          <li>
+            <i class="fa fa-envelope fa-lg ml-2"></i>
+            <a href="mailto:info@kala27.com">info@kala27.com</a>
+          </li>
+        </ul>
+        <div class="social-links">
+          <a>
+            <i class="fab fa-lg fa-google-plus-g"></i>
+          </a>
+          <a>
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="http://www.facebook.com/kala27">
+            <i class="fab fa-lg fa-facebook-f"></i>
+          </a>
+          <a href="http://www.linkedin.com/in/kala27">
+            <i class="fab fa-lg fa-linkedin-in"></i>
+          </a>
+          <a href="http://instagram.com/kala27">
+            <i class="fab fa-lg fa-instagram"></i>
+          </a>
+        </div>
+        </div>
+
+        <div class="col-sm">
+          <ul class="list-unstyled">
+            <a href="javascript:showZPTrust();" title="Ø¯Ø±ÙˆØ§Ø²Ù‡ Ù¾Ø±Ø¯Ø§Ø®Øª Ù…Ø¹ØªØ¨Ø±"><img
+                src="https://cdn.zarinpal.com/badges/trustLogo/1.svg" border="0"
+                alt="Ø¯Ø±ÙˆØ§Ø²Ù‡ Ù¾Ø±Ø¯Ø§Ø®Øª Ù…Ø¹ØªØ¨Ø±"></a>
+            <a><img style="width: 100px;" src="../../../assets/images/enamad.png"></a>
+          </ul>
+        </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="copy-bg">
+  <div class="copyright">
+    &copy; <strong>کلیه حقوق این وب سایت متعلق به <span>فروشگاه کالا27</span> می باشد </strong>
+  </div>
+  <div class="credits">
+    طراحی و پیاده سازی توسط <a href="https://parsarad.com/">شرکت ایده پردازان پارس آراد</a>
+  </div>
+</section>

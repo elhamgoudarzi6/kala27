@@ -1,0 +1,552 @@
+<p-toast position="center"></p-toast>
+
+
+<p-tabView>
+  <p-tabPanel>
+    <ng-template pTemplate="header"><i class="pi pi-user-edit p-pl-3 text-white" style="font-size: 1rem"></i> ویرایش
+      اطلاعات کاربری
+    </ng-template>
+    <form [formGroup]="formGroup" dir="rtl">
+      <p-panel styleClass="mb-3 pt-2" dir="rtl">
+        <p-header>
+          <p class="text-right titlePanel">اطلاعات و مشخصات کاربری</p>
+          <p class="subTitlePanel">لطفا مشخصات خود را کامل و دقیق وارد نمایید</p>
+        </p-header>
+        <div class="p-fluid">
+          <div class="p-md-6" dir="rtl">
+            <div class="p-field p-grid" dir="rtl">
+              <label for="firstName" class="p-col-12 p-mb-2 p-md-3 p-mb-md-0">نام و نام خانوادگی:</label>
+              <div class="p-col-12 p-md-9">
+                <input id="firstName" type="text" pInputText [(ngModel)]="user.fullName" formControlName="fullName">
+                <ul
+                  class="mt-1 text-right list-inline"
+                  *ngFor="let error of errorMessages.fullName"
+                >
+                  <li
+                    class="
+                          font-small
+                          text-danger
+                          font-title-bold
+                          list-inline-item
+                        "
+                    *ngIf="
+                          formGroup.get('fullName').hasError(error.type) &&
+                          (formGroup.get('fullName').dirty ||
+                            formGroup.get('fullName').touched)
+                        "
+                  >
+                    {{ error.message }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="p-field p-grid">
+              <label  class="p-col-12 p-mb-2 p-md-3 p-mb-md-0">شماره همراه:</label>
+              <div class="p-col-12 p-md-9">
+                <p-inputNumber pKeyFilter="num" mode="decimal" formControlName="mobile" [(ngModel)]="user.mobile"
+                               [useGrouping]="false" minlength="11" maxLength="11" [disabled]="true"></p-inputNumber>
+                <ul
+                  class="mt-1 text-right list-inline"
+                  *ngFor="let error of errorMessages.mobile"
+                >
+                  <li
+                    class="
+                          font-small
+                          text-danger
+                          font-title-bold
+                          list-inline-item
+                        "
+                    *ngIf="
+                          formGroup.get('mobile').hasError(error.type) &&
+                          (formGroup.get('mobile').dirty ||
+                            formGroup.get('mobile').touched)
+                        "
+                  >
+                    {{ error.message }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="p-field p-grid">
+              <label for="phone" class="p-col-12 p-mb-2 p-md-3 p-mb-md-0 text-right"> تلفن ثابت:</label>
+              <div class="p-col-12 p-md-9">
+                <input id="phone" type="text" pInputText [(ngModel)]="user.phone" formControlName="phone">
+                <ul
+                  class="mt-1 text-right list-inline"
+                  *ngFor="let error of errorMessages.phone"
+                >
+                  <li
+                    class="
+                          font-small
+                          text-danger
+                          font-title-bold
+                          list-inline-item
+                        "
+                    *ngIf="
+                          formGroup.get('phone').hasError(error.type) &&
+                          (formGroup.get('phone').dirty ||
+                            formGroup.get('phone').touched)
+                        "
+                  >
+                    {{ error.message }}
+                  </li>
+                </ul>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </p-panel>
+      <p-panel styleClass="mb-3 pt-2" dir="rtl">
+        <p-header>
+          <p class="text-right titlePanel">آدرس </p>
+          <p class="subTitlePanel text-right">لطفاً آدرس خود را جهت تسهیل در ثبت سفارش ثبت نمایید .</p>
+        </p-header>
+        <div class="p-fluid">
+          <div class="p-md-8">
+            <div class="p-field p-grid">
+              <label for="country" class="p-col-12 p-mb-2 p-md-3 p-mb-md-0">کشور:</label>
+              <div class="p-col-12 p-md-9">
+                <p-dropdown
+                  appendTo="body"
+                  emptyFilterMessage="نتیجه ای یافت نشد"
+                  [options]="countries"
+                  formControlName="country"
+                  optionLabel="name"
+                  [filter]="true"
+                  (onChange)="countryOnChange($event)"
+                  [(ngModel)]="user.country"
+                  placeholder="-- انتخاب کنید --"
+                >
+                </p-dropdown>
+<!--                <input id="country" type="text" pInputText [(ngModel)]="user.country" formControlName="country">-->
+                <ul
+                  class="mt-1 text-right list-inline"
+                  *ngFor="let error of errorMessages.country"
+                >
+                  <li
+                    class="
+                          font-small
+                          text-danger
+                          font-title-bold
+                          list-inline-item
+                        "
+                    *ngIf="
+                          formGroup.get('country').hasError(error.type) &&
+                          (formGroup.get('country').dirty ||
+                            formGroup.get('country').touched)
+                        "
+                  >
+                    {{ error.message }}
+                  </li>
+                </ul>
+
+              </div>
+            </div>
+            <div class="p-field p-grid">
+              <label class="p-col-12 p-mb-2 p-md-3 p-mb-md-0">استان:</label>
+              <div class="p-col-10 p-md-9" dir="rtl">
+                <p-dropdown
+                  appendTo="body"
+                  emptyFilterMessage="نتیجه ای یافت نشد"
+                  [options]="states"
+                  optionLabel="label"
+                  [filter]="true"
+                  (onChange)="stateOnChange($event)"
+                  [(ngModel)]="user.state"
+                  placeholder="-- انتخاب کنید --"
+                >
+                </p-dropdown>
+                <div class="p-col-10 p-md-9 text-danger" dir="rtl">  {{user.state}}</div>
+
+                <ul
+                  class="mt-1 text-right list-inline"
+                  *ngFor="let error of errorMessages.state"
+                >
+                  <li
+                    class="
+                          font-small
+                          text-danger
+                          font-title-bold
+                          list-inline-item
+                        "
+                    *ngIf="
+                          formGroup.get('state').hasError(error.type) &&
+                          (formGroup.get('state').dirty ||
+                            formGroup.get('state').touched)
+                        "
+                  >
+                    {{ error.message }}
+                  </li>
+                </ul>
+
+              </div>
+            </div>
+            <div class="p-field p-grid">
+              <label  class="p-col-12 p-mb-2 p-md-3 p-mb-md-0">شهر:</label>
+              <div class="p-col-12 p-md-9">
+                <p-dropdown
+                  appendTo="body"
+                  emptyFilterMessage="نتیجه ای یافت نشد"
+                  [options]="cities"
+                  optionLabel="label"
+                  [filter]="true"
+                  (onChange)="citynChange($event)"
+                  [(ngModel)]="user.city"
+                  placeholder="-- انتخاب کنید --"
+                >
+                </p-dropdown>
+                <div class="p-col-10 p-md-9 text-danger" dir="rtl">  {{user.city}}</div>
+                <ul
+                  class="mt-1 text-right list-inline"
+                  *ngFor="let error of errorMessages.city"
+                >
+                  <li
+                    class="
+                          font-small
+                          text-danger
+                          font-title-bold
+                          list-inline-item
+                        "
+                    *ngIf="
+                          formGroup.get('city').hasError(error.type) &&
+                          (formGroup.get('city').dirty ||
+                            formGroup.get('city').touched)
+                        "
+                  >
+                    {{ error.message }}
+                  </li>
+                </ul>
+
+              </div>
+            </div>
+
+            <div class="p-field p-grid">
+              <label for="postalCode" class="p-col-12 p-mb-2 p-md-3 p-mb-md-0">کدپستی :</label>
+              <div class="p-col-12 p-md-9">
+                <input id="postalCode" type="text" pInputText [(ngModel)]="user.postalCode"
+                       formControlName="postalCode">
+                <ul
+                  class="mt-1 text-right list-inline"
+                  *ngFor="let error of errorMessages.postalCode"
+                >
+                  <li
+                    class="
+                          font-small
+                          text-danger
+                          font-title-bold
+                          list-inline-item
+                        "
+                    *ngIf="
+                          formGroup.get('postalCode').hasError(error.type) &&
+                          (formGroup.get('postalCode').dirty ||
+                            formGroup.get('postalCode').touched)
+                        "
+                  >
+                    {{ error.message }}
+                  </li>
+                </ul>
+
+              </div>
+            </div>
+
+            <div class="p-field p-grid">
+              <label class="p-col-12 p-mb-2 p-md-3 p-mb-md-0">آدرس :</label>
+              <div class="p-col-12 p-md-9">
+                <textarea [rows]="5" [cols]="30" pInputTextarea [(ngModel)]="user.address"
+                          formControlName="address"></textarea>
+                <ul
+                  class="mt-1 text-right list-inline"
+                  *ngFor="let error of errorMessages.address"
+                >
+                  <li
+                    class="
+                          font-small
+                          text-danger
+                          font-title-bold
+                          list-inline-item
+                        "
+                    *ngIf="
+                          formGroup.get('address').hasError(error.type) &&
+                          (formGroup.get('address').dirty ||
+                            formGroup.get('address').touched)
+                        "
+                  >
+                    {{ error.message }}
+                  </li>
+                </ul>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-field p-grid">
+          <label for="phone" class="p-col-12 p-mb-2 p-md-3 p-mb-md-0 text-right"> تصویر پروفایل :</label>
+          <div class="row">
+            <div class="col-md-2">
+              <img [src]="user.image" style="width: 110px;height: 130px" />
+            </div>
+            <div class="col-md-10 col-lg-10">
+              <p-fileUpload name="myfile[]" customUpload="true"
+                            invalidFileSizeMessageDetail="حداکثر سایز عکس 2 مگابایت می باشد"
+                            invalidFileSizeMessageSummary="اندازه فایل بیش از حد مجاز می باشد"
+                            multiple="multiple"
+                            accept="image/jpeg,image/png " maxFileSize="2000000"
+                            (uploadHandler)="onUpload($event)" uploadLabel="آپلود عکس" chooseLabel="انتخاب عکس"
+                            cancelLabel="انصراف"></p-fileUpload>
+            </div>
+
+          </div>
+        </div>
+        <p-footer>
+          <button pButton label="ثبت مشخصات"
+                  class="ui-button-success" icon="pi pi-check" iconPos="left"
+                  (click)="updateUser()"></button>
+        </p-footer>
+      </p-panel>
+
+    </form>
+
+  </p-tabPanel>
+  <p-tabPanel>
+    <ng-template pTemplate="header"><i class="pi pi-unlock p-pl-3 text-white" style="font-size: 1rem"></i>تغییر رمز
+    </ng-template>
+    <form [formGroup]="formGroupPassword" dir="rtl">
+    <p-panel styleClass="mb-3 pt-2" dir="rtl">
+      <p-header>
+        <p class="text-right titlePanel">تغییر رمز عبور</p>
+        <p class="subTitlePanel text-right">جهت تغییر کلمه عبور میتوانید با وارد نمودن اطلاعات زیر انجام دهید .</p>
+      </p-header>
+      <div class="p-fluid">
+        <div class="p-md-8">
+          <div class="p-field p-grid">
+            <label for="password" class="p-col-12 p-mb-2 p-md-4 p-mb-md-0">کلمه عبور جدید:</label>
+            <div class="p-col-12 p-md-8">
+              <input id="password" type="text" formControlName="password" pInputText [(ngModel)]="changePassword.password">
+              <ul
+                class="mt-1 text-right list-inline"
+                *ngFor="let error of errorMessages.password"
+              >
+                <li
+                  class="
+                          font-small
+                          text-danger
+                          font-title-bold
+                          list-inline-item
+                        "
+                  *ngIf="
+                          formGroupPassword.get('password').hasError(error.type) &&
+                          (formGroupPassword.get('password').dirty ||
+                            formGroupPassword.get('password').touched)
+                        "
+                >
+                  {{ error.message }}
+                </li>
+              </ul>
+
+            </div>
+          </div>
+          <div class="p-field p-grid">
+            <label for="rePassword" class="p-col-12 p-mb-2 p-md-4 p-mb-md-0">تکرار کلمه عبور جدید:</label>
+            <div class="p-col-12 p-md-8">
+              <input id="rePassword" type="text" formControlName="rPass"  pInputText [(ngModel)]="changePassword.rPass">
+              <ul
+                class="mt-1 text-right list-inline"
+                *ngFor="let error of errorMessages.confirmPassword"
+              >
+                <li
+                  class="
+                          font-small
+                          text-danger
+                          font-title-bold
+                          list-inline-item
+                        "
+                  *ngIf="
+                          formGroupPassword.get('rPass').hasError(error.type) &&
+                          (formGroupPassword.get('rPass').dirty ||
+                            formGroupPassword.get('rPass').touched)
+                        "
+                >
+                  {{ error.message }}
+                </li>
+              </ul>
+              <ul class="mt-0 text-right list-inline">
+                <li class="font-small text-danger font-weight-bold list-inline-item"
+                    *ngIf="formGroupPassword.errors?.passwordNotMatch
+                            && (formGroupPassword.get('rPass').dirty
+                            || formGroupPassword.get('rPass').touched)">
+                  تکرار کلمه عبور مطابقت ندارد.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <p-footer>
+        <button pButton label="تغییر رمز عبور " class="ui-button-success" icon="pi pi-check" iconPos="left"
+                (click)="changePasswordUser()" [disabled]="formGroupPassword.invalid"></button>
+      </p-footer>
+    </p-panel>
+    </form>
+  </p-tabPanel>
+  <p-tabPanel>
+    <ng-template pTemplate="header"><i class="pi pi-mobile p-pl-3 text-white" style="font-size: 1rem"></i>تغییر شماره همراه
+    </ng-template>
+    <form [formGroup]="formGroupPassword" dir="rtl">
+      <p-panel styleClass="mb-3 pt-2" dir="rtl">
+        <p-header>
+          <p class="text-right titlePanel">ویرایش شماره همراه</p>
+          <p class="subTitlePanel text-right">لطفا شماره همراه جدید را وارد نمایید</p>
+        </p-header>
+        <div class="p-fluid">
+          <div class="p-md-8">
+            <form [formGroup]="formGroupMobileChange">
+            <div class="p-field p-grid">
+              <label  class="p-col-12 p-mb-2 p-md-4 p-mb-md-0"> شماره همراه:</label>
+              <div class="p-col-12 p-md-8">
+                <input  type="text"  pInputText formControlName="mobile"  placeholder="شماره همراه را وارد نمائید">
+                <ul
+                  class="mt-1 text-right list-inline"
+                  *ngFor="let error of errorMessages.mobile"
+                >
+                  <li
+                    class="
+                          font-small
+                          text-danger
+                          font-title-bold
+                          list-inline-item
+                        "
+                    *ngIf="
+                          formGroupMobileChange.get('mobile').hasError(error.type) &&
+                          (formGroupMobileChange.get('mobile').dirty ||
+                            formGroupMobileChange.get('mobile').touched)
+                        "
+                  >
+                    {{ error.message }}
+                  </li>
+                </ul>
+
+              </div>
+            </div>
+
+<!--            <div *ngIf="recivedCode.length>0">-->
+
+<!--            <div class="p-field p-grid">-->
+<!--              <label  class="p-col-12 p-mb-2 p-md-4 p-mb-md-0"> کد دریافتی از ایمیل:</label>-->
+<!--              <div class="p-col-12 p-md-8">-->
+<!--                <input  type="text"  pInputText  formControlName="sendCode" [(ngModel)]="sendCode" placeholder="کد را وارد کنید">-->
+<!--                <ul-->
+<!--                  class="mt-1 text-right list-inline"-->
+<!--                  *ngFor="let error of errorMessages.sendCode"-->
+<!--                >-->
+<!--                  <li-->
+<!--                    class="-->
+<!--                          font-small-->
+<!--                          text-danger-->
+<!--                          font-title-bold-->
+<!--                          list-inline-item-->
+<!--                        "-->
+<!--                    *ngIf="-->
+<!--                          formGroupMobileChange.get('sendCode').hasError(error.type) &&-->
+<!--                          (formGroupMobileChange.get('sendCode').dirty ||-->
+<!--                            formGroupMobileChange.get('sendCode').touched)-->
+<!--                        "-->
+<!--                  >-->
+<!--                    {{ error.message }}-->
+<!--                  </li>-->
+<!--                </ul>-->
+
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="p-field p-grid">-->
+<!--              <label  class="p-col-12 p-mb-2 p-md-4 p-mb-md-0"> شماره همراه جدید:</label>-->
+<!--              <div class="p-col-12 p-md-8">-->
+<!--                <input  type="text"  pInputText  formControlName="mobile"-->
+<!--                        [(ngModel)]="mobilePassword.mobile" placeholder="شماره همراه جدید را وارد کنید">-->
+
+<!--                <ul-->
+<!--                  class="mt-1 text-right list-inline"-->
+<!--                  *ngFor="let error of errorMessages.mobile"-->
+<!--                >-->
+<!--                  <li-->
+<!--                    class="-->
+<!--                          font-small-->
+<!--                          text-danger-->
+<!--                          font-title-bold-->
+<!--                          list-inline-item-->
+<!--                        "-->
+<!--                    *ngIf="-->
+<!--                          formGroupMobileChange.get('mobile').hasError(error.type) &&-->
+<!--                          (formGroupMobileChange.get('mobile').dirty ||-->
+<!--                            formGroupMobileChange.get('mobile').touched)-->
+<!--                        "-->
+<!--                  >-->
+<!--                    {{ error.message }}-->
+<!--                  </li>-->
+<!--                </ul>-->
+
+<!--              </div>-->
+<!--            </div>-->
+<!--            </div>-->
+            </form>
+          </div>
+        </div>
+        <p-footer>
+          <button pButton label="تغییر شماره همراه  " class="ui-button-success" icon="pi pi-check" iconPos="left"
+                  (click)="showDialog()"></button>
+        </p-footer>
+      </p-panel>
+    </form>
+  </p-tabPanel>
+</p-tabView>
+
+<p-dialog [(visible)]="displayBasic" [style]="{width: '30rem'}" [baseZIndex]="10000" dir="rtl">
+  <p-header>
+    <p class="mr-3">انجام شد</p>
+  </p-header>
+  <hr style="width: 100%;"/>
+  <p class="text-right text-success mt-2">مشخصات با موفقیت ویرایش شد</p>
+
+  <hr style="margin-bottom: -15px"/>
+  <ng-template pTemplate="footer">
+    <button pButton pRipple type="button" (click)="displayBasic=false" label="ادامه"
+            class="p-button-danger float-left"></button>
+  </ng-template>
+</p-dialog>
+
+<p-dialog [(visible)]="display">
+  <p-header class="headerPanel">
+    اعتبارسنجی شماره همراه
+  </p-header>
+  <label class="text-titleboxsms mt-4 mb-4">کد ارسال شده به شماره همراه در کادر زیر وارد
+    نمائید</label>
+  <br>
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid ">
+    <div class="ui-grid-row dialog">
+      <div>
+        <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)" [config]="{length:6,allowNumbersOnly:true}"
+                      dir="ltr"
+                      style="font-family: IRANSansWeb" class="text-center"></ng-otp-input>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="resendSMS">
+    <a class="text-titleboxsms mt-5 mb-5" (click)="sendSMS()">ارسال مجدد کد</a>
+  </div>
+  <div class="alert alert-danger mt-4 mb-3 text-center" *ngIf="invalidSMS" style="font-family: IRANSansWeb_Bold">کد وارد
+    شده اشتباه می باشد
+  </div>
+  <p-footer dir="rtl" class="text-left mt-5 ">
+    <button pButton (click)="changeMobileNumber()" type="submit" class="p-button-danger" label=" تغییر شماره همراه " cornerStyleClass="text-center"
+            [disabled]="validationBtnPay"
+    ></button>
+    <button pButton type="submit" class="p-button-danger" label="مدت زمان باقیمانده:{{timeLeft}}"
+            cornerStyleClass="text-center"
+    ></button>
+  </p-footer>
+</p-dialog>
+
+

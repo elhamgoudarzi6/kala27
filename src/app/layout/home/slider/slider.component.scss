@@ -1,0 +1,61 @@
+:host::ng-deep.carousel .carousel-control-next-icon {
+  width: 50px!important;
+  height: 50px!important;
+}
+:host::ng-deep.carousel .carousel-control-prev-icon {
+  width: 50px!important;
+  height: 50px!important;
+}
+:host::ng-deep.carousel-inner {
+  border-radius: 20px!important;
+}
+
+.slider{
+  height: 400px;
+}
+.image-box {
+  border-radius: 20px;
+  height: 195px!important;
+  width: 100%;
+}
+.slider-image{
+  height: 400px;
+  display: block;
+}
+@media (max-width: 768px) {
+  .slider{
+    height: unset;
+  }
+  .image-box {
+    height: unset!important;
+  }
+  .slider-image{
+    height: 200px;
+  }
+}
+:host::ng-deep .owl-prev,
+:host::ng-deep .owl-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+:host::ng-deep .owl-prev {
+  left: 0;
+}
+:host::ng-deep .owl-next {
+  right: 0;
+}
+:host::ng-deep .owl-theme .owl-nav [class*=owl-] {
+  color: #bfbdbd !important;
+  font-size: 14px;
+  margin: 5px;
+  padding: 4px 7px;
+  background-color: transparent!important;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 3px;
+}
+::ng-deep .owl-stage-outer{
+  border-radius: 20px!important;
+}

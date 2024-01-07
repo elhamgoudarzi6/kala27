@@ -1,0 +1,31 @@
+<p-toast position="center"></p-toast>
+<div style="direction: rtl; text-align: right">
+  <form [formGroup]="form" (ngSubmit)="submitForm()" class="w-100 mt-3">
+    <div class="p-fluid p-formgrid p-grid" *ngIf="!flag">
+      <div class="p-field p-col">
+        <label for="title">عنوان تیکت</label>
+        <input id="title" type="text" pInputText formControlName="title" />
+      </div>
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label for="message">متن تیکت:</label>
+        <input id="message" type="text" pInputText formControlName="message" />
+      </div>
+    </div>
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col">
+        <div class="float-left">
+          <button
+            pButton
+            type="submit"
+            label="ثبت تیکت"
+            class="ui-button-success"
+            icon="pi pi-check"
+            iconPos="left"
+          ></button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

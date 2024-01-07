@@ -1,0 +1,39 @@
+<p-toast position="center"></p-toast>
+<p-confirmDialog
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+></p-confirmDialog>
+<div class="pnl-content p-3">
+  <div class="box" dir="rtl">
+    <div class="row align-self-center">
+      <div class="col-sm-6 text-right align-self-center" style="font-size: 1rem;
+      font-weight: 600;">کاتالوگ</div>
+      <div class="col-sm-6 text-left">
+        <button
+          pButton
+          pRipple
+          label="جدید"
+          icon="pi pi-plus"
+          class="p-button-success p-mr-2 p-button-icon-right"
+          (click)="showAddCatalogDialog()"
+        ></button>
+        <button
+        *ngIf="catalogs.length > 0"
+        pButton
+        pRipple
+        label="حذف"
+        icon="pi pi-trash"
+        class="p-button-danger p-mr-2 p-button-icon-right"
+        (click)="deleteCatalog(catalogs[0]._id)"
+      ></button>
+      </div>
+
+      <div class="mx-auto pt-5" dir="rtl" *ngIf="catalogs.length > 0">
+        <pdf-viewer [src]="path" [original-size]="false"></pdf-viewer>
+      </div>
+      <div class="text-right" dir="rtl" *ngIf="catalogs.length == 0">
+        <p>هیچ رکوردی یافت نشد</p>
+      </div>
+    </div>
+  </div>
+</div>

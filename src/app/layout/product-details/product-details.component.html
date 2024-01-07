@@ -1,0 +1,248 @@
+<app-header></app-header>
+<meta name="keywords" *ngIf="product.keywords != undefined" [content]="product.keywords" />
+<meta name="description" *ngIf="product.metaDescription != undefined" />
+<p-toast position="center"></p-toast>
+<section class="breadcrumbs">
+  <div class="container">
+    <ol>
+      <li class="breadcrumb-item"><a routerLink="/">صفحه اصلی</a></li>
+      <li class="breadcrumb-item">
+        <a (click)="goProduct(product.categoryID, 0, 0)" class="nuxt-link-active">{{ product.Category[0].title }}</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a (click)="goProduct(product.categoryID, product.subCategoryID, 0)" class="nuxt-link-active">
+          {{ product.SubCategory[0].title }}</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a (click)="goProduct(product.categoryID, product.subCategoryID, product.subSubCategoryID)"
+          class="nuxt-link-active">
+          {{ product.SubSubCategory[0].title }}</a>
+      </li>
+      <li class="breadcrumb-item active">{{ product.title }}</li>
+    </ol>
+    <h2>مشاهده جزییات محصول {{ product.title }}</h2>
+  </div>
+</section>
+
+<div class="container">
+  <div class="row detail-box">
+    <div class="col-xl-6 col-lg-6 justify-content-center">
+      <!--      <p-galleria-->
+      <!--        [value]="images"-->
+      <!--        [responsiveOptions]="responsiveOptions"-->
+      <!--        [containerStyle]="{ 'max-width': '660px', 'margin-top': '2em' }"-->
+      <!--        [numVisible]="5"-->
+      <!--        dir="ltr"-->
+      <!--        thumbnailsPosition="bottom"-->
+      <!--        [autoPlay]="true"-->
+      <!--        [transitionInterval]="2000"-->
+      <!--        [circular]="true"-->
+      <!--        [showItemNavigators]="true"-->
+      <!--        [showItemNavigatorsOnHover]="true"-->
+      <!--      >-->
+      <!--        <ng-template-->
+      <!--          pTemplate="item"-->
+      <!--          *ngFor="let item of images; let i = index"-->
+      <!--        >-->
+      <!--          <div class="full-screen">-->
+      <!--            <a (click)="showLightbox(i)"><i class="fas fa-expand"></i></a>-->
+      <!--          </div>-->
+      <!--          <img-->
+      <!--            [src]="item.previewImageSrc"-->
+      <!--            style="width: 100%; height: 350px"-->
+      <!--          />-->
+      <!--          <lib-ngx-image-zoom-->
+      <!--                  [thumbImage]='item.thumbnailImageSrc'-->
+      <!--                  [fullImage]='item.previewImageSrc'-->
+      <!--                  [magnification]="1"-->
+      <!--                  [enableScrollZoom] = "true"-->
+      <!--                  [enableLens]= "true"-->
+      <!--                  [lensWidth]="200"-->
+      <!--                  [lensHeight] = "150"-->
+      <!--                  zoomMode="hover">-->
+      <!--                </lib-ngx-image-zoom>-->
+
+      <!--        </ng-template>-->
+      <!--        <ng-template pTemplate="thumbnail" let-item>-->
+      <!--          <div class="p-grid p-nogutter p-justify-center">-->
+      <!--            <img-->
+      <!--              [src]="item.thumbnailImageSrc"-->
+      <!--              style="width: 80px; height: 80px; display: block"-->
+      <!--            />-->
+      <!--          </div>-->
+      <!--        </ng-template>-->
+      <!--      </p-galleria>-->
+      <img [src]="imageProductColor" style="width: 50%; display: block;
+  margin-left: auto;
+  margin-right: auto; margin-bottom: 20px;margin-top: 20px;" />
+    </div>
+    <div class="col-xl-6 col-lg-6">
+      <p-panel dir="rtl">
+        <ng-template pTemplate="header">
+          <span class="head col-6 text-right">
+            {{ product.SubCategory[0].title }}
+          </span>
+          <span class="head col-6 text-left">
+            {{ product.SubSubCategory[0].title }}
+          </span>
+        </ng-template>
+        <div class="row">
+          <p style="margin: 10px; text-align: right">
+            توضیحات :
+            <span style="font-family:'IRANSans_Light' !important;margin-right: 5px;"> {{ product.detail }}</span>
+          </p>
+        </div>
+        <div class="row">
+          <div class="col-md-6 text-right">
+            <span style="font-family: IRANSans_Bold" class="text-right">رنگ:<span
+                style="font-family:'IRANSans_Light' !important;margin-right: 5px;">{{ colorName }}</span></span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="d-flex flex-row mr-3 mt-3 mb-3">
+            <div *ngFor="let i of product.info; let j = index" class="d-flex flex-row">
+              <button style="border: 2px solid rgb(231, 231, 231)" pButton pRipple type="button"
+                class="p-button-rounded ml-1" [style.background]="i.colorCode" (click)="getColorName(i, j)"></button>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-6">
+            <div class="text-right mt-2 mr-3" *ngIf="remainsNumberColor > 0">
+              <p style="color: green;">موجود</p>
+              <!-- <p>موجودی در انبار: {{ remainsNumberColor }}</p> -->
+            </div>
+            <div class="text-right" *ngIf="remainsNumberColor < 1">
+              <p style="color: '#cc3333';">نا موجود</p>
+              <!-- <p>موجودی در انبار: {{ remainsNumberColor }}</p> -->
+            </div>
+          </div>
+          <div class="col-12">
+            <p class="text-right">قیمت: {{ priceColor | number }} تومان</p>
+            <p class="text-right text-danger" *ngIf="product.discountStatus">قیمت با تخفیف: {{ priceWithDiscount | number }} تومان</p>
+
+          </div>
+        </div>
+        <div class="mb-3">
+          <button pButton type="submit" class="mx-auto d-block mt-2 text-white p-button-danger"
+            (click)="addCart(product)">
+            افزودن به سبد خرید
+          </button>
+        </div>
+      </p-panel>
+    </div>
+  </div>
+
+  <div class="row detail-box mb-5">
+    <div class="col-12">
+      <p-tabView class="tabview">
+        <p-tabPanel header="مشخصات" leftIcon="pi pi-list">
+          <table>
+            <tbody>
+              <tr *ngFor="let item of featuresValues">
+                <td>{{ item.feature }}</td>
+                <td>{{ item.value }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </p-tabPanel>
+        <p-tabPanel header="راهنما" leftIcon="pi pi-question-circle">
+          <p>
+            {{ product.help }}
+          </p>
+        </p-tabPanel>
+        <p-tabPanel header="دیدگاه" leftIcon="pi pi-comments">
+          <div class="command-form">
+            <form [formGroup]="formComment">
+              <div class="form-group mt-3 justify-content-center">
+                <label>نظر شما (اجباری)</label>
+                <textarea class="form-control" name="commentText" id="commentText"
+                  formControlName="commentText"></textarea>
+                <!--                <ul-->
+                <!--                  class="mt-1 text-right list-inline"-->
+                <!--                  *ngFor="let error of commentErrorMessages.commentText"-->
+                <!--                >-->
+                <!--                  <li-->
+                <!--                    class="-->
+                <!--                      font-small-->
+                <!--                      text-danger-->
+                <!--                      font-title-bold-->
+                <!--                      list-inline-item-->
+                <!--                    "-->
+                <!--                    *ngIf="-->
+                <!--                      formComment.get('commentText').hasError(error.type) &&-->
+                <!--                      (formComment.get('commentText').dirty ||-->
+                <!--                        formComment.get('commentText').touched)-->
+                <!--                    "-->
+                <!--                  >-->
+                <!--                    {{ error.message }}-->
+                <!--                  </li>-->
+                <!--                </ul>-->
+
+                <button type="submit" class="btn mx-auto d-block mt-2 text-white add-to-cart"
+                  (click)="registerComment()">
+                  ثبت دیدگاه
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="row justify-content-center comment" *ngIf="product.Comment.length > 0">
+            <div class="col-12 align-items-center text-center">
+              <div class="title-box-d">
+                <h3 class="title-d">دیدگاه ها ({{ commentsCount }})</h3>
+              </div>
+              <div class="box-comments">
+                <ul class="list-comments" *ngFor="let item of product.Comment">
+                  <li *ngIf="item.active">
+                    <div class="comment-avatar">
+                      <img [src]="item.User[0].image" alt="" />
+                    </div>
+                    <div class="comment-details">
+                      <h4 class="comment-author">
+                        {{ item.User[0].fullName }}
+                      </h4>
+                      <p class="comment-date">{{ item.date }}</p>
+                      <p class="comment-description">
+                        {{ item.commentText }}
+                      </p>
+                    </div>
+                  </li>
+                  <li class="comment-children" *ngIf="item.reply != null">
+                    <div class="comment-avatar">
+                      <img src="../../../assets/images/admin-default.png" alt="" />
+                    </div>
+                    <div class="comment-details">
+                      <h4 class="comment-author">ادمین</h4>
+                      <p class="comment-description">{{ item.reply }}</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </p-tabPanel>
+      </p-tabView>
+    </div>
+  </div>
+</div>
+<p-dialog [(visible)]="displayBasic" [style]="{width: '30rem'}" [baseZIndex]="10000" dir="rtl">
+  <p-header>
+    <p class="mr-3">انجام شد</p>
+  </p-header>
+  <hr style="width: 100%;" />
+  <p class="text-right text-success mt-2">محصول با موفقیت به سبد خرید اضافه شد</p>
+  <p class="text-right textDialog">برای ثبت نهایی سفارش بر روی دکمه ی مشاهده سبد خرید کلیک کنید و برای افزودن دیگر
+    محصولات به سبد خرید، بر روی دکمه ی ادامه کلیک کنید.</p>
+  <hr style="margin-bottom: -15px" />
+  <ng-template pTemplate="footer">
+    <button pButton pRipple type="button" (click)="displayBasic=false" label="ادامه"
+      class="p-button-danger float-left"></button>
+    <button pButton pRipple type="button" (click)="goCart()" label="مشاهده سبد خرید"
+      class="p-button-danger float-left"></button>
+  </ng-template>
+</p-dialog>
+<app-footer></app-footer>
+<ng-image-fullscreen-view [images]="images" [imageIndex]="currentIndex" [show]="showFlag" (close)="closeEventHandler()">
+</ng-image-fullscreen-view>

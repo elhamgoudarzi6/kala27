@@ -1,0 +1,146 @@
+<br>
+<div>
+  <button class="btn btn-info" [useExistingCss]="true" printSectionId="printSectionId"
+          ngxPrint >چاپ فاکتور</button>
+</div>
+<br>
+<div id="printSectionId" dir="rtl" class="border border-dark">
+  <table class="table table-bordered" dir="rtl">
+    <thead>
+    <tr class="text-center text-muted">
+      <th>
+       شماره سفارش: {{orderFactor['orderTrackingCode']}}
+      </th>
+      <th>
+       تاریخ سفارش:  {{orderFactor['date']}}
+      </th>
+      <th>
+         پرداخت :  {{orderFactor['success']}}
+      </th>
+    </tr>
+    <tr class="text-center text-muted">
+      <th>
+        کد رهگیری: {{orderFactor['postTrackingCode']}}
+      </th>
+      <th>
+        شماره درخواست تراکنش:  {{orderFactor['refID']}}
+      </th>
+      <th>
+        تاریخ پرداخت:  {{orderFactor['date']}}
+      </th>
+    </tr>
+    <tr class="text-right text-muted">
+      <th>
+       <span>فروشنده:</span>
+      </th>
+      <th>
+     فروشگاه کالا 27
+        <br>
+        آدرس:لرستان-خرم آباد-خیابان مطهری-پاساژ آرش-موبایل فرهادی
+      </th>
+      <th>
+      تلفن:09358146130
+        <br>
+        کدپستی:...........
+      </th>
+    </tr>
+    <tr class="text-right text-muted">
+      <th>
+      <span>خریدار:</span>
+      </th>
+      <th>
+        نام: {{orderFactor['User'][0].fullName}}
+        <br>
+        آدرس:{{orderFactor['User'][0].state}}-{{orderFactor['User'][0].city}}-{{orderFactor['User'][0].address}}
+
+      </th>
+      <th>
+        تلفن:{{orderFactor['User'][0].mobile}}
+        <br>
+        کدپستی:{{orderFactor['User'][0].postalCode}}
+      </th>
+    </tr>
+    </thead>
+
+  </table>
+  <table class="table table-bordered" dir="rtl">
+    <tbody>
+    <tr>
+      <th>
+        کالا
+      </th>
+      <th>
+        قیمت
+      </th>
+      <th>
+        تعداد
+      </th>
+      <th>
+        مجموع
+      </th>
+    </tr>
+    <tr class="text-center">
+      <td class="text-right">
+       {{orderFactor['Product'][0].title}}
+      </td>
+      <td>
+        {{orderFactor['price']|number}} تومان
+      </td>
+      <td>
+        {{orderFactor['count']}}
+      </td>
+      <td>
+        {{orderFactor['count']*orderFactor['price']|number}} تومان
+      </td>
+    </tr>
+    <tr class="text-center">
+      <td class="text-right">
+        مبلغ کل خرید
+      </td>
+      <td colspan="3">
+        {{orderFactor['count']*orderFactor['price']|number}} تومان
+      </td>
+    </tr>
+    <tr class="text-center" *ngIf="orderFactor['Product'][0].discountStatus">
+      <td class="text-right">
+        مبلغ تخفیف
+      </td>
+      <td colspan="3">
+        {{discount|number}} تومان
+      </td>
+    </tr>
+    <tr class="text-center" >
+      <td class="text-right">
+       حمل و نقل
+      </td>
+      <td colspan="3">
+        {{sendCost|number}} تومان
+      </td>
+    </tr>
+    <tr class="text-center">
+      <td class="text-right">
+         قیمت نهایی
+      </td>
+      <td colspan="3">
+        {{sum|number}} تومان
+      </td>
+    </tr>
+    <br>
+    <tr class="text-center">
+      <td class="text-right">
+       آدرس: لرستان-خرم آباد- خیابان مطهری-پاساژ آرش-موبایل فرهادی
+      </td>
+      <td colspan="3">
+        تلفن:09358146130
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="text-center mt-5">
+    <span>
+      امضاء
+      <br>
+       فروشگاه کالا 27
+    </span>
+  </div>
+</div>
